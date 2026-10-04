@@ -1,0 +1,14 @@
+# Rust build artifacts
+/target/
+**/*.rs.bk
+
+# Boot artifacts
+*.iso
+/iso/
+boot.log
+
+# Editors & OS noise
+.vscode/
+.idea/
+*.swp
+.DS_Store

@@ -1,0 +1,22 @@
+[workspace]
+resolver = "2"
+members = ["kernel"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Keraunos Contributors"]
+license = "MIT"
+
+# The kernel is the only crate today. Additional crates (hal, drivers, userland
+# tooling, the Linux-ABI compatibility layer) will join this workspace as the
+# roadmap advances — see docs/ROADMAP.md.
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+opt-level = 3
+lto = "thin"
+codegen-units = 1

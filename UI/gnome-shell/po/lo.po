@@ -1,0 +1,3528 @@
+# Lao translation for gnome-shell.
+# Copyright (C) 2025 gnome-shell's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-shell package.
+# bone NI <bounkirdni@gmail.com>,  2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-shell main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-shell/issues/\n"
+"POT-Creation-Date: 2025-09-20 15:33+0000\n"
+"PO-Revision-Date: 2025-09-20 15:33+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Lao <lo@li.org>\n"
+"Language: lo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: data/50-gnome-shell-launchers.xml:6
+msgid "Launchers"
+msgstr "ຕົວເປີດ"
+
+#: data/50-gnome-shell-launchers.xml:10
+msgid "Activate pinned app 1"
+msgstr "ເປີດແອັບທີ່ປັກໝຸດໄວ້ 1"
+
+#: data/50-gnome-shell-launchers.xml:14
+msgid "Activate pinned app 2"
+msgstr "ເປີດແອັບທີ່ປັກໝຸດໄວ້ 2"
+
+#: data/50-gnome-shell-launchers.xml:18
+msgid "Activate pinned app 3"
+msgstr "ເປີດແອັບທີ່ປັກໝຸດໄວ້ 3"
+
+#: data/50-gnome-shell-launchers.xml:22
+msgid "Activate pinned app 4"
+msgstr "ເປີດແອັບທີ່ປັກໝຸດໄວ້ 4"
+
+#: data/50-gnome-shell-launchers.xml:26
+msgid "Activate pinned app 5"
+msgstr "ເປີດແອັບທີ່ປັກໝຸດໄວ້ 5"
+
+#: data/50-gnome-shell-launchers.xml:30
+msgid "Activate pinned app 6"
+msgstr "ເປີດແອັບທີ່ປັກໝຸດໄວ້ 6"
+
+#: data/50-gnome-shell-launchers.xml:34
+msgid "Activate pinned app 7"
+msgstr "ເປີດແອັບທີ່ປັກໝຸດໄວ້ 7"
+
+#: data/50-gnome-shell-launchers.xml:38
+msgid "Activate pinned app 8"
+msgstr "ເປີດແອັບທີ່ປັກໝຸດໄວ້ 8"
+
+#: data/50-gnome-shell-launchers.xml:42
+msgid "Activate pinned app 9"
+msgstr "ເປີດແອັບທີ່ປັກໝຸດໄວ້ 9"
+
+#: data/50-gnome-shell-launchers.xml:46
+msgid "Open new window of pinned app 1"
+msgstr "ເປີດໜ້າຕ່າງໃໝ່ຂອງແອັບທີ່ປັກໝຸດໄວ້ 1"
+
+#: data/50-gnome-shell-launchers.xml:50
+msgid "Open new window of pinned app 2"
+msgstr "ເປີດໜ້າຕ່າງໃໝ່ຂອງແອັບທີ່ປັກໝຸດໄວ້ 2"
+
+#: data/50-gnome-shell-launchers.xml:54
+msgid "Open new window of pinned app 3"
+msgstr "ເປີດໜ້າຕ່າງໃໝ່ຂອງແອັບທີ່ປັກໝຸດໄວ້ 3"
+
+#: data/50-gnome-shell-launchers.xml:58
+msgid "Open new window of pinned app 4"
+msgstr "ເປີດໜ້າຕ່າງໃໝ່ຂອງແອັບທີ່ປັກໝຸດໄວ້ 4"
+
+#: data/50-gnome-shell-launchers.xml:62
+msgid "Open new window of pinned app 5"
+msgstr "ເປີດໜ້າຕ່າງໃໝ່ຂອງແອັບທີ່ປັກໝຸດໄວ້ 5"
+
+#: data/50-gnome-shell-launchers.xml:66
+msgid "Open new window of pinned app 6"
+msgstr "ເປີດໜ້າຕ່າງໃໝ່ຂອງແອັບທີ່ປັກໝຸດໄວ້ 6"
+
+#: data/50-gnome-shell-launchers.xml:70
+msgid "Open new window of pinned app 7"
+msgstr "ເປີດໜ້າຕ່າງໃໝ່ຂອງແອັບທີ່ປັກໝຸດໄວ້ 7"
+
+#: data/50-gnome-shell-launchers.xml:74
+msgid "Open new window of pinned app 8"
+msgstr "ເປີດໜ້າຕ່າງໃໝ່ຂອງແອັບທີ່ປັກໝຸດໄວ້ 8"
+
+#: data/50-gnome-shell-launchers.xml:78
+msgid "Open new window of pinned app 9"
+msgstr "ເປີດໜ້າຕ່າງໃໝ່ຂອງແອັບທີ່ປັກໝຸດໄວ້ 9"
+
+#. Translators: name of the folder under ~/Pictures for screenshots.
+#: data/50-gnome-shell-screenshots.xml:6 js/ui/screenshot.js:2292
+msgid "Screenshots"
+msgstr "ພາບໜ້າຈໍ"
+
+#: data/50-gnome-shell-screenshots.xml:9
+#: data/org.gnome.shell.gschema.xml.in:267
+msgid "Take a screenshot interactively"
+msgstr "ຖ່າຍພາບໜ້າຈໍແບບໂຕ້ຕອບ"
+
+#: data/50-gnome-shell-screenshots.xml:12
+#: data/org.gnome.shell.gschema.xml.in:279
+msgid "Take a screenshot"
+msgstr "ຖ່າຍພາບໜ້າຈໍ"
+
+#: data/50-gnome-shell-screenshots.xml:15
+#: data/org.gnome.shell.gschema.xml.in:275
+msgid "Take a screenshot of a window"
+msgstr "ຖ່າຍພາບໜ້າຈໍຂອງໜ້າຕ່າງ"
+
+#: data/50-gnome-shell-screenshots.xml:18
+#: data/org.gnome.shell.gschema.xml.in:271
+msgid "Record a screencast interactively"
+msgstr "ບັນທຶກໜ້າຈໍແບບໂຕ້ຕອບ"
+
+#: data/50-gnome-shell-system.xml:6
+#: data/X-GNOME-Shell-System.directory.desktop.in:2 js/ui/messageTray.js:1312
+msgid "System"
+msgstr "ລະບົບ"
+
+#: data/50-gnome-shell-system.xml:9
+msgid "Show the notification list"
+msgstr "ສະແດງລາຍການແຈ້ງເຕືອນ"
+
+#: data/50-gnome-shell-system.xml:12
+msgid "Open the quick settings menu"
+msgstr "ເປີດເມນູຕັ້ງຄ່າດ່ວນ"
+
+#: data/50-gnome-shell-system.xml:15
+msgid "Focus the active notification"
+msgstr "ໂຟກັສການແຈ້ງເຕືອນທີ່ໃຊ້ງານຢູ່"
+
+#: data/50-gnome-shell-system.xml:18
+msgid "Show the overview"
+msgstr "ສະແດງພາບລວມ"
+
+#: data/50-gnome-shell-system.xml:21
+msgid "Show all apps"
+msgstr "ສະແດງແອັບທັງໝົດ"
+
+#: data/org.gnome.shell.gschema.xml.in:6
+msgid "Enable internal tools useful for developers and testers from Alt-F2"
+msgstr "ເປີດໃຊ້ເຄື່ອງມືພາຍໃນທີ່ເປັນປະໂຫຍດສຳລັບນັກພັດທະນາ ແລະ ຜູ້ທົດສອບຈາກ Alt-F2"
+
+#: data/org.gnome.shell.gschema.xml.in:9
+msgid ""
+"Allows access to internal debugging and monitoring tools using the Alt-F2 "
+"dialog."
+msgstr "ອະນຸຍາດໃຫ້ເຂົ້າເຖິງເຄື່ອງມືດີບັກ ແລະ ຕິດຕາມພາຍໃນໂດຍໃຊ້ກ່ອງໂຕ້ຕອບ Alt-F2."
+
+#: data/org.gnome.shell.gschema.xml.in:16
+msgid "UUIDs of extensions to enable"
+msgstr "UUIDs ຂອງສ່ວນຂະຫຍາຍທີ່ຈະເປີດໃຊ້"
+
+#: data/org.gnome.shell.gschema.xml.in:17
+msgid ""
+"GNOME Shell extensions have a UUID property; this key lists extensions which "
+"should be loaded. Any extension that wants to be loaded needs to be in this "
+"list. You can also manipulate this list with the EnableExtension and "
+"DisableExtension D-Bus methods on org.gnome.Shell."
+msgstr "ສ່ວນຂະຫຍາຍຂອງ GNOME Shell ມີຄຸນສົມບັດ UUID; ຄີນີ້ຈະບອກລາຍການສ່ວນຂະຫຍາຍທີ່ຄວນຈະຖືກໂຫຼດ. ສ່ວນຂະຫຍາຍໃດໆທີ່ຕ້ອງການໂຫຼດຕ້ອງຢູ່ໃນລາຍການນີ້. ທ່ານຍັງສາມາດປັບປ່ຽນລາຍການນີ້ໄດ້ດ້ວຍເມທອດ EnableExtension ແລະ DisableExtension D-Bus ໃນ org.gnome.Shell."
+
+#: data/org.gnome.shell.gschema.xml.in:26
+msgid "UUIDs of extensions to force disabling"
+msgstr "UUIDs ຂອງສ່ວນຂະຫຍາຍທີ່ຈະບັງຄັບປິດໃຊ້ງານ"
+
+#: data/org.gnome.shell.gschema.xml.in:27
+msgid ""
+"GNOME Shell extensions have a UUID property; this key lists extensions which "
+"should be disabled, even if loaded as part of the current mode. You can also "
+"manipulate this list with the EnableExtension and DisableExtension D-Bus "
+"methods on org.gnome.Shell. This key takes precedence over the “enabled-"
+"extensions” setting."
+msgstr "ສ່ວນຂະຫຍາຍຂອງ GNOME Shell ມີຄຸນສົມບັດ UUID; ຄີນີ້ຈະບອກລາຍການສ່ວນຂະຫຍາຍທີ່ຄວນຈະຖືກປິດໃຊ້ງານ, ເຖິງແມ່ນວ່າຈະຖືກໂຫຼດເປັນສ່ວນໜຶ່ງຂອງໂໝດປັດຈຸບັນ. ທ່ານຍັງສາມາດປັບປ່ຽນລາຍການນີ້ໄດ້ດ້ວຍເມທອດ EnableExtension ແລະ DisableExtension D-Bus ໃນ org.gnome.Shell. ຄີນີ້ມີຄວາມສຳຄັນເໜືອກວ່າການຕັ້ງຄ່າ “enabled-extensions”."
+
+#: data/org.gnome.shell.gschema.xml.in:37
+msgid "Disable user extensions"
+msgstr "ປິດໃຊ້ງານສ່ວນຂະຫຍາຍຂອງຜູ້ໃຊ້"
+
+#: data/org.gnome.shell.gschema.xml.in:38
+msgid ""
+"Disable all extensions the user has enabled without affecting the “enabled-"
+"extension” setting."
+msgstr "ປິດໃຊ້ງານສ່ວນຂະຫຍາຍທັງໝົດທີ່ຜູ້ໃຊ້ໄດ້ເປີດໃຊ້ໂດຍບໍ່ມີຜົນກະທົບຕໍ່ການຕັ້ງຄ່າ “enabled-extension”."
+
+#: data/org.gnome.shell.gschema.xml.in:45
+msgid "Allow extension installation"
+msgstr "ອະນຸຍາດການຕິດຕັ້ງສ່ວນຂະຫຍາຍ"
+
+#: data/org.gnome.shell.gschema.xml.in:46
+msgid ""
+"Allow users to install extensions in their home folder. If disabled, the "
+"InstallRemoteExtension D-Bus method will fail, and extensions are only "
+"loaded from system directories on startup. It does not affect extensions "
+"that are already loaded, so a change only takes full effect on the next "
+"login."
+msgstr "ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ຕິດຕັ້ງສ່ວນຂະຫຍາຍໃນໂຟເດີ home ຂອງພວກເຂົາ. ຖ້າປິດໃຊ້ງານ, ເມທອດ InstallRemoteExtension D-Bus ຈະລົ້ມເຫຼວ, ແລະ ສ່ວນຂະຫຍາຍຈະຖືກໂຫຼດຈາກໄດເລກະທໍຣີລະບົບໃນຕອນເລີ່ມຕົ້ນເທົ່ານັ້ນ. ມັນບໍ່ມີຜົນກະທົບຕໍ່ສ່ວນຂະຫຍາຍທີ່ໂຫຼດແລ້ວ, ດັ່ງນັ້ນການປ່ຽນແປງຈະມີຜົນຢ່າງສົມບູນໃນການເຂົ້າສູ່ລະບົບຄັ້ງຕໍ່ໄປ."
+
+#: data/org.gnome.shell.gschema.xml.in:56
+msgid "Disables the validation of extension version compatibility"
+msgstr "ປິດການກວດສອບຄວາມເຂົ້າກັນໄດ້ຂອງເວີຊັນສ່ວນຂະຫຍາຍ"
+
+#: data/org.gnome.shell.gschema.xml.in:57
+msgid ""
+"GNOME Shell will only load extensions that claim to support the current "
+"running version. Enabling this option will disable this check and try to "
+"load all extensions regardless of the versions they claim to support."
+msgstr "GNOME Shell ຈະໂຫຼດສະເພາະສ່ວນຂະຫຍາຍທີ່ອ້າງວ່າຮອງຮັບເວີຊັນທີ່ກຳລັງເຮັດວຽກຢູ່. ການເປີດໃຊ້ຕົວເລືອກນີ້ຈະປິດການກວດສອບນີ້ ແລະ ພະຍາຍາມໂຫຼດສ່ວນຂະຫຍາຍທັງໝົດໂດຍບໍ່ຄຳນຶງເຖິງເວີຊັນທີ່ພວກເຂົາອ້າງວ່າຮອງຮັບ."
+
+#: data/org.gnome.shell.gschema.xml.in:67
+msgid "List of desktop file IDs for favorite applications"
+msgstr "ລາຍການໄອດີໄຟລ໌ເດັສທັອບສຳລັບແອັບພລິເຄຊັນທີ່ມັກ"
+
+#: data/org.gnome.shell.gschema.xml.in:68
+msgid ""
+"The applications corresponding to these identifiers will be displayed in the "
+"favorites area."
+msgstr "ແອັບພລິເຄຊັນທີ່ກົງກັບຕົວລະບຸເຫຼົ່ານີ້ຈະຖືກສະແດງໃນພື້ນທີ່ລາຍການທີ່ມັກ."
+
+#: data/org.gnome.shell.gschema.xml.in:75
+msgid "History for command (Alt-F2) dialog"
+msgstr "ປະຫວັດສຳລັບກ່ອງໂຕ້ຕອບຄຳສັ່ງ (Alt-F2)"
+
+#. Translators: looking glass is a debugger and inspector tool, see https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/docs/looking-glass.md
+#: data/org.gnome.shell.gschema.xml.in:80
+msgid "History for the looking glass dialog"
+msgstr "ປະຫວັດສຳລັບກ່ອງໂຕ້ຕອບ looking glass"
+
+#: data/org.gnome.shell.gschema.xml.in:84
+msgid "Always show the “Log Out” action in the system menu"
+msgstr "ສະແດງການກະທຳ “ອອກຈາກລະບົບ” ໃນເມນູລະບົບສະເໝີ"
+
+#: data/org.gnome.shell.gschema.xml.in:85
+msgid ""
+"This key overrides the automatic hiding of the “Log out” action in the "
+"system menu for logged-in situations where there is a single, local, non-"
+"system user and only a single available session type (e.g. GNOME on Wayland)."
+msgstr "ຄີນີ້ຈະລົບລ້າງການເຊື່ອງອັດຕະໂນມັດຂອງການກະທຳ “ອອກຈາກລະບົບ” ໃນເມນູລະບົບສຳລັບສະຖານະການທີ່ເຂົ້າສູ່ລະບົບທີ່ມີຜູ້ໃຊ້ທ້ອງຖິ່ນທີ່ບໍ່ແມ່ນລະບົບພຽງຄົນດຽວ ແລະ ມີປະເພດເຊດຊັນທີ່ມີຢູ່ພຽງອັນດຽວ (ຕົວຢ່າງ: GNOME ໃນ Wayland)."
+
+#: data/org.gnome.shell.gschema.xml.in:94
+msgid ""
+"Whether to remember password for mounting encrypted or remote filesystems"
+msgstr "ຈະຈື່ລະຫັດຜ່ານສຳລັບການເຊື່ອມຕໍ່ລະບົບໄຟລ໌ທີ່ຖືກເຂົ້າລະຫັດ ຫຼື ໄລຍະໄກ"
+
+#: data/org.gnome.shell.gschema.xml.in:95
+msgid ""
+"The shell will request a password when an encrypted device or a remote "
+"filesystem is mounted. If the password can be saved for future use a "
+"“Remember Password” checkbox will be present. This key sets the default "
+"state of the checkbox."
+msgstr "ເປືອກຈະຮ້ອງຂໍລະຫັດຜ່ານເມື່ອອຸປະກອນທີ່ເຂົ້າລະຫັດ ຫຼື ລະບົບໄຟລ໌ໄລຍະໄກຖືກເຊື່ອມຕໍ່. ຖ້າສາມາດບັນທຶກລະຫັດຜ່ານໄວ້ໃຊ້ໃນອະນາຄົດໄດ້, ກ່ອງໝາຍ “ຈື່ລະຫັດຜ່ານ” ຈະປະກົດຂຶ້ນ. ຄີນີ້ຈະຕັ້ງຄ່າສະຖານະເລີ່ມຕົ້ນຂອງກ່ອງໝາຍ."
+
+#: data/org.gnome.shell.gschema.xml.in:104
+msgid "The last selected non-default power profile"
+msgstr "ໂປຣໄຟລ໌ພະລັງງານທີ່ບໍ່ແມ່ນຄ່າເລີ່ມຕົ້ນທີ່ຖືກເລືອກຫຼ້າສຸດ"
+
+#: data/org.gnome.shell.gschema.xml.in:105
+msgid ""
+"Some systems support more than two power profiles. In order to still support "
+"toggling between two profiles, this key records the last selected non-"
+"default profile."
+msgstr "ບາງລະບົບຮອງຮັບໂປຣໄຟລ໌ພະລັງງານຫຼາຍກວ່າສອງໂປຣໄຟລ໌. ເພື່ອໃຫ້ຍັງຄົງຮອງຮັບການສະຫຼັບລະຫວ່າງສອງໂປຣໄຟລ໌, ຄີນີ້ຈະບັນທຶກໂປຣໄຟລ໌ທີ່ບໍ່ແມ່ນຄ່າເລີ່ມຕົ້ນທີ່ຖືກເລືອກຫຼ້າສຸດ."
+
+#: data/org.gnome.shell.gschema.xml.in:113
+msgid "The last version the “Welcome to GNOME” dialog was shown for"
+msgstr "ເວີຊັນຫຼ້າສຸດທີ່ກ່ອງໂຕ້ຕອບ “ຍິນດີຕ້ອນຮັບສູ່ GNOME” ໄດ້ຖືກສະແດງ"
+
+#: data/org.gnome.shell.gschema.xml.in:114
+msgid ""
+"This key determines for which version the “Welcome to GNOME” dialog was last "
+"shown. An empty string represents the oldest possible version, and a huge "
+"number will represent versions that do not exist yet. This huge number can "
+"be used to effectively disable the dialog."
+msgstr "ຄີນີ້ຈະກຳນົດວ່າກ່ອງໂຕ້ຕອບ “ຍິນດີຕ້ອນຮັບສູ່ GNOME” ໄດ້ຖືກສະແດງຫຼ້າສຸດສຳລັບເວີຊັນໃດ. ສະຕຣິງວ່າງສະແດງເຖິງເວີຊັນເກົ່າທີ່ສຸດທີ່ເປັນໄປໄດ້, ແລະ ຕົວເລກໃຫຍ່ຈະສະແດງເຖິງເວີຊັນທີ່ຍັງບໍ່ມີ. ຕົວເລກໃຫຍ່ນີ້ສາມາດຖືກນຳໃຊ້ເພື່ອປິດກ່ອງໂຕ້ຕອບຢ່າງມີປະສິດທິພາບ."
+
+#: data/org.gnome.shell.gschema.xml.in:125
+msgid "Layout of the app picker"
+msgstr "ໂຄງຮ່າງຂອງຕົວເລືອກແອັບ"
+
+#: data/org.gnome.shell.gschema.xml.in:126
+msgid ""
+"Layout of the app picker. Each entry in the array is a page. Pages are "
+"stored in the order they appear in GNOME Shell. Each page contains an "
+"“application id” → 'data' pair. Currently, the following values are stored "
+"as 'data': • “position”: the position of the application icon in the page"
+msgstr "ໂຄງຮ່າງຂອງຕົວເລືອກແອັບ. ແຕ່ລະລາຍການໃນອາເຣແມ່ນໜ້າໜຶ່ງ. ໜ້າຕ່າງໆຈະຖືກເກັບໄວ້ຕາມລຳດັບທີ່ປາກົດໃນ GNOME Shell. ແຕ່ລະໜ້າປະກອບດ້ວຍຄູ່ “ໄອດີແອັບພລິເຄຊັນ” → 'ຂໍ້ມູນ'. ໃນປັດຈຸບັນ, ຄ່າຕໍ່ໄປນີ້ຖືກເກັບໄວ້ເປັນ 'ຂໍ້ມູນ': • “ຕຳແໜ່ງ”: ຕຳແໜ່ງຂອງໄອຄອນແອັບພລິເຄຊັນໃນໜ້າ"
+
+#: data/org.gnome.shell.gschema.xml.in:145
+#: data/org.gnome.shell.gschema.xml.in:152
+msgid "Keybinding to shift between overview states"
+msgstr "ປຸ່ມລັດເພື່ອສະຫຼັບລະຫວ່າງສະຖານະພາບລວມ"
+
+#: data/org.gnome.shell.gschema.xml.in:146
+msgid "Keybinding to shift between session, window picker and app grid"
+msgstr "ປຸ່ມລັດເພື່ອສະຫຼັບລະຫວ່າງເຊດຊັນ, ຕົວເລືອກໜ້າຕ່າງ ແລະ ຕາຕະລາງແອັບ"
+
+#: data/org.gnome.shell.gschema.xml.in:153
+msgid "Keybinding to shift between app grid, window picker and session"
+msgstr "ປຸ່ມລັດເພື່ອສະຫຼັບລະຫວ່າງຕາຕະລາງແອັບ, ຕົວເລືອກໜ້າຕ່າງ ແລະ ເຊດຊັນ"
+
+#: data/org.gnome.shell.gschema.xml.in:159
+msgid "Keybinding to open the “Show Applications” view"
+msgstr "ປຸ່ມລັດເພື່ອເປີດມຸມມອງ “ສະແດງແອັບພລິເຄຊັນ”"
+
+#: data/org.gnome.shell.gschema.xml.in:160
+msgid ""
+"Keybinding to open the “Show Applications” view of the Activities Overview."
+msgstr "ປຸ່ມລັດເພື່ອເປີດມຸມມອງ “ສະແດງແອັບພລິເຄຊັນ” ຂອງພາບລວມກິດຈະກຳ."
+
+#: data/org.gnome.shell.gschema.xml.in:167
+msgid "Keybinding to open the overview"
+msgstr "ປຸ່ມລັດເພື່ອເປີດພາບລວມ"
+
+#: data/org.gnome.shell.gschema.xml.in:168
+msgid "Keybinding to open the Activities Overview."
+msgstr "ປຸ່ມລັດເພື່ອເປີດພາບລວມກິດຈະກຳ."
+
+#: data/org.gnome.shell.gschema.xml.in:174
+msgid "Keybinding to toggle the visibility of the notification list"
+msgstr "ປຸ່ມລັດເພື່ອສະຫຼັບການເບິ່ງເຫັນຂອງລາຍການແຈ້ງເຕືອນ"
+
+#: data/org.gnome.shell.gschema.xml.in:175
+msgid "Keybinding to toggle the visibility of the notification list."
+msgstr "ປຸ່ມລັດເພື່ອສະຫຼັບການເບິ່ງເຫັນຂອງລາຍການແຈ້ງເຕືອນ."
+
+#: data/org.gnome.shell.gschema.xml.in:181
+msgid "Keybinding to toggle the quick settings menu"
+msgstr "ປຸ່ມລັດເພື່ອສະຫຼັບເມນູຕັ້ງຄ່າດ່ວນ"
+
+#: data/org.gnome.shell.gschema.xml.in:182
+msgid "Keybinding to toggle the quick settings menu."
+msgstr "ປຸ່ມລັດເພື່ອສະຫຼັບເມນູຕັ້ງຄ່າດ່ວນ."
+
+#: data/org.gnome.shell.gschema.xml.in:188
+msgid "Keybinding to focus the active notification"
+msgstr "ປຸ່ມລັດເພື່ອໂຟກັສການແຈ້ງເຕືອນທີ່ໃຊ້ງານຢູ່"
+
+#: data/org.gnome.shell.gschema.xml.in:189
+msgid "Keybinding to focus the active notification."
+msgstr "ປຸ່ມລັດເພື່ອໂຟກັສການແຈ້ງເຕືອນທີ່ໃຊ້ງານຢູ່."
+
+#: data/org.gnome.shell.gschema.xml.in:195
+msgid "Switch to application 1"
+msgstr "ສະຫຼັບໄປທີ່ແອັບພລິເຄຊັນ 1"
+
+#: data/org.gnome.shell.gschema.xml.in:199
+msgid "Switch to application 2"
+msgstr "ສະຫຼັບໄປທີ່ແອັບພລິເຄຊັນ 2"
+
+#: data/org.gnome.shell.gschema.xml.in:203
+msgid "Switch to application 3"
+msgstr "ສະຫຼັບໄປທີ່ແອັບພລິເຄຊັນ 3"
+
+#: data/org.gnome.shell.gschema.xml.in:207
+msgid "Switch to application 4"
+msgstr "ສະຫຼັບໄປທີ່ແອັບພລິເຄຊັນ 4"
+
+#: data/org.gnome.shell.gschema.xml.in:211
+msgid "Switch to application 5"
+msgstr "ສະຫຼັບໄປທີ່ແອັບພລິເຄຊັນ 5"
+
+#: data/org.gnome.shell.gschema.xml.in:215
+msgid "Switch to application 6"
+msgstr "ສະຫຼັບໄປທີ່ແອັບພລິເຄຊັນ 6"
+
+#: data/org.gnome.shell.gschema.xml.in:219
+msgid "Switch to application 7"
+msgstr "ສະຫຼັບໄປທີ່ແອັບພລິເຄຊັນ 7"
+
+#: data/org.gnome.shell.gschema.xml.in:223
+msgid "Switch to application 8"
+msgstr "ສະຫຼັບໄປທີ່ແອັບພລິເຄຊັນ 8"
+
+#: data/org.gnome.shell.gschema.xml.in:227
+msgid "Switch to application 9"
+msgstr "ສະຫຼັບໄປທີ່ແອັບພລິເຄຊັນ 9"
+
+#: data/org.gnome.shell.gschema.xml.in:231
+msgid "Open a new instance of application 1"
+msgstr "ເປີດອິນສະແຕນໃໝ່ຂອງແອັບພລິເຄຊັນ 1"
+
+#: data/org.gnome.shell.gschema.xml.in:235
+msgid "Open a new instance of application 2"
+msgstr "ເປີດອິນສະແຕນໃໝ່ຂອງແອັບພລິເຄຊັນ 2"
+
+#: data/org.gnome.shell.gschema.xml.in:239
+msgid "Open a new instance of application 3"
+msgstr "ເປີດອິນສະແຕນໃໝ່ຂອງແອັບພລິເຄຊັນ 3"
+
+#: data/org.gnome.shell.gschema.xml.in:243
+msgid "Open a new instance of application 4"
+msgstr "ເປີດອິນສະແຕນໃໝ່ຂອງແອັບພລິເຄຊັນ 4"
+
+#: data/org.gnome.shell.gschema.xml.in:247
+msgid "Open a new instance of application 5"
+msgstr "ເປີດອິນສະແຕນໃໝ່ຂອງແອັບພລິເຄຊັນ 5"
+
+#: data/org.gnome.shell.gschema.xml.in:251
+msgid "Open a new instance of application 6"
+msgstr "ເປີດອິນສະແຕນໃໝ່ຂອງແອັບພລິເຄຊັນ 6"
+
+#: data/org.gnome.shell.gschema.xml.in:255
+msgid "Open a new instance of application 7"
+msgstr "ເປີດອິນສະແຕນໃໝ່ຂອງແອັບພລິເຄຊັນ 7"
+
+#: data/org.gnome.shell.gschema.xml.in:259
+msgid "Open a new instance of application 8"
+msgstr "ເປີດອິນສະແຕນໃໝ່ຂອງແອັບພລິເຄຊັນ 8"
+
+#: data/org.gnome.shell.gschema.xml.in:263
+msgid "Open a new instance of application 9"
+msgstr "ເປີດອິນສະແຕນໃໝ່ຂອງແອັບພລິເຄຊັນ 9"
+
+#: data/org.gnome.shell.gschema.xml.in:283
+msgid "Screen brightness up"
+msgstr "ເພີ່ມຄວາມສະຫວ່າງໜ້າຈໍ"
+
+#: data/org.gnome.shell.gschema.xml.in:287
+msgid "Screen brightness up on current monitor"
+msgstr "ເພີ່ມຄວາມສະຫວ່າງໜ້າຈໍໃນຈໍປັດຈຸບັນ"
+
+#: data/org.gnome.shell.gschema.xml.in:291
+msgid "Screen brightness down"
+msgstr "ຫຼຸດຄວາມສະຫວ່າງໜ້າຈໍ"
+
+#: data/org.gnome.shell.gschema.xml.in:295
+msgid "Screen brightness down on current monitor"
+msgstr "ຫຼຸດຄວາມສະຫວ່າງໜ້າຈໍໃນຈໍປັດຈຸບັນ"
+
+#: data/org.gnome.shell.gschema.xml.in:299
+msgid "Screen brightness cycle"
+msgstr "ວົງຈອນຄວາມສະຫວ່າງໜ້າຈໍ"
+
+#: data/org.gnome.shell.gschema.xml.in:303
+msgid "Screen brightness cycle on current monitor"
+msgstr "ວົງຈອນຄວາມສະຫວ່າງໜ້າຈໍໃນຈໍປັດຈຸບັນ"
+
+#: data/org.gnome.shell.gschema.xml.in:312
+#: data/org.gnome.shell.gschema.xml.in:339
+msgid "Limit switcher to current workspace."
+msgstr "ຈຳກັດຕົວສະຫຼັບຢູ່ໃນພື້ນທີ່ເຮັດວຽກປັດຈຸບັນ."
+
+#: data/org.gnome.shell.gschema.xml.in:313
+msgid ""
+"If true, only applications that have windows on the current workspace are "
+"shown in the switcher. Otherwise, all applications are included."
+msgstr "ຖ້າແມ່ນ, ສະເພາະແອັບພລິເຄຊັນທີ່ມີໜ້າຕ່າງຢູ່ໃນພື້ນທີ່ເຮັດວຽກປັດຈຸບັນເທົ່ານັ້ນທີ່ຈະສະແດງໃນຕົວສະຫຼັບ. ຖ້າບໍ່ແມ່ນ, ແອັບພລິເຄຊັນທັງໝົດຈະຖືກລວມ."
+
+#: data/org.gnome.shell.gschema.xml.in:330
+msgid "The application icon mode."
+msgstr "ໂໝດໄອຄອນແອັບພລິເຄຊັນ."
+
+#: data/org.gnome.shell.gschema.xml.in:331
+msgid ""
+"Configures how the windows are shown in the switcher. Valid possibilities "
+"are “thumbnail-only” (shows a thumbnail of the window), “app-icon-only” "
+"(shows only the application icon) or “both”."
+msgstr "ກຳນົດວິທີສະແດງໜ້າຕ່າງໃນຕົວສະຫຼັບ. ຕົວເລືອກທີ່ໃຊ້ໄດ້ແມ່ນ “ສະເພາະຮູບຫຍໍ້” (ສະແດງຮູບຫຍໍ້ຂອງໜ້າຕ່າງ), “ສະເພາະໄອຄອນແອັບ” (ສະແດງສະເພາະໄອຄອນແອັບພລິເຄຊັນ) ຫຼື “ທັງສອງ”."
+
+#: data/org.gnome.shell.gschema.xml.in:340
+msgid ""
+"If true, only windows from the current workspace are shown in the switcher. "
+"Otherwise, all windows are included."
+msgstr "ຖ້າແມ່ນ, ສະເພາະໜ້າຕ່າງຈາກພື້ນທີ່ເຮັດວຽກປັດຈຸບັນເທົ່ານັ້ນທີ່ຈະສະແດງໃນຕົວສະຫຼັບ. ຖ້າບໍ່ແມ່ນ, ໜ້າຕ່າງທັງໝົດຈະຖືກລວມ."
+
+#: data/org.gnome.shell.gschema.xml.in:350
+msgid "Locations"
+msgstr "ທີ່ຕັ້ງ"
+
+#: data/org.gnome.shell.gschema.xml.in:351
+msgid "The locations to show in world clocks"
+msgstr "ທີ່ຕັ້ງທີ່ຈະສະແດງໃນໂມງໂລກ"
+
+#: data/org.gnome.shell.gschema.xml.in:361
+msgid "Automatic location"
+msgstr "ທີ່ຕັ້ງອັດຕະໂນມັດ"
+
+#: data/org.gnome.shell.gschema.xml.in:362
+msgid "Whether to fetch the current location or not"
+msgstr "ຈະດຶງຂໍ້ມູນທີ່ຕັ້ງປັດຈຸບັນຫຼືບໍ່"
+
+#: data/org.gnome.shell.gschema.xml.in:369
+msgid "Location"
+msgstr "ທີ່ຕັ້ງ"
+
+#: data/org.gnome.shell.gschema.xml.in:370
+msgid "The location for which to show a forecast"
+msgstr "ທີ່ຕັ້ງສຳລັບສະແດງການພະຍາກອນອາກາດ"
+
+#. Keep in sync with subprojects/extensions-app
+#: data/org.gnome.Shell.Extensions.desktop.in:4
+#: subprojects/extensions-app/data/metainfo/org.gnome.Extensions.metainfo.xml.in:5
+#: subprojects/extensions-app/data/org.gnome.Extensions.desktop.in.in:3
+#: subprojects/extensions-app/data/ui/extensions-window.ui:57
+msgid "Extensions"
+msgstr "ສ່ວນຂະຫຍາຍ"
+
+#: data/org.gnome.Shell.PortalHelper.desktop.in:2
+msgid "Network Login"
+msgstr "ເຂົ້າສູ່ລະບົບເຄືອຂ່າຍ"
+
+#: data/X-GNOME-Shell-Utilities.directory.desktop.in:2
+msgid "Utilities"
+msgstr "ເຄື່ອງມືອຳນວຍຄວາມສະດວກ"
+
+#: js/dbusServices/extensions/extensionPrefsDialog.js:71
+msgid "Extension Error"
+msgstr "ຂໍ້ຜິດພາດຂອງສ່ວນຂະຫຍາຍ"
+
+#. Translators: %s is an extension name
+#: js/dbusServices/extensions/extensionPrefsDialog.js:104
+#, javascript-format
+msgid "Unable to display the settings for “%s”."
+msgstr "ບໍ່ສາມາດສະແດງການຕັ້ງຄ່າສຳລັບ “%s” ໄດ້."
+
+#. Translators: Link label in the phrase "Information about this
+#. problem may be available on the extension website"
+#: js/dbusServices/extensions/extensionPrefsDialog.js:110
+msgid "extension website"
+msgstr "ເວັບໄຊທ໌ສ່ວນຂະຫຍາຍ"
+
+#. Translators: %s is "extension website"
+#: js/dbusServices/extensions/extensionPrefsDialog.js:114
+#, javascript-format
+msgid "Information about this problem may be available on the %s."
+msgstr "ຂໍ້ມູນກ່ຽວກັບບັນຫານີ້ອາດມີຢູ່ໃນ %s."
+
+#: js/dbusServices/extensions/ui/extension-error-page.ui:19
+#: subprojects/extensions-app/data/ui/extension-row.ui:13
+msgid "Error Details"
+msgstr "ລາຍລະອຽດຂໍ້ຜິດພາດ"
+
+#: js/dbusServices/extensions/ui/extension-error-page.ui:26
+msgid "Copy Error"
+msgstr "ສຳເນົາຂໍ້ຜິດພາດ"
+
+#: js/gdm/authPrompt.js:157 js/gdm/loginDialog.js:511
+#: js/ui/audioDeviceSelection.js:60 js/ui/components/networkAgent.js:114
+#: js/ui/components/polkitAgent.js:144 js/ui/endSessionDialog.js:437
+#: js/ui/extensionDownloader.js:276 js/ui/shellMountOperation.js:382
+#: js/ui/shellMountOperation.js:392
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+#: js/gdm/authPrompt.js:335 js/ui/components/networkAgent.js:214
+#: js/ui/components/networkAgent.js:234 js/ui/components/networkAgent.js:266
+#: js/ui/components/networkAgent.js:299 js/ui/components/networkAgent.js:338
+#: js/ui/components/networkAgent.js:351 js/ui/components/polkitAgent.js:286
+#: js/ui/shellMountOperation.js:332
+#: subprojects/extensions-tool/src/command-upload.c:252
+msgid "Password"
+msgstr "ລະຫັດຜ່ານ"
+
+#: js/gdm/loginDialog.js:327
+msgid "Choose Session"
+msgstr "ເລືອກເຊດຊັນ"
+
+#: js/gdm/loginDialog.js:417 js/ui/status/accessibility.js:35
+msgid "Accessibility"
+msgstr "ການຊ່ວຍເຂົ້າເຖິງ"
+
+#. Translators: is running for <username>
+#: js/gdm/loginDialog.js:469
+#, javascript-format
+msgid ""
+"Remote login is not possible because a remote session is already running for "
+"%s. To login remotely, you must log out from the remote session or force "
+"stop it."
+msgstr "ບໍ່ສາມາດເຂົ້າສູ່ລະບົບໄລຍະໄກໄດ້ ເພາະມີເຊດຊັນໄລຍະໄກກຳລັງເຮັດວຽກຢູ່ແລ້ວສຳລັບ %s. ເພື່ອເຂົ້າສູ່ລະບົບໄລຍະໄກ, ທ່ານຕ້ອງອອກຈາກລະບົບຈາກເຊດຊັນໄລຍະໄກ ຫຼື ບັງຄັບຢຸດມັນ."
+
+#. Translators: is running for <username>
+#: js/gdm/loginDialog.js:472
+#, javascript-format
+msgid ""
+"Login is not possible because a remote session is already running for %s. To "
+"login, you must log out from the remote session or force stop it."
+msgstr "ບໍ່ສາມາດເຂົ້າສູ່ລະບົບໄດ້ ເພາະມີເຊດຊັນໄລຍະໄກກຳລັງເຮັດວຽກຢູ່ແລ້ວສຳລັບ %s. ເພື່ອເຂົ້າສູ່ລະບົບ, ທ່ານຕ້ອງອອກຈາກລະບົບຈາກເຊດຊັນໄລຍະໄກ ຫຼື ບັງຄັບຢຸດມັນ."
+
+#. Translators: is running for <username>
+#: js/gdm/loginDialog.js:475
+#, javascript-format
+msgid ""
+"Remote login is not possible because a local session is already running for "
+"%s. To login remotely, you must log out from the local session or force stop "
+"it."
+msgstr "ບໍ່ສາມາດເຂົ້າສູ່ລະບົບໄລຍະໄກໄດ້ ເພາະມີເຊດຊັນທ້ອງຖິ່ນກຳລັງເຮັດວຽກຢູ່ແລ້ວສຳລັບ %s. ເພື່ອເຂົ້າສູ່ລະບົບໄລຍະໄກ, ທ່ານຕ້ອງອອກຈາກລະບົບຈາກເຊດຊັນທ້ອງຖິ່ນ ຫຼື ບັງຄັບຢຸດມັນ."
+
+#. Translators: is running for <username>
+#: js/gdm/loginDialog.js:478
+#, javascript-format
+msgid ""
+"Login is not possible because a session is already running for %s. To login, "
+"you must log out from the session or force stop it."
+msgstr "ບໍ່ສາມາດເຂົ້າສູ່ລະບົບໄດ້ ເພາະມີເຊດຊັນກຳລັງເຮັດວຽກຢູ່ແລ້ວສຳລັບ %s. ເພື່ອເຂົ້າສູ່ລະບົບ, ທ່ານຕ້ອງອອກຈາກລະບົບຈາກເຊດຊັນ ຫຼື ບັງຄັບຢຸດມັນ."
+
+#: js/gdm/loginDialog.js:487
+msgid "Session Already Running"
+msgstr "ເຊດຊັນກຳລັງເຮັດວຽກຢູ່ແລ້ວ"
+
+#: js/gdm/loginDialog.js:499
+msgid ""
+"Force stopping will quit any running apps and processes, and could result in "
+"data loss"
+msgstr "ການບັງຄັບຢຸດຈະປິດແອັບ ແລະ ໂປຣເຊສທີ່ກຳລັງເຮັດວຽກທັງໝົດ, ແລະ ອາດເຮັດໃຫ້ຂໍ້ມູນສູນເສຍໄດ້"
+
+#: js/gdm/loginDialog.js:519
+msgid "Force Stop"
+msgstr "ບັງຄັບຢຸດ"
+
+#: js/gdm/loginDialog.js:597
+msgid "Not listed?"
+msgstr "ບໍ່ມີໃນລາຍການ?"
+
+#. Translators: this message is shown below the username entry field
+#. to clue the user in on how to login to the local network realm
+#: js/gdm/loginDialog.js:1126
+#, javascript-format
+msgid "(e.g., user or %s)"
+msgstr "(ຕົວຢ່າງ: ຜູ້ໃຊ້ ຫຼື %s)"
+
+#: js/gdm/loginDialog.js:1131 js/ui/components/networkAgent.js:258
+#: js/ui/components/networkAgent.js:293 js/ui/components/networkAgent.js:327
+#: subprojects/extensions-tool/src/command-upload.c:234
+msgid "Username"
+msgstr "ຊື່ຜູ້ໃຊ້"
+
+#: js/gdm/loginDialog.js:1197
+msgid "Login Attempt Timed Out"
+msgstr "ການພະຍາຍາມເຂົ້າສູ່ລະບົບໝົດເວລາ"
+
+#: js/gdm/loginDialog.js:1198
+msgid "Login took too long, please try again"
+msgstr "ການເຂົ້າສູ່ລະບົບໃຊ້ເວລາດົນເກີນໄປ, ກະລຸນາລອງໃໝ່"
+
+#: js/gdm/loginDialog.js:1547
+msgid "Login Window"
+msgstr "ໜ້າຕ່າງເຂົ້າສູ່ລະບົບ"
+
+#: js/gdm/util.js:498
+msgid "Authentication error"
+msgstr "ຂໍ້ຜິດພາດໃນການກວດສອບຢືນຢັນ"
+
+#. Translators: this message is shown below the password entry field
+#. to indicate the user can swipe their finger on the fingerprint reader
+#: js/gdm/util.js:729
+msgid "(or swipe finger across reader)"
+msgstr "(ຫຼື ຮູດນິ້ວຜ່ານເຄື່ອງອ່ານ)"
+
+#. Translators: this message is shown below the password entry field
+#. to indicate the user can place their finger on the fingerprint reader instead
+#: js/gdm/util.js:734
+msgid "(or place finger on reader)"
+msgstr "(ຫຼື ວາງນິ້ວເທິງເຄື່ອງອ່ານ)"
+
+#: js/misc/breakManager.js:770
+msgid "Break complete sound"
+msgstr "ສຽງສິ້ນສຸດການພັກ"
+
+#: js/misc/breakManager.js:980
+#, javascript-format
+msgid "%d second"
+msgstr "%d ວິນາທີ"
+
+#: js/misc/breakManager.js:986
+#, javascript-format
+msgid "%d minute"
+msgstr "%d ນາທີ"
+
+#: js/misc/breakManager.js:992
+#, javascript-format
+msgid "%d hour"
+msgstr "%d ຊົ່ວໂມງ"
+
+#: js/misc/breakManager.js:998
+#, javascript-format
+msgid "%d day"
+msgstr "%d ມື້"
+
+#. %s will be replaced with a string that describes a time interval, such as “2 minutes”, “40 seconds” or “1 hour”
+#: js/misc/breakManager.js:1081
+#, javascript-format
+msgid "It will be time for a break in %s"
+msgstr "ຈະຮອດເວລາພັກໃນອີກ %s"
+
+#: js/misc/breakManager.js:1089
+msgid "Movement Break Soon"
+msgstr "ໃກ້ຈະຮອດເວລາພັກເຄື່ອນໄຫວ"
+
+#: js/misc/breakManager.js:1092
+msgid "Eyesight Break Soon"
+msgstr "ໃກ້ຈະຮອດເວລາພັກສາຍຕາ"
+
+#: js/misc/breakManager.js:1095
+msgid "Break Soon"
+msgstr "ໃກ້ຈະຮອດເວລາພັກ"
+
+#: js/misc/breakManager.js:1140
+msgid "Movement Break in Progress"
+msgstr "ກຳລັງຢູ່ໃນຊ່ວງພັກເຄື່ອນໄຫວ"
+
+#. %s will be replaced with a string that describes a time interval, such as “2 minutes”, “40 seconds” or “1 hour”
+#: js/misc/breakManager.js:1143
+#, javascript-format
+msgid "Continue moving around for %s"
+msgstr "ເຄື່ອນໄຫວຕໍ່ໄປອີກ %s"
+
+#: js/misc/breakManager.js:1149
+msgid "Eyesight Break in Progress"
+msgstr "ກຳລັງຢູ່ໃນຊ່ວງພັກສາຍຕາ"
+
+#. %s will be replaced with a string that describes a time interval, such as “2 minutes”, “40 seconds” or “1 hour”
+#: js/misc/breakManager.js:1152
+#, javascript-format
+msgid "Continue looking away for %s"
+msgstr "ເບິ່ງໄປທາງອື່ນຕໍ່ໄປອີກ %s"
+
+#: js/misc/breakManager.js:1158
+msgid "Break in Progress"
+msgstr "ກຳລັງຢູ່ໃນຊ່ວງພັກ"
+
+#. %s will be replaced with a string that describes a time interval, such as “2 minutes”, “40 seconds” or “1 hour”
+#: js/misc/breakManager.js:1161
+#, javascript-format
+msgid "%s left in your break"
+msgstr "ເຫຼືອເວລາພັກຂອງທ່ານອີກ %s"
+
+#: js/misc/breakManager.js:1200
+msgid "Time for a Movement Break"
+msgstr "ຮອດເວລາພັກເຄື່ອນໄຫວ"
+
+#. %s will be replaced with a string that describes a time interval, such as “2 minutes”, “40 seconds” or “1 hour”
+#: js/misc/breakManager.js:1203
+#, javascript-format
+msgid "Take a break from the device and move around for %s"
+msgstr "ພັກຈາກອຸປະກອນແລ້ວເຄື່ອນໄຫວເປັນເວລາ %s"
+
+#: js/misc/breakManager.js:1209
+msgid "Time for an Eyesight Break"
+msgstr "ຮອດເວລາພັກສາຍຕາ"
+
+#. %s will be replaced with a string that describes a time interval, such as “2 minutes”, “40 seconds” or “1 hour”
+#: js/misc/breakManager.js:1212
+#, javascript-format
+msgid ""
+"Take a break from the screen. Look at least 6 meters away for at least %s"
+msgstr "ພັກສາຍຕາຈາກໜ້າຈໍ. ເບິ່ງໄປໄກຢ່າງໜ້ອຍ 6 ແມັດເປັນເວລາຢ່າງໜ້ອຍ %s"
+
+#: js/misc/breakManager.js:1218
+msgid "Time for a Break"
+msgstr "ຮອດເວລາພັກ"
+
+#. %s will be replaced with a string that describes a time interval, such as “2 minutes”, “40 seconds” or “1 hour”
+#: js/misc/breakManager.js:1221
+#, javascript-format
+msgid "It’s time to take a break. Get away from the device for %s!"
+msgstr "ຮອດເວລາພັກແລ້ວ. ຫ່າງຈາກອຸປະກອນເປັນເວລາ %s!"
+
+#. %s will be replaced with a string that describes a time interval, such as “2 minutes”, “40 seconds” or “1 hour”
+#: js/misc/breakManager.js:1245
+#, javascript-format
+msgid "You were due to take a break %s ago"
+msgstr "ທ່ານຄວນຈະພັກເມື່ອ %s ກ່ອນ"
+
+#: js/misc/breakManager.js:1251
+msgid "Break Overdue"
+msgstr "ພັກເກີນກຳນົດ"
+
+#: js/misc/breakManager.js:1267
+#, javascript-format
+msgid "There is %s remaining in your break"
+msgstr "ຍັງເຫຼືອເວລາໃນການພັກຂອງທ່ານ %s"
+
+#: js/misc/breakManager.js:1273
+msgid "Break Interrupted"
+msgstr "ການພັກຖືກຂັດຈັງຫວະ"
+
+#. Translators: As in "Delay the break"
+#: js/misc/breakManager.js:1351
+msgid "Delay"
+msgstr "ເລື່ອນ"
+
+#. Translators: As in "Skip the break"
+#: js/misc/breakManager.js:1373 js/ui/welcomeDialog.js:61
+msgid "Skip"
+msgstr "ຂ້າມ"
+
+#. Translators: As in "Take the break"
+#: js/misc/breakManager.js:1395
+msgid "Take"
+msgstr "ພັກ"
+
+#. Translators: This is a notification to warn the user that a
+#. screen time break will start shortly.
+#: js/misc/breakManager.js:1458
+#, javascript-format
+msgid "Break in %d second"
+msgstr "ພັກໃນອີກ %d ວິນາທີ"
+
+#: js/misc/brightnessManager.js:169 js/ui/status/brightness.js:10
+msgid "Brightness"
+msgstr "ຄວາມສະຫວ່າງ"
+
+#. Translators: The name of the power-off action in search
+#: js/misc/systemActions.js:93
+msgctxt "search-result"
+msgid "Power Off"
+msgstr "ປິດເຄື່ອງ"
+
+#. Translators: A list of keywords that match the power-off action, separated by semicolons
+#: js/misc/systemActions.js:96
+msgid "power off;poweroff;shutdown;halt;stop"
+msgstr "ປິດເຄື່ອງ;ປິດ;ຢຸດ"
+
+#. Translators: The name of the restart action in search
+#: js/misc/systemActions.js:101
+msgctxt "search-result"
+msgid "Restart"
+msgstr "ເລີ່ມໃໝ່"
+
+#. Translators: A list of keywords that match the restart action, separated by semicolons
+#: js/misc/systemActions.js:104
+msgid "reboot;restart;"
+msgstr "ຣີບູດ;ເລີ່ມໃໝ່;"
+
+#. Translators: The name of the lock screen action in search
+#: js/misc/systemActions.js:109
+msgctxt "search-result"
+msgid "Lock Screen"
+msgstr "ລັອກໜ້າຈໍ"
+
+#. Translators: A list of keywords that match the lock screen action, separated by semicolons
+#: js/misc/systemActions.js:112
+msgid "lock screen"
+msgstr "ລັອກໜ້າຈໍ"
+
+#. Translators: The name of the logout action in search
+#: js/misc/systemActions.js:117
+msgctxt "search-result"
+msgid "Log Out"
+msgstr "ອອກຈາກລະບົບ"
+
+#. Translators: A list of keywords that match the logout action, separated by semicolons
+#: js/misc/systemActions.js:120
+msgid "logout;log out;sign off"
+msgstr "ອອກຈາກລະບົບ;ອອກລະບົບ"
+
+#. Translators: The name of the suspend action in search
+#: js/misc/systemActions.js:125
+msgctxt "search-result"
+msgid "Suspend"
+msgstr "ພັກເຄື່ອງ"
+
+#. Translators: A list of keywords that match the suspend action, separated by semicolons
+#: js/misc/systemActions.js:128
+msgid "suspend;sleep"
+msgstr "ພັກເຄື່ອງ;ນອນ"
+
+#. Translators: The name of the switch user action in search
+#: js/misc/systemActions.js:133
+msgctxt "search-result"
+msgid "Switch User"
+msgstr "ສະຫຼັບຜູ້ໃຊ້"
+
+#. Translators: A list of keywords that match the switch user action, separated by semicolons
+#: js/misc/systemActions.js:136
+msgid "switch user"
+msgstr "ສະຫຼັບຜູ້ໃຊ້"
+
+#. Translators: A list of keywords that match the lock orientation action, separated by semicolons
+#: js/misc/systemActions.js:143
+msgid "lock orientation;unlock orientation;screen;rotation"
+msgstr "ລັອກການໝຸນ;ປົດລັອກການໝຸນ;ໜ້າຈໍ;ການໝຸນ"
+
+#. Translators: The name of the screenshot UI action in search
+#: js/misc/systemActions.js:148
+msgctxt "search-result"
+msgid "Take a Screenshot"
+msgstr "ຖ່າຍພາບໜ້າຈໍ"
+
+#. Translators: A list of keywords that match the screenshot UI action, separated by semicolons
+#: js/misc/systemActions.js:151
+msgid "screenshot;screencast;snip;capture;record"
+msgstr "ພາບໜ້າຈໍ;ບັນທຶກໜ້າຈໍ;ຕັດ;ຈັບພາບ;ບັນທຶກ"
+
+#: js/misc/systemActions.js:255
+msgctxt "search-result"
+msgid "Unlock Screen Rotation"
+msgstr "ປົດລັອກການໝຸນໜ້າຈໍ"
+
+#: js/misc/systemActions.js:256
+msgctxt "search-result"
+msgid "Lock Screen Rotation"
+msgstr "ລັອກການໝຸນໜ້າຈໍ"
+
+#: js/misc/timeLimitsManager.js:342
+msgid "GNOME needs to save screen time data"
+msgstr "GNOME ຕ້ອງການບັນທຶກຂໍ້ມູນເວລາໜ້າຈໍ"
+
+#: js/misc/timeLimitsManager.js:1124
+#, javascript-format
+msgid "Screen Time Limit in %d Minute"
+msgstr "ຈຳກັດເວລາໜ້າຈໍໃນອີກ %d ນາທີ"
+
+#: js/misc/timeLimitsManager.js:1131
+msgid "Your screen time limit is approaching"
+msgstr "ໃກ້ຈະຮອດເວລາຈຳກັດໜ້າຈໍຂອງທ່ານແລ້ວ"
+
+#: js/misc/timeLimitsManager.js:1145
+msgid "Screen Time Limit Reached"
+msgstr "ຮອດເວລາຈຳກັດໜ້າຈໍແລ້ວ"
+
+#: js/misc/timeLimitsManager.js:1146
+msgid "It’s time to stop using the device"
+msgstr "ຮອດເວລາຢຸດໃຊ້ອຸປະກອນແລ້ວ"
+
+#: js/misc/util.js:130
+msgid "Command not found"
+msgstr "ບໍ່ພົບຄຳສັ່ງ"
+
+#: js/misc/util.js:168
+#, javascript-format
+msgid "Execution of “%s” failed:"
+msgstr "ການປະມວນຜົນ “%s” ລົ້ມເຫຼວ:"
+
+#: js/misc/dateUtils.js:69
+msgid "Just now"
+msgstr "ເມື່ອກີ້ນີ້"
+
+#: js/misc/dateUtils.js:72
+#, javascript-format
+msgid "%d minute ago"
+msgstr "%d ນາທີກ່ອນ"
+
+#: js/misc/dateUtils.js:79
+#, javascript-format
+msgid "%d hour ago"
+msgstr "%d ຊົ່ວໂມງກ່ອນ"
+
+#: js/misc/dateUtils.js:85 js/ui/dateMenu.js:184
+msgid "Yesterday"
+msgstr "ມື້ວານນີ້"
+
+#: js/misc/dateUtils.js:88
+#, javascript-format
+msgid "%d day ago"
+msgstr "%d ມື້ກ່ອນ"
+
+#: js/misc/dateUtils.js:95
+#, javascript-format
+msgid "%d week ago"
+msgstr "%d ອາທິດກ່ອນ"
+
+#: js/misc/dateUtils.js:102
+#, javascript-format
+msgid "%d month ago"
+msgstr "%d ເດືອນກ່ອນ"
+
+#: js/misc/dateUtils.js:108
+#, javascript-format
+msgid "%d year ago"
+msgstr "%d ປີກ່ອນ"
+
+#. Translators: Time in 24h format
+#: js/misc/dateUtils.js:155
+msgid "%H:%M"
+msgstr "%H:%M"
+
+#. Translators: this is the word "Yesterday" followed by a
+#. time string in 24h format. i.e. "Yesterday, 14:30"
+#: js/misc/dateUtils.js:161
+#, no-c-format
+msgid "Yesterday, %H:%M"
+msgstr "ມື້ວານນີ້, %H:%M"
+
+#. Translators: this is the week day name followed by a time
+#. string in 24h format. i.e. "Monday, 14:30"
+#: js/misc/dateUtils.js:167
+#, no-c-format
+msgid "%A, %H:%M"
+msgstr "%A, %H:%M"
+
+#. Translators: this is the month name and day number
+#. followed by a time string in 24h format.
+#. i.e. "May 25, 14:30"
+#: js/misc/dateUtils.js:173
+#, no-c-format
+msgid "%B %-d, %H:%M"
+msgstr "%-d %B, %H:%M"
+
+#. Translators: this is the month name, day number, year
+#. number followed by a time string in 24h format.
+#. i.e. "May 25 2012, 14:30"
+#: js/misc/dateUtils.js:179
+#, no-c-format
+msgid "%B %-d %Y, %H:%M"
+msgstr "%-d %B %Y, %H:%M"
+
+#. Show only the time if date is on today
+#. eslint-disable-line no-lonely-if
+#. Translators: Time in 12h format
+#: js/misc/dateUtils.js:184
+msgid "%l:%M %p"
+msgstr "%l:%M %p"
+
+#. Translators: this is the word "Yesterday" followed by a
+#. time string in 12h format. i.e. "Yesterday, 2:30 pm"
+#: js/misc/dateUtils.js:190
+#, no-c-format
+msgid "Yesterday, %l:%M %p"
+msgstr "ມື້ວານນີ້, %l:%M %p"
+
+#. Translators: this is the week day name followed by a time
+#. string in 12h format. i.e. "Monday, 2:30 pm"
+#: js/misc/dateUtils.js:196
+#, no-c-format
+msgid "%A, %l:%M %p"
+msgstr "%A, %l:%M %p"
+
+#. Translators: this is the month name and day number
+#. followed by a time string in 12h format.
+#. i.e. "May 25, 2:30 pm"
+#: js/misc/dateUtils.js:202
+#, no-c-format
+msgid "%B %-d, %l:%M %p"
+msgstr "%-d %B, %l:%M %p"
+
+#. Translators: this is the month name, day number, year
+#. number followed by a time string in 12h format.
+#. i.e. "May 25 2012, 2:30 pm"
+#: js/misc/dateUtils.js:208
+#, no-c-format
+msgid "%B %-d %Y, %l:%M %p"
+msgstr "%-d %B %Y, %l:%M %p"
+
+#: js/portalHelper/main.js:98
+msgid "Your connection seems to be secure"
+msgstr "ການເຊື່ອມຕໍ່ຂອງທ່ານເບິ່ງຄືວ່າປອດໄພ"
+
+#: js/portalHelper/main.js:104
+msgid ""
+"Your connection to this hotspot login is not secure. Passwords or other "
+"information you enter on this page can be viewed by people nearby."
+msgstr "ການເຊື່ອມຕໍ່ຂອງທ່ານກັບການເຂົ້າສູ່ລະບົບຮັອດສະປອດນີ້ບໍ່ປອດໄພ. ລະຫັດຜ່ານ ຫຼື ຂໍ້ມູນອື່ນໆທີ່ທ່ານປ້ອນໃນໜ້ານີ້ສາມາດຖືກເບິ່ງເຫັນໄດ້ໂດຍຄົນທີ່ຢູ່ໃກ້ຄຽງ."
+
+#: js/portalHelper/main.js:115
+msgid "Hotspot Login"
+msgstr "ເຂົ້າສູ່ລະບົບຮັອດສະປອດ"
+
+#. No support for non-modal system dialogs, so ignore the option
+#. let modal = options['modal'] || true;
+#: js/ui/accessDialog.js:51 js/ui/inhibitShortcutsDialog.js:92
+msgid "Deny"
+msgstr "ປະຕິເສດ"
+
+#: js/ui/accessDialog.js:52 js/ui/inhibitShortcutsDialog.js:101
+msgid "Allow"
+msgstr "ອະນຸຍາດ"
+
+#: js/ui/appDisplay.js:1734
+msgid "Unnamed Folder"
+msgstr "ໂຟເດີບໍ່ມີຊື່"
+
+#: js/ui/appFavorites.js:89
+#, javascript-format
+msgid "%s has been pinned to the dash."
+msgstr "%s ໄດ້ຖືກປັກໝຸດໃສ່ແຖບແດຊ."
+
+#: js/ui/appFavorites.js:120
+#, javascript-format
+msgid "%s has been unpinned from the dash."
+msgstr "%s ໄດ້ຖືກຖອນການປັກໝຸດຈາກແຖບແດຊ."
+
+#: js/ui/appFavorites.js:134 js/ui/main.js:316
+msgid "Undo"
+msgstr "ຍົກເລີກການກະທຳ"
+
+#. Translators: This is the heading of a list of open windows
+#: js/ui/appMenu.js:49
+msgid "Open Windows"
+msgstr "ໜ້າຕ່າງທີ່ເປີດຢູ່"
+
+#: js/ui/appMenu.js:57
+msgid "New Window"
+msgstr "ໜ້າຕ່າງໃໝ່"
+
+#: js/ui/appMenu.js:84
+msgid "App Details"
+msgstr "ລາຍລະອຽດແອັບ"
+
+#: js/ui/appMenu.js:100
+msgid "Quit"
+msgstr "ອອກ"
+
+#: js/ui/appMenu.js:160 js/ui/dash.js:245
+msgid "Unpin"
+msgstr "ຖອນການປັກໝຸດ"
+
+#: js/ui/appMenu.js:161
+msgid "Pin to Dash"
+msgstr "ປັກໝຸດໃສ່ແດຊ"
+
+#: js/ui/appMenu.js:178
+msgid "Launch Using Integrated Graphics Card"
+msgstr "ເປີດໃຊ້ໂດຍໃຊ້ກາດຈໍໃນຕົວ"
+
+#: js/ui/appMenu.js:179
+msgid "Launch Using Discrete Graphics Card"
+msgstr "ເປີດໃຊ້ໂດຍໃຊ້ກາດຈໍແຍກ"
+
+#: js/ui/audioDeviceSelection.js:46
+msgid "Select Audio Device"
+msgstr "ເລືອກອຸປະກອນສຽງ"
+
+#: js/ui/audioDeviceSelection.js:67 js/ui/status/volume.js:81
+msgid "Sound Settings"
+msgstr "ຕັ້ງຄ່າສຽງ"
+
+#: js/ui/audioDeviceSelection.js:75
+msgid "Headphones"
+msgstr "ຫູຟັງ"
+
+#: js/ui/audioDeviceSelection.js:77
+msgid "Headset"
+msgstr "ຊຸດຫູຟັງ"
+
+#: js/ui/audioDeviceSelection.js:79 js/ui/status/volume.js:367
+msgid "Microphone"
+msgstr "ໄມໂຄຣໂຟນ"
+
+#: js/ui/backgroundMenu.js:13
+msgid "Change Background…"
+msgstr "ປ່ຽນພື້ນຫຼັງ…"
+
+#: js/ui/backgroundMenu.js:15
+msgid "Display Settings"
+msgstr "ຕັ້ງຄ່າການສະແດງຜົນ"
+
+#: js/ui/backgroundMenu.js:16
+msgid "Settings"
+msgstr "ການຕັ້ງຄ່າ"
+
+#. Translators: Enter 0-6 (Sunday-Saturday) for non-work days. Examples: "0" (Sunday) "6" (Saturday) "06" (Sunday and Saturday).
+#: js/ui/calendar.js:32
+msgctxt "calendar-no-work"
+msgid "06"
+msgstr "06"
+
+#. Translators: Calendar grid abbreviation for Sunday.
+#. *
+#. * NOTE: These grid abbreviations are always shown together
+#. * and in order, e.g. "S M T W T F S".
+#.
+#: js/ui/calendar.js:58
+msgctxt "grid sunday"
+msgid "S"
+msgstr "ອາ"
+
+#. Translators: Calendar grid abbreviation for Monday
+#: js/ui/calendar.js:60
+msgctxt "grid monday"
+msgid "M"
+msgstr "ຈ"
+
+#. Translators: Calendar grid abbreviation for Tuesday
+#: js/ui/calendar.js:62
+msgctxt "grid tuesday"
+msgid "T"
+msgstr "ຄ"
+
+#. Translators: Calendar grid abbreviation for Wednesday
+#: js/ui/calendar.js:64
+msgctxt "grid wednesday"
+msgid "W"
+msgstr "ພ"
+
+#. Translators: Calendar grid abbreviation for Thursday
+#: js/ui/calendar.js:66
+msgctxt "grid thursday"
+msgid "T"
+msgstr "ຫ"
+
+#. Translators: Calendar grid abbreviation for Friday
+#: js/ui/calendar.js:68
+msgctxt "grid friday"
+msgid "F"
+msgstr "ສ"
+
+#. Translators: Calendar grid abbreviation for Saturday
+#: js/ui/calendar.js:70
+msgctxt "grid saturday"
+msgid "S"
+msgstr "ເສ"
+
+#. *
+#. * Translators: The header displaying just the month name
+#. * standalone, when this is a month of the current year.
+#. * "%OB" is the new format specifier introduced in glibc 2.27,
+#. * in most cases you should not change it.
+#.
+#: js/ui/calendar.js:421
+msgid "%OB"
+msgstr "%B"
+
+#. *
+#. * Translators: The header displaying the month name and the year
+#. * number, when this is a month of a different year.  You can
+#. * reorder the format specifiers or add other modifications
+#. * according to the requirements of your language.
+#. * "%OB" is the new format specifier introduced in glibc 2.27,
+#. * in most cases you should not use the old "%B" here unless you
+#. * absolutely know what you are doing.
+#.
+#: js/ui/calendar.js:431
+msgid "%OB %Y"
+msgstr "%B %Y"
+
+#: js/ui/calendar.js:493
+msgid "Previous month"
+msgstr "ເດືອນກ່ອນໜ້າ"
+
+#: js/ui/calendar.js:511
+msgid "Next month"
+msgstr "ເດືອນຕໍ່ໄປ"
+
+#: js/ui/calendar.js:662
+#, no-javascript-format
+msgctxt "date day number format"
+msgid "%d"
+msgstr "%d"
+
+#: js/ui/calendar.js:721
+msgid "Week %V"
+msgstr "ອາທິດທີ %V"
+
+#: js/ui/calendar.js:773
+msgid "No Notifications"
+msgstr "ບໍ່ມີການແຈ້ງເຕືອນ"
+
+#: js/ui/calendar.js:812
+msgid "Clear"
+msgstr "ລຶບ"
+
+#: js/ui/calendar.js:816
+msgctxt "action"
+msgid "Clear all notifications"
+msgstr "ລຶບການແຈ້ງເຕືອນທັງໝົດ"
+
+#. Translators: %s is an application name
+#: js/ui/closeDialog.js:42
+#, javascript-format
+msgid "“%s” Is Not Responding"
+msgstr "“%s” ບໍ່ຕອບສະໜອງ"
+
+#: js/ui/closeDialog.js:43
+msgid ""
+"You may choose to wait a short while for it to continue or force the app to "
+"quit entirely"
+msgstr "ທ່ານສາມາດເລືອກທີ່ຈະລໍຖ້າໄລຍະໜຶ່ງເພື່ອໃຫ້ມັນດຳເນີນການຕໍ່ ຫຼື ບັງຄັບໃຫ້ແອັບປິດທັງໝົດ"
+
+#: js/ui/closeDialog.js:71
+msgid "Force Quit"
+msgstr "ບັງຄັບອອກ"
+
+#: js/ui/closeDialog.js:76
+msgid "Wait"
+msgstr "ລໍຖ້າ"
+
+#: js/ui/components/automountManager.js:82
+msgid "External drive connected"
+msgstr "ເຊື່ອມຕໍ່ໄດຣຟ໌ພາຍນອກແລ້ວ"
+
+#: js/ui/components/automountManager.js:94
+msgid "External drive disconnected"
+msgstr "ຕັດການເຊື່ອມຕໍ່ໄດຣຟ໌ພາຍນອກແລ້ວ"
+
+#: js/ui/components/automountManager.js:208
+msgid "Unable to unlock volume"
+msgstr "ບໍ່ສາມາດປົດລັອກໂວລຸມໄດ້"
+
+#: js/ui/components/automountManager.js:209
+msgid "The installed udisks version does not support the PIM setting"
+msgstr "ເວີຊັນ udisks ທີ່ຕິດຕັ້ງບໍ່ຮອງຮັບການຕັ້ງຄ່າ PIM"
+
+#. Translators: %s is the name of a partition on a external drive
+#: js/ui/components/autorunManager.js:189
+#, javascript-format
+msgid "“%s” connected"
+msgstr "“%s” ເຊື່ອມຕໍ່ແລ້ວ"
+
+#: js/ui/components/autorunManager.js:190
+msgid "Disk can now be used"
+msgstr "ສາມາດໃຊ້ດິສກ໌ໄດ້ແລ້ວ"
+
+#: js/ui/components/autorunManager.js:202
+#, javascript-format
+msgid "Open with %s"
+msgstr "ເປີດດ້ວຍ %s"
+
+#: js/ui/components/networkAgent.js:96
+msgid ""
+"Alternatively you can connect by pushing the “WPS” button on your router"
+msgstr "ຫຼືທ່ານສາມາດເຊື່ອມຕໍ່ໂດຍການກົດປຸ່ມ “WPS” ເທິງເຣົາເຕີຂອງທ່ານ"
+
+#: js/ui/components/networkAgent.js:108 js/ui/status/bluetooth.js:246
+#: js/ui/status/network.js:360 js/ui/status/network.js:444
+msgid "Connect"
+msgstr "ເຊື່ອມຕໍ່"
+
+#: js/ui/components/networkAgent.js:223
+msgid "Key"
+msgstr "ຄີ"
+
+#: js/ui/components/networkAgent.js:274 js/ui/components/networkAgent.js:313
+msgid "Private key password"
+msgstr "ລະຫັດຜ່ານຄີສ່ວນຕົວ"
+
+#: js/ui/components/networkAgent.js:307
+msgid "Identity"
+msgstr "ຕົວຕົນ"
+
+#: js/ui/components/networkAgent.js:333
+msgid "Service"
+msgstr "ບໍລິການ"
+
+#: js/ui/components/networkAgent.js:371 js/ui/components/networkAgent.js:407
+#: js/ui/components/networkAgent.js:745 js/ui/components/networkAgent.js:766
+msgid "Authentication required"
+msgstr "ຕ້ອງການການຢືນຢັນຕົວຕົນ"
+
+#: js/ui/components/networkAgent.js:372 js/ui/components/networkAgent.js:746
+#, javascript-format
+msgid ""
+"Passwords or encryption keys are required to access the wireless network “%s”"
+msgstr "ຕ້ອງການລະຫັດຜ່ານ ຫຼື ຄີເຂົ້າລະຫັດເພື່ອເຂົ້າເຖິງເຄືອຂ່າຍໄຮ້ສາຍ “%s”"
+
+#: js/ui/components/networkAgent.js:376 js/ui/components/networkAgent.js:750
+msgid "Wired 802.1X authentication"
+msgstr "ການຢືນຢັນຕົວຕົນແບບມີສາຍ 802.1X"
+
+#: js/ui/components/networkAgent.js:379
+msgid "Network name"
+msgstr "ຊື່ເຄືອຂ່າຍ"
+
+#: js/ui/components/networkAgent.js:387 js/ui/components/networkAgent.js:754
+msgid "DSL authentication"
+msgstr "ການຢືນຢັນຕົວຕົນ DSL"
+
+#: js/ui/components/networkAgent.js:394 js/ui/components/networkAgent.js:759
+msgid "PIN code required"
+msgstr "ຕ້ອງການລະຫັດ PIN"
+
+#: js/ui/components/networkAgent.js:395 js/ui/components/networkAgent.js:760
+msgid "PIN code is needed for the mobile broadband device"
+msgstr "ຕ້ອງການລະຫັດ PIN ສຳລັບອຸປະກອນບຣອດແບນມືຖື"
+
+#: js/ui/components/networkAgent.js:397
+msgid "PIN"
+msgstr "PIN"
+
+#: js/ui/components/networkAgent.js:408 js/ui/components/networkAgent.js:751
+#: js/ui/components/networkAgent.js:755 js/ui/components/networkAgent.js:767
+#: js/ui/components/networkAgent.js:771
+#, javascript-format
+msgid "A password is required to connect to “%s”"
+msgstr "ຕ້ອງການລະຫັດຜ່ານເພື່ອເຊື່ອມຕໍ່ກັບ “%s”"
+
+#: js/ui/components/networkAgent.js:770
+msgid "VPN password"
+msgstr "ລະຫັດຜ່ານ VPN"
+
+#: js/ui/components/polkitAgent.js:44
+msgid "Authentication Required"
+msgstr "ຕ້ອງການການຢືນຢັນຕົວຕົນ"
+
+#: js/ui/components/polkitAgent.js:84
+msgid "Administrator"
+msgstr "ຜູ້ເບິ່ງແຍງລະບົບ"
+
+#: js/ui/components/polkitAgent.js:149
+msgid "Authenticate"
+msgstr "ຢືນຢັນຕົວຕົນ"
+
+#. Translators: "that didn't work" refers to the fact that the
+#. * requested authentication was not gained; this can happen
+#. * because of an authentication error (like invalid password),
+#. * for instance.
+#: js/ui/components/polkitAgent.js:263 js/ui/shellMountOperation.js:415
+msgid "Sorry, that didn’t work. Please try again."
+msgstr "ຂໍອະໄພ, ບໍ່ສຳເລັດ. ກະລຸນາລອງໃໝ່ອີກຄັ້ງ."
+
+#: js/ui/ctrlAltTab.js:23 js/ui/overviewControls.js:404
+msgid "Windows"
+msgstr "ໜ້າຕ່າງ"
+
+#: js/ui/dash.js:201 js/ui/dash.js:247
+msgid "Show Apps"
+msgstr "ສະແດງແອັບ"
+
+#. Translators: this is the name of the dock/favorites area on
+#. the bottom of the overview
+#: js/ui/dash.js:405
+msgid "Dash"
+msgstr "ແດຊ"
+
+#. Translators: This is the date format to use when the calendar popup is
+#. * shown - it is shown just below the time in the top bar (e.g.,
+#. * "Tue 9:29 AM").  The string itself should become a full date, e.g.,
+#. * "February 17 2015".
+#.
+#: js/ui/dateMenu.js:99
+msgid "%B %-d %Y"
+msgstr "ວັນທີ %-d %B %Y"
+
+#. Translators: This is the accessible name of the date button shown
+#. * below the time in the shell; it should combine the weekday and the
+#. * date, e.g. "Tuesday February 17 2015".
+#.
+#: js/ui/dateMenu.js:106
+msgid "%A %B %e %Y"
+msgstr "%A, ວັນທີ %e %B %Y"
+
+#. Translators: Shown on calendar heading when selected day occurs on current year
+#: js/ui/dateMenu.js:173
+msgctxt "calendar heading"
+msgid "%B %-d"
+msgstr "ວັນທີ %-d %B"
+
+#. Translators: Shown on calendar heading when selected day occurs on different year
+#: js/ui/dateMenu.js:176
+msgctxt "calendar heading"
+msgid "%B %-d %Y"
+msgstr "ວັນທີ %-d %B %Y"
+
+#: js/ui/dateMenu.js:182
+msgid "Today"
+msgstr "ມື້ນີ້"
+
+#: js/ui/dateMenu.js:186
+msgid "Tomorrow"
+msgstr "ມື້ອື່ນ"
+
+#. Translators: Shown in calendar event list for all day events
+#. * Keep it short, best if you can use less then 10 characters
+#.
+#: js/ui/dateMenu.js:217
+msgctxt "event list time"
+msgid "All Day"
+msgstr "ຕະຫຼອດມື້"
+
+#. Translators: Shown in calendar event list as the start/end of events
+#. * that only show day and month
+#.
+#: js/ui/dateMenu.js:239
+msgid "%m/%d"
+msgstr "%d/%m"
+
+#: js/ui/dateMenu.js:290
+msgid "No Events"
+msgstr "ບໍ່ມີເຫດການ"
+
+#: js/ui/dateMenu.js:412
+msgid "Add World Clocks…"
+msgstr "ເພີ່ມໂມງໂລກ…"
+
+#: js/ui/dateMenu.js:413
+msgid "World Clocks"
+msgstr "ໂມງໂລກ"
+
+#: js/ui/dateMenu.js:704
+msgid "Loading…"
+msgstr "ກຳລັງໂຫຼດ…"
+
+#: js/ui/dateMenu.js:714
+msgid "Go Online for Weather Information"
+msgstr "ອອນລາຍເພື່ອເບິ່ງຂໍ້ມູນອາກາດ"
+
+#: js/ui/dateMenu.js:716
+msgid "Weather Information Unavailable"
+msgstr "ຂໍ້ມູນອາກາດບໍ່ສາມາດໃຊ້ໄດ້"
+
+#: js/ui/dateMenu.js:726
+msgid "Weather"
+msgstr "ອາກາດ"
+
+#: js/ui/dateMenu.js:728
+msgid "Select Weather Location…"
+msgstr "ເລືອກທີ່ຕັ້ງສະພາບອາກາດ…"
+
+#: js/ui/endSessionDialog.js:47
+#, javascript-format
+msgctxt "title"
+msgid "Log Out %s"
+msgstr "ອອກຈາກລະບົບ %s"
+
+#: js/ui/endSessionDialog.js:48
+msgctxt "title"
+msgid "Log Out"
+msgstr "ອອກຈາກລະບົບ"
+
+#: js/ui/endSessionDialog.js:51
+#, javascript-format
+msgid "%s will be logged out automatically in %d second"
+msgstr "%s ຈະອອກຈາກລະບົບອັດຕະໂນມັດໃນ %d ວິນາທີ"
+
+#: js/ui/endSessionDialog.js:57
+#, javascript-format
+msgid "You will be logged out automatically in %d second"
+msgstr "ທ່ານຈະອອກຈາກລະບົບອັດຕະໂນມັດໃນ %d ວິນາທີ"
+
+#: js/ui/endSessionDialog.js:64
+msgctxt "button"
+msgid "Log Out"
+msgstr "ອອກຈາກລະບົບ"
+
+#: js/ui/endSessionDialog.js:70 js/ui/status/system.js:181
+msgctxt "title"
+msgid "Power Off"
+msgstr "ປິດເຄື່ອງ"
+
+#: js/ui/endSessionDialog.js:71
+msgctxt "title"
+msgid "Install Updates & Power Off"
+msgstr "ຕິດຕັ້ງອັບເດດ ແລະ ປິດເຄື່ອງ"
+
+#: js/ui/endSessionDialog.js:74
+#, javascript-format
+msgid "The system will power off automatically in %d second"
+msgstr "ລະບົບຈະປິດອັດຕະໂນມັດໃນ %d ວິນາທີ"
+
+#: js/ui/endSessionDialog.js:78 js/ui/endSessionDialog.js:97
+msgctxt "checkbox"
+msgid "Install pending software updates"
+msgstr "ຕິດຕັ້ງອັບເດດຊັອບແວທີ່ຄ້າງຢູ່"
+
+#: js/ui/endSessionDialog.js:82
+msgctxt "button"
+msgid "Power Off"
+msgstr "ປິດເຄື່ອງ"
+
+#: js/ui/endSessionDialog.js:89
+msgctxt "title"
+msgid "Restart"
+msgstr "ເລີ່ມໃໝ່"
+
+#: js/ui/endSessionDialog.js:90
+msgctxt "title"
+msgid "Install Updates & Restart"
+msgstr "ຕິດຕັ້ງອັບເດດ ແລະ ເລີ່ມໃໝ່"
+
+#: js/ui/endSessionDialog.js:93
+#, javascript-format
+msgid "The system will restart automatically in %d second"
+msgstr "ລະບົບຈະເລີ່ມໃໝ່ອັດຕະໂນມັດໃນ %d ວິນາທີ"
+
+#: js/ui/endSessionDialog.js:101
+msgctxt "button"
+msgid "Restart"
+msgstr "ເລີ່ມໃໝ່"
+
+#: js/ui/endSessionDialog.js:109
+msgctxt "title"
+msgid "Restart & Install Updates"
+msgstr "ເລີ່ມໃໝ່ ແລະ ຕິດຕັ້ງອັບເດດ"
+
+#: js/ui/endSessionDialog.js:112
+#, javascript-format
+msgid "The system will automatically restart and install updates in %d second"
+msgstr "ລະບົບຈະເລີ່ມໃໝ່ ແລະ ຕິດຕັ້ງອັບເດດອັດຕະໂນມັດໃນ %d ວິນາທີ"
+
+#: js/ui/endSessionDialog.js:119 js/ui/endSessionDialog.js:140
+msgctxt "button"
+msgid "Restart & Install"
+msgstr "ເລີ່ມໃໝ່ ແລະ ຕິດຕັ້ງ"
+
+#: js/ui/endSessionDialog.js:121
+msgctxt "button"
+msgid "Install & Power Off"
+msgstr "ຕິດຕັ້ງ ແລະ ປິດເຄື່ອງ"
+
+#: js/ui/endSessionDialog.js:122
+msgctxt "checkbox"
+msgid "Power off after updates are installed"
+msgstr "ປິດເຄື່ອງຫຼັງຈາກຕິດຕັ້ງອັບເດດແລ້ວ"
+
+#: js/ui/endSessionDialog.js:129
+msgctxt "title"
+msgid "Restart & Install Upgrade"
+msgstr "ເລີ່ມໃໝ່ ແລະ ຕິດຕັ້ງອັບເກຣດ"
+
+#. Translators: This is the text displayed for system upgrades in the
+#. shut down dialog. First %s gets replaced with the distro name and
+#. second %s with the distro version to upgrade to
+#: js/ui/endSessionDialog.js:134
+#, javascript-format
+msgid ""
+"%s %s will be installed after restart. Upgrade installation can take a long "
+"time: ensure that you have backed up and that the computer is plugged in."
+msgstr "%s %s ຈະຖືກຕິດຕັ້ງຫຼັງຈາກເລີ່ມໃໝ່. ການຕິດຕັ້ງອັບເກຣດອາດໃຊ້ເວລາດົນ: ໃຫ້ແນ່ໃຈວ່າທ່ານໄດ້ສຳຮອງຂໍ້ມູນໄວ້ແລ້ວ ແລະ ຄອມພິວເຕີສຽບສາຍໄຟຢູ່."
+
+#: js/ui/endSessionDialog.js:283
+msgid "Low battery power: please plug in before installing updates"
+msgstr "ແບັດເຕີຣີເຫຼືອໜ້ອຍ: ກະລຸນາສຽບສາຍໄຟກ່ອນຕິດຕັ້ງອັບເດດ"
+
+#: js/ui/endSessionDialog.js:292
+msgid "Some applications are busy or have unsaved work"
+msgstr "ບາງແອັບພລິເຄຊັນກຳລັງຫຍຸ້ງຢູ່ ຫຼື ມີວຽກທີ່ຍັງບໍ່ໄດ້ບັນທຶກ"
+
+#: js/ui/endSessionDialog.js:297
+msgid "Other users are logged in"
+msgstr "ມີຜູ້ໃຊ້ອື່ນເຂົ້າສູ່ລະບົບຢູ່"
+
+#: js/ui/endSessionDialog.js:467
+msgctxt "button"
+msgid "Boot Options"
+msgstr "ຕົວເລືອກບູດ"
+
+#. Translators: Remote here refers to a remote session, like a ssh login
+#: js/ui/endSessionDialog.js:672
+#, javascript-format
+msgid "%s (remote)"
+msgstr "%s (ທາງໄກ)"
+
+#. Translators: Console here refers to a tty like a VT console
+#: js/ui/endSessionDialog.js:675
+#, javascript-format
+msgid "%s (console)"
+msgstr "%s (ຄອນໂຊນ)"
+
+#: js/ui/extensionDownloader.js:280
+msgid "Install"
+msgstr "ຕິດຕັ້ງ"
+
+#: js/ui/extensionDownloader.js:286
+msgid "Install Extension"
+msgstr "ຕິດຕັ້ງສ່ວນຂະຫຍາຍ"
+
+#: js/ui/extensionDownloader.js:287
+#, javascript-format
+msgid "Download and install “%s” from extensions.gnome.org?"
+msgstr "ດາວໂຫຼດ ແລະ ຕິດຕັ້ງ “%s” ຈາກ extensions.gnome.org ບໍ?"
+
+#: js/ui/extensionSystem.js:354
+msgid "Extension Updates Available"
+msgstr "ມີອັບເດດສ່ວນຂະຫຍາຍ"
+
+#: js/ui/extensionSystem.js:355
+msgid "Extension updates are ready to be installed"
+msgstr "ອັບເດດສ່ວນຂະຫຍາຍພ້ອມທີ່ຈະຕິດຕັ້ງແລ້ວ"
+
+#: js/ui/inhibitShortcutsDialog.js:70
+msgid "Allow inhibiting shortcuts"
+msgstr "ອະນຸຍາດໃຫ້ຢັບຢັ້ງປຸ່ມລັດ"
+
+#. Translators: %s is an application name like "Settings"
+#: js/ui/inhibitShortcutsDialog.js:73
+#, javascript-format
+msgid "The app %s wants to inhibit shortcuts"
+msgstr "ແອັບ %s ຕ້ອງການຢັບຢັ້ງປຸ່ມລັດ"
+
+#: js/ui/inhibitShortcutsDialog.js:74
+msgid "An app wants to inhibit shortcuts"
+msgstr "ມີແອັບຕ້ອງການຢັບຢັ້ງປຸ່ມລັດ"
+
+#. Translators: %s is a keyboard shortcut like "Super+x"
+#: js/ui/inhibitShortcutsDialog.js:81
+#, javascript-format
+msgid "You can restore shortcuts by pressing %s"
+msgstr "ທ່ານສາມາດກູ້ຄືນປຸ່ມລັດໄດ້ໂດຍການກົດ %s"
+
+#: js/ui/kbdA11yDialog.js:34
+msgid "Slow Keys Turned On"
+msgstr "ເປີດໃຊ້ປຸ່ມຊ້າແລ້ວ"
+
+#: js/ui/kbdA11yDialog.js:35
+msgid "Slow Keys Turned Off"
+msgstr "ປິດໃຊ້ປຸ່ມຊ້າແລ້ວ"
+
+#: js/ui/kbdA11yDialog.js:36
+msgid ""
+"You just held down the Shift key for 8 seconds. This is the shortcut for the "
+"Slow Keys feature, which affects the way your keyboard works."
+msgstr "ທ່ານຫາກໍ່ກົດປຸ່ມ Shift ຄ້າງໄວ້ 8 ວິນາທີ. ນີ້ແມ່ນປຸ່ມລັດສຳລັບຄຸນສົມບັດປຸ່ມຊ້າ, ເຊິ່ງມີຜົນຕໍ່ວິທີການເຮັດວຽກຂອງແປ້ນພິມຂອງທ່ານ."
+
+#: js/ui/kbdA11yDialog.js:42
+msgid "Sticky Keys Turned On"
+msgstr "ເປີດໃຊ້ປຸ່ມໜຽວແລ້ວ"
+
+#: js/ui/kbdA11yDialog.js:43
+msgid "Sticky Keys Turned Off"
+msgstr "ປິດໃຊ້ປຸ່ມໜຽວແລ້ວ"
+
+#: js/ui/kbdA11yDialog.js:45
+msgid ""
+"You just pressed the Shift key 5 times in a row. This is the shortcut for "
+"the Sticky Keys feature, which affects the way your keyboard works."
+msgstr "ທ່ານຫາກໍ່ກົດປຸ່ມ Shift 5 ຄັ້ງຕິດຕໍ່ກັນ. ນີ້ແມ່ນປຸ່ມລັດສຳລັບຄຸນສົມບັດປຸ່ມໜຽວ, ເຊິ່ງມີຜົນຕໍ່ວິທີການເຮັດວຽກຂອງແປ້ນພິມຂອງທ່ານ."
+
+#: js/ui/kbdA11yDialog.js:47
+msgid ""
+"You just pressed two keys at once, or pressed the Shift key 5 times in a "
+"row. This turns off the Sticky Keys feature, which affects the way your "
+"keyboard works."
+msgstr "ທ່ານຫາກໍ່ກົດສອງປຸ່ມພ້ອມກັນ, ຫຼື ກົດປຸ່ມ Shift 5 ຄັ້ງຕິດຕໍ່ກັນ. ການກະທຳນີ້ຈະປິດຄຸນສົມບັດປຸ່ມໜຽວ, ເຊິ່ງມີຜົນຕໍ່ວິທີການເຮັດວຽກຂອງແປ້ນພິມຂອງທ່ານ."
+
+#: js/ui/kbdA11yDialog.js:57
+msgid "Leave On"
+msgstr "ເປີດໄວ້"
+
+#: js/ui/kbdA11yDialog.js:57
+msgid "Turn On"
+msgstr "ເປີດ"
+
+#: js/ui/kbdA11yDialog.js:67 js/ui/status/network.js:455
+msgid "Turn Off"
+msgstr "ປິດ"
+
+#: js/ui/kbdA11yDialog.js:67
+msgid "Leave Off"
+msgstr "ປິດໄວ້"
+
+#: js/ui/keyboard.js:179 js/ui/status/keyboard.js:901
+msgid "Keyboard Settings"
+msgstr "ຕັ້ງຄ່າແປ້ນພິມ"
+
+#: js/ui/lookingGlass.js:742
+msgid "No extensions installed"
+msgstr "ບໍ່ມີສ່ວນຂະຫຍາຍຕິດຕັ້ງຢູ່"
+
+#. Translators: argument is an extension UUID.
+#: js/ui/lookingGlass.js:805
+#, javascript-format
+msgid "%s has not emitted any errors"
+msgstr "%s ຍັງບໍ່ມີຂໍ້ຜິດພາດໃດໆ"
+
+#: js/ui/lookingGlass.js:811
+msgid "Hide Errors"
+msgstr "ເຊື່ອງຂໍ້ຜິດພາດ"
+
+#: js/ui/lookingGlass.js:815 js/ui/lookingGlass.js:895
+msgid "Show Errors"
+msgstr "ສະແດງຂໍ້ຜິດພາດ"
+
+#: js/ui/lookingGlass.js:824
+msgid "Active"
+msgstr "ເຮັດວຽກຢູ່"
+
+#: js/ui/lookingGlass.js:827
+msgid "Inactive"
+msgstr "ບໍ່ເຮັດວຽກ"
+
+#: js/ui/lookingGlass.js:829
+msgid "Error"
+msgstr "ຜິດພາດ"
+
+#: js/ui/lookingGlass.js:831
+msgid "Out of date"
+msgstr "ລ້າສະໄໝ"
+
+#: js/ui/lookingGlass.js:833
+msgid "Downloading"
+msgstr "ກຳລັງດາວໂຫຼດ"
+
+#: js/ui/lookingGlass.js:835
+msgid "Deactivating"
+msgstr "ກຳລັງປິດໃຊ້ງານ"
+
+#: js/ui/lookingGlass.js:837
+msgid "Activating"
+msgstr "ກຳລັງເປີດໃຊ້ງານ"
+
+#: js/ui/lookingGlass.js:873
+msgid "View Source"
+msgstr "ເບິ່ງຊອດສ໌ໂຄ້ດ"
+
+#: js/ui/lookingGlass.js:884
+msgid "Web Page"
+msgstr "ໜ້າເວັບ"
+
+#: js/ui/main.js:312
+msgid "System was put in unsafe mode"
+msgstr "ລະບົບຖືກຕັ້ງເປັນໂໝດບໍ່ປອດໄພ"
+
+#: js/ui/main.js:313
+msgid "Apps now have unrestricted access"
+msgstr "ຕອນນີ້ແອັບຕ່າງໆມີສິດເຂົ້າເຖິງແບບບໍ່ຈຳກັດ"
+
+#: js/ui/main.js:373
+msgid "Logged in as a privileged user"
+msgstr "ເຂົ້າສູ່ລະບົບໃນຖານະຜູ້ໃຊ້ທີ່ມີສິດພິເສດ"
+
+#: js/ui/main.js:374
+msgid ""
+"Running a session as a privileged user should be avoided for security "
+"reasons. If possible, you should log in as a normal user."
+msgstr "ຄວນຫຼີກລ່ຽງການໃຊ້ເຊດຊັນໃນຖານະຜູ້ໃຊ້ທີ່ມີສິດພິເສດເພື່ອເຫດຜົນດ້ານຄວາມປອດໄພ. ຖ້າເປັນໄປໄດ້, ທ່ານຄວນເຂົ້າສູ່ລະບົບໃນຖານະຜູ້ໃຊ້ທົ່ວໄປ."
+
+#: js/ui/main.js:422
+msgid "Screen Lock disabled"
+msgstr "ປິດການລັອກໜ້າຈໍແລ້ວ"
+
+#: js/ui/main.js:423
+msgid "Screen Locking requires the GNOME display manager"
+msgstr "ການລັອກໜ້າຈໍຕ້ອງການຕົວຈັດການການສະແດງຜົນຂອງ GNOME"
+
+#. Translators: this is the string displayed in the header when a message
+#. source doesn't have a name
+#: js/ui/messageList.js:409
+msgid "Unknown App"
+msgstr "ແອັບບໍ່ຮູ້ຈັກ"
+
+#: js/ui/messageTray.js:325 js/ui/messageTray.js:327
+msgid "Notification sound"
+msgstr "ສຽງແຈ້ງເຕືອນ"
+
+#: js/ui/mpris.js:144
+msgid "Unknown artist"
+msgstr "ສິນລະປິນບໍ່ຮູ້ຈັກ"
+
+#: js/ui/mpris.js:154
+msgid "Unknown title"
+msgstr "ຊື່ເລື່ອງບໍ່ຮູ້ຈັກ"
+
+#. Translators: this is the text displayed
+#. in the search entry when no search is
+#. active; it should not exceed ~30
+#. characters.
+#: js/ui/overviewControls.js:328
+msgid "Type to search"
+msgstr "ພິມເພື່ອຄົ້ນຫາ"
+
+#: js/ui/overviewControls.js:392
+msgid "Apps"
+msgstr "ແອັບ"
+
+#. Translators: This is the main view to select
+#. activities. See also note for "Activities" string.
+#: js/ui/overview.js:33
+msgid "Overview"
+msgstr "ພາບລວມ"
+
+#: js/ui/padOsd.js:98
+msgid "New shortcut…"
+msgstr "ປຸ່ມລັດໃໝ່…"
+
+#: js/ui/padOsd.js:151
+msgid "App defined"
+msgstr "ແອັບກຳນົດ"
+
+#: js/ui/padOsd.js:152
+msgid "Show on-screen help"
+msgstr "ສະແດງຄຳແນະນຳເທິງໜ້າຈໍ"
+
+#: js/ui/padOsd.js:153
+msgid "Switch monitor"
+msgstr "ສະຫຼັບຈໍ"
+
+#: js/ui/padOsd.js:154
+msgid "Assign keystroke"
+msgstr "ກຳນົດການກົດປຸ່ມ"
+
+#: js/ui/padOsd.js:223
+msgid "Done"
+msgstr "ສຳເລັດ"
+
+#: js/ui/padOsd.js:743
+msgid "Edit…"
+msgstr "ແກ້ໄຂ…"
+
+#: js/ui/padOsd.js:791
+msgid "None"
+msgstr "ບໍ່ມີ"
+
+#: js/ui/padOsd.js:868
+msgid "Press a button to configure"
+msgstr "ກົດປຸ່ມເພື່ອຕັ້ງຄ່າ"
+
+#: js/ui/padOsd.js:869
+msgid "Press Esc to exit"
+msgstr "ກົດ Esc ເພື່ອອອກ"
+
+#: js/ui/padOsd.js:872
+msgid "Press any key to exit"
+msgstr "ກົດປຸ່ມໃດກໍໄດ້ເພື່ອອອກ"
+
+#. Translators: If there is no suitable word for "Activities"
+#. in your language, you can use the word for "Overview".
+#: js/ui/panel.js:208
+msgid "Activities"
+msgstr "ກິດຈະກຳ"
+
+#: js/ui/panel.js:289
+msgctxt "System menu in the top bar"
+msgid "System"
+msgstr "ລະບົບ"
+
+#: js/ui/panel.js:465
+msgid "Top Bar"
+msgstr "ແຖບດ້ານເທິງ"
+
+#: js/ui/quickSettings.js:164 js/ui/quickSettings.js:263
+msgid "Open menu"
+msgstr "ເປີດເມນູ"
+
+#: js/ui/runDialog.js:61
+msgid "Run a Command"
+msgstr "ເປີດຄຳສັ່ງ"
+
+#: js/ui/runDialog.js:79
+msgid "Press ESC to close"
+msgstr "ກົດ ESC ເພື່ອປິດ"
+
+#: js/ui/runDialog.js:256
+msgid "Restart is not available on Wayland"
+msgstr "ການເລີ່ມໃໝ່ບໍ່ສາມາດໃຊ້ໄດ້ໃນ Wayland"
+
+#: js/ui/runDialog.js:261
+msgid "Restarting…"
+msgstr "ກຳລັງເລີ່ມໃໝ່…"
+
+#: js/ui/screenShield.js:233
+msgid "GNOME needs to lock the screen"
+msgstr "GNOME ຕ້ອງການລັອກໜ້າຈໍ"
+
+#: js/ui/screenShield.js:274 js/ui/screenShield.js:682
+msgid "Unable to lock"
+msgstr "ບໍ່ສາມາດລັອກໄດ້"
+
+#: js/ui/screenShield.js:275 js/ui/screenShield.js:683
+msgid "Lock was blocked by an app"
+msgstr "ການລັອກຖືກຂັດຂວາງໂດຍແອັບ"
+
+#. Translators: notification source name for screenshots and recordings.
+#: js/ui/screenshot.js:40
+msgid "Screen Capture"
+msgstr "ການຈັບພາບໜ້າຈໍ"
+
+#: js/ui/screenshot.js:1268
+msgid "Selection"
+msgstr "ການເລືອກ"
+
+#: js/ui/screenshot.js:1278
+msgid "Area Selection"
+msgstr "ການເລືອກພື້ນທີ່"
+
+#: js/ui/screenshot.js:1283
+msgid "Screen"
+msgstr "ໜ້າຈໍ"
+
+#: js/ui/screenshot.js:1293
+msgid "Screen Selection"
+msgstr "ເລືອກພື້ນທີ່ໜ້າຈໍ"
+
+#: js/ui/screenshot.js:1298
+msgid "Window"
+msgstr "ໜ້າຕ່າງ"
+
+#: js/ui/screenshot.js:1308
+msgid "Window Selection"
+msgstr "ເລືອກໜ້າຕ່າງ"
+
+#: js/ui/screenshot.js:1333 js/ui/status/system.js:118
+msgid "Take Screenshot"
+msgstr "ຖ່າຍພາບໜ້າຈໍ"
+
+#: js/ui/screenshot.js:1349
+msgid "Record Screen"
+msgstr "ບັນທຶກໜ້າຈໍ"
+
+#. Translators: since this string refers to an action,
+#. it needs to be phrased as a verb.
+#: js/ui/screenshot.js:1366
+msgid "Capture"
+msgstr "ບັນທຶກ"
+
+#: js/ui/screenshot.js:1388
+msgid "Show Pointer"
+msgstr "ສະແດງຕົວຊີ້"
+
+#. Translators: this is the folder where recorded
+#. screencasts are stored.
+#: js/ui/screenshot.js:2016
+msgid "Screencasts"
+msgstr "ການບັນທຶກໜ້າຈໍ"
+
+#. Translators: this is a filename used for screencast
+#. * recording, where "%d" and "%t" date and time, e.g.
+#. * "Screencast From 07-17-2013 10:00:46 PM"
+#: js/ui/screenshot.js:2021
+#, no-c-format
+msgid "Screencast From %d %t"
+msgstr "ວິດີໂອບັນທຶກໜ້າຈໍຈາກ %d %t"
+
+#. Translators: notification title.
+#: js/ui/screenshot.js:2067
+msgid "Screencast recorded"
+msgstr "ບັນທຶກວິດີໂອໜ້າຈໍແລ້ວ"
+
+#. Translators: notification title.
+#: js/ui/screenshot.js:2080
+msgid "Screencast failed to start"
+msgstr "ການບັນທຶກວິດີໂອໜ້າຈໍເລີ່ມບໍ່ສຳເລັດ"
+
+#. Translators: notification title.
+#: js/ui/screenshot.js:2086
+msgid "Screencast ended: Out of disk space"
+msgstr "ການບັນທຶກວິດີໂອໜ້າຈໍສິ້ນສຸດ: ເນື້ອທີ່ຈັດເກັບເຕັມ"
+
+#. We can encourage user to try again on service crashes since the
+#. recorder will auto-blocklist the pipeline that crashed.
+#. Translators: notification title.
+#: js/ui/screenshot.js:2092
+msgid "Screencast ended unexpectedly, please try again"
+msgstr "ການບັນທຶກວິດີໂອໜ້າຈໍສິ້ນສຸດລົງໂດຍບໍ່ຄາດຄິດ, ກະລຸນາລອງໃໝ່"
+
+#. Translators: notification title.
+#: js/ui/screenshot.js:2095
+msgid "Screencast ended unexpectedly"
+msgstr "ການບັນທຶກວິດີໂອໜ້າຈໍສິ້ນສຸດລົງໂດຍບໍ່ຄາດຄິດ"
+
+#. Translators: notification body when a screencast was recorded.
+#: js/ui/screenshot.js:2108
+msgid "Click here to view the video"
+msgstr "ກົດທີ່ນີ້ເພື່ອເບິ່ງວິດີໂອ"
+
+#. Translators: button on the screencast notification.
+#. Translators: button on the screenshot notification.
+#: js/ui/screenshot.js:2116 js/ui/screenshot.js:2359
+msgid "Show in Files"
+msgstr "ສະແດງໃນແຟ້ມ"
+
+#. Translators: this is the name of the file that the screenshot is
+#. saved to. The placeholder is a timestamp, e.g. "2017-05-21 12-24-03".
+#: js/ui/screenshot.js:2305
+#, javascript-format
+msgid "Screenshot From %s"
+msgstr "ພາບໜ້າຈໍຈາກ %s"
+
+#. Translators: notification title.
+#: js/ui/screenshot.js:2349
+msgid "Screenshot captured"
+msgstr "ຖ່າຍພາບໜ້າຈໍແລ້ວ"
+
+#. Translators: notification body when a screenshot was captured.
+#: js/ui/screenshot.js:2351
+msgid "You can paste the image from the clipboard"
+msgstr "ທ່ານສາມາດວາງຮູບພາບຈາກຄລິບບອດໄດ້"
+
+#: js/ui/screenshot.js:2409 js/ui/screenshot.js:2571
+msgid "Screenshot taken"
+msgstr "ຖ່າຍພາບໜ້າຈໍແລ້ວ"
+
+#: js/ui/search.js:847
+msgid "Searching"
+msgstr "ກຳລັງຄົ້ນຫາ"
+
+#: js/ui/search.js:850
+msgid "No results"
+msgstr "ບໍ່ມີຜົນລັບ"
+
+#: js/ui/search.js:982
+#, javascript-format
+msgid "%d more"
+msgstr "ອີກ %d ລາຍການ"
+
+#: js/ui/searchController.js:87
+#: subprojects/extensions-app/data/ui/extensions-window.ui:73
+msgid "Search"
+msgstr "ຄົ້ນຫາ"
+
+#: js/ui/shellEntry.js:21
+msgid "Copy"
+msgstr "ສຳເນົາ"
+
+#: js/ui/shellEntry.js:26
+msgid "Paste"
+msgstr "ວາງ"
+
+#: js/ui/shellEntry.js:78
+msgid "Show Text"
+msgstr "ສະແດງຂໍ້ຄວາມ"
+
+#: js/ui/shellEntry.js:80
+msgid "Hide Text"
+msgstr "ເຊື່ອງຂໍ້ຄວາມ"
+
+#: js/ui/shellEntry.js:174
+msgid "Caps lock is on"
+msgstr "ປຸ່ມ Caps Lock ເປີດຢູ່"
+
+#: js/ui/shellMountOperation.js:286
+msgid "Hidden Volume"
+msgstr "ໜ່ວຍເກັບຂໍ້ມູນທີ່ເຊື່ອງໄວ້"
+
+#: js/ui/shellMountOperation.js:289
+msgid "Windows System Volume"
+msgstr "ໜ່ວຍເກັບຂໍ້ມູນລະບົບ Windows"
+
+#: js/ui/shellMountOperation.js:292
+msgid "Uses Keyfiles"
+msgstr "ໃຊ້ແຟ້ມລະຫັດ"
+
+#. Translators: %s is the Disks application
+#: js/ui/shellMountOperation.js:300
+#, javascript-format
+msgid ""
+"To unlock a volume that uses keyfiles, use the <i>%s</i> utility instead"
+msgstr "ເພື່ອປົດລັອກໜ່ວຍເກັບຂໍ້ມູນທີ່ໃຊ້ແຟ້ມລະຫັດ, ໃຫ້ໃຊ້ເຄື່ອງມື <i>%s</i> ແທນ"
+
+#: js/ui/shellMountOperation.js:304
+msgid ""
+"You need an external utility like <i>Disks</i> to unlock a volume that uses "
+"keyfiles"
+msgstr "ທ່ານຕ້ອງການເຄື່ອງມືພາຍນອກເຊັ່ນ <i>Disks</i> ເພື່ອປົດລັອກໜ່ວຍເກັບຂໍ້ມູນທີ່ໃຊ້ແຟ້ມລະຫັດ"
+
+#: js/ui/shellMountOperation.js:312
+msgid "PIM Number"
+msgstr "ເລກ PIM"
+
+#: js/ui/shellMountOperation.js:371
+msgid "Remember Password"
+msgstr "ຈື່ລະຫັດຜ່ານ"
+
+#: js/ui/shellMountOperation.js:386
+msgid "Unlock"
+msgstr "ປົດລັອກ"
+
+#. Translators: %s is the Disks application
+#: js/ui/shellMountOperation.js:400
+#, javascript-format
+msgid "Open %s"
+msgstr "ເປີດ %s"
+
+#: js/ui/shellMountOperation.js:436
+msgid "The PIM must be a number or empty"
+msgstr "PIM ຕ້ອງເປັນຕົວເລກ ຫຼື ວ່າງເປົ່າ"
+
+#: js/ui/status/accessibility.js:45 js/ui/status/accessibility.js:155
+msgid "High Contrast"
+msgstr "ຄວາມຄົມຊັດສູງ"
+
+#: js/ui/status/accessibility.js:48 js/ui/status/accessibility.js:171
+msgid "Zoom"
+msgstr "ຊູມ"
+
+#: js/ui/status/accessibility.js:55 js/ui/status/accessibility.js:223
+msgid "Screen Reader"
+msgstr "ໂຕອ່ານໜ້າຈໍ"
+
+#: js/ui/status/accessibility.js:59 js/ui/status/accessibility.js:239
+msgid "Screen Keyboard"
+msgstr "ແປ້ນພິມເທິງໜ້າຈໍ"
+
+#: js/ui/status/accessibility.js:63 js/ui/status/accessibility.js:255
+msgid "Visual Alerts"
+msgstr "ການແຈ້ງເຕືອນດ້ວຍພາບ"
+
+#: js/ui/status/accessibility.js:67 js/ui/status/accessibility.js:271
+msgid "Sticky Keys"
+msgstr "ປຸ່ມຕິດຄ້າງ"
+
+#: js/ui/status/accessibility.js:71 js/ui/status/accessibility.js:287
+msgid "Slow Keys"
+msgstr "ປຸ່ມຊ້າ"
+
+#: js/ui/status/accessibility.js:75 js/ui/status/accessibility.js:303
+msgid "Bounce Keys"
+msgstr "ປຸ່ມເດັ້ງ"
+
+#: js/ui/status/accessibility.js:79 js/ui/status/accessibility.js:319
+msgid "Mouse Keys"
+msgstr "ປຸ່ມເມົາສ໌"
+
+#: js/ui/status/accessibility.js:84
+msgid "Accessibility Settings"
+msgstr "ການຕັ້ງຄ່າການເຂົ້າເຖິງ"
+
+#: js/ui/status/accessibility.js:124 js/ui/status/accessibility.js:187
+msgid "Large Text"
+msgstr "ຂໍ້ຄວາມຂະໜາດໃຫຍ່"
+
+#: js/ui/status/autoRotate.js:14
+msgid "Auto Rotate"
+msgstr "ໝຸນອັດຕະໂນມັດ"
+
+#: js/ui/status/backgroundApps.js:156
+msgctxt "title"
+msgid "Background Apps"
+msgstr "ແອັບພື້ນຫຼັງ"
+
+#: js/ui/status/backgroundApps.js:171
+msgid "Apps known to be running without a window"
+msgstr "ແອັບທີ່ຮູ້ວ່າກຳລັງເຮັດວຽກໂດຍບໍ່ມີໜ້າຕ່າງ"
+
+#: js/ui/status/backgroundApps.js:182
+msgid "App Settings"
+msgstr "ການຕັ້ງຄ່າແອັບ"
+
+#: js/ui/status/backgroundApps.js:239
+msgid "No Background Apps"
+msgstr "ບໍ່ມີແອັບພື້ນຫຼັງ"
+
+#: js/ui/status/backgroundApps.js:241
+#, javascript-format
+msgid "%d Background App"
+msgstr "ແອັບພື້ນຫຼັງ %d ແອັບ"
+
+#: js/ui/status/backlight.js:39
+msgid "Keyboard Brightness"
+msgstr "ຄວາມສະຫວ່າງແປ້ນພິມ"
+
+#: js/ui/status/backlight.js:87
+msgid "Off"
+msgstr "ປິດ"
+
+#: js/ui/status/backlight.js:88
+msgid "Low"
+msgstr "ຕ່ຳ"
+
+#: js/ui/status/backlight.js:89
+msgid "High"
+msgstr "ສູງ"
+
+#: js/ui/status/backlight.js:162 js/ui/status/keyboard.js:883
+msgid "Keyboard"
+msgstr "ແປ້ນພິມ"
+
+#: js/ui/status/backlight.js:164
+msgid "Open keyboard brightness menu"
+msgstr "ເປີດເມນູຄວາມສະຫວ່າງແປ້ນພິມ"
+
+#: js/ui/status/bluetooth.js:246 js/ui/status/network.js:360
+msgid "Disconnect"
+msgstr "ຕັດການເຊື່ອມຕໍ່"
+
+#. Translators: %s is a device name like "MyPhone"
+#: js/ui/status/bluetooth.js:267 js/ui/status/network.js:354
+#, javascript-format
+msgid "Disconnect %s"
+msgstr "ຕັດການເຊື່ອມຕໍ່ %s"
+
+#. Translators: %s is a device name like "MyPhone"
+#: js/ui/status/bluetooth.js:269 js/ui/status/network.js:356
+#, javascript-format
+msgid "Connect to %s"
+msgstr "ເຊື່ອມຕໍ່ກັບ %s"
+
+#: js/ui/status/bluetooth.js:277 js/ui/status/bluetooth.js:281
+msgid "Bluetooth"
+msgstr "ບລູທູທ"
+
+#: js/ui/status/bluetooth.js:278
+msgid "Open Bluetooth menu"
+msgstr "ເປີດເມນູບລູທູທ"
+
+#: js/ui/status/bluetooth.js:304 js/ui/status/network.js:1925
+msgid "Bluetooth Settings"
+msgstr "ການຕັ້ງຄ່າບລູທູທ"
+
+#: js/ui/status/bluetooth.js:351
+msgid "No available or connected devices"
+msgstr "ບໍ່ມີອຸປະກອນທີ່ພ້ອມໃຊ້ງານ ຫຼື ເຊື່ອມຕໍ່ຢູ່"
+
+#: js/ui/status/bluetooth.js:352
+msgid "Turn on Bluetooth to connect to devices"
+msgstr "ເປີດບລູທູທເພື່ອເຊື່ອມຕໍ່ກັບອຸປະກອນ"
+
+#. Translators: This is the number of connected bluetooth devices
+#: js/ui/status/bluetooth.js:416
+#, javascript-format
+msgid "%d Connected"
+msgstr "ເຊື່ອມຕໍ່ແລ້ວ %d ອັນ"
+
+#: js/ui/status/brightness.js:42
+msgid "Open brightness menu"
+msgstr "ເປີດເມນູຄວາມສະຫວ່າງ"
+
+#: js/ui/status/darkMode.js:12
+msgid "Dark Style"
+msgstr "ຮູບແບບມືດ"
+
+#: js/ui/status/doNotDisturb.js:10
+msgid "Do Not Disturb"
+msgstr "ຫ້າມລົບກວນ"
+
+#: js/ui/status/dwellClick.js:15
+msgid "Single Click"
+msgstr "ຄລິກຄັ້ງດຽວ"
+
+#: js/ui/status/dwellClick.js:20
+msgid "Double Click"
+msgstr "ຄລິກສອງຄັ້ງ"
+
+#: js/ui/status/dwellClick.js:25
+msgid "Drag"
+msgstr "ລາກ"
+
+#: js/ui/status/dwellClick.js:30
+msgid "Secondary Click"
+msgstr "ຄລິກຂວາ"
+
+#: js/ui/status/dwellClick.js:39
+msgid "Dwell Click"
+msgstr "ຄລິກຄ້າງ"
+
+#: js/ui/status/keyboard.js:900
+msgid "Show Keyboard Layout"
+msgstr "ສະແດງໂຄງຮ່າງແປ້ນພິມ"
+
+#: js/ui/status/location.js:337
+msgid "Allow location access"
+msgstr "ອະນຸຍາດການເຂົ້າເຖິງຕຳແໜ່ງ"
+
+#. Translators: %s is an application name
+#: js/ui/status/location.js:339
+#, javascript-format
+msgid "The app %s wants to access your location"
+msgstr "ແອັບ %s ຕ້ອງການເຂົ້າເຖິງຕຳແໜ່ງຂອງທ່ານ"
+
+#: js/ui/status/location.js:349
+msgid "Location access can be changed at any time from the privacy settings"
+msgstr "ສາມາດປ່ຽນການເຂົ້າເຖິງຕຳແໜ່ງໄດ້ຕະຫຼອດເວລາຈາກການຕັ້ງຄ່າຄວາມເປັນສ່ວນຕົວ"
+
+#: js/ui/status/location.js:357
+msgid "Deny Access"
+msgstr "ປະຕິເສດການເຂົ້າເຖິງ"
+
+#: js/ui/status/location.js:362
+msgid "Grant Access"
+msgstr "ອະນຸຍາດການເຂົ້າເຖິງ"
+
+#: js/ui/status/network.js:62
+msgid "<unknown>"
+msgstr "<ບໍ່ຮູ້ຈັກ>"
+
+#: js/ui/status/network.js:1060
+msgid "Secure"
+msgstr "ປອດໄພ"
+
+#: js/ui/status/network.js:1060
+msgid "Not secure"
+msgstr "ບໍ່ປອດໄພ"
+
+#: js/ui/status/network.js:1061
+#, javascript-format
+msgid "Signal strength %s%%"
+msgstr "ຄວາມແຮງສັນຍານ %s%%"
+
+#. translators: The first placeholder is the network name, the second and indication whether it is secure, and the last the signal strength indication
+#: js/ui/status/network.js:1063
+#, javascript-format
+msgid "%s, %s, %s"
+msgstr "%s, %s, %s"
+
+#. Translators: %s is a network identifier
+#: js/ui/status/network.js:1166
+#, javascript-format
+msgid "%s Hotspot"
+msgstr "ຮັອດສະປອດ %s"
+
+#: js/ui/status/network.js:1447
+#, javascript-format
+msgid "%d connected"
+msgstr "ເຊື່ອມຕໍ່ແລ້ວ %d"
+
+#: js/ui/status/network.js:1545 js/ui/status/network.js:1562
+msgid "VPN"
+msgstr "ວີພີເອັນ"
+
+#: js/ui/status/network.js:1546
+msgid "Open VPN menu"
+msgstr "ເປີດເມນູວີພີເອັນ"
+
+#: js/ui/status/network.js:1547
+msgid "VPN Settings"
+msgstr "ການຕັ້ງຄ່າວີພີເອັນ"
+
+#: js/ui/status/network.js:1807
+msgid "Wi–Fi"
+msgstr "Wi-Fi"
+
+#: js/ui/status/network.js:1808
+msgid "Open Wi–Fi menu"
+msgstr "ເປີດເມນູ Wi-Fi"
+
+#: js/ui/status/network.js:1810
+msgid "All Networks"
+msgstr "ທຸກເຄືອຂ່າຍ"
+
+#: js/ui/status/network.js:1907
+msgid "Wired Connections"
+msgstr "ການເຊື່ອມຕໍ່ແບບມີສາຍ"
+
+#: js/ui/status/network.js:1908
+msgid "Open wired connections menu"
+msgstr "ເປີດເມນູການເຊື່ອມຕໍ່ແບບມີສາຍ"
+
+#: js/ui/status/network.js:1909
+msgid "Wired Settings"
+msgstr "ການຕັ້ງຄ່າແບບມີສາຍ"
+
+#: js/ui/status/network.js:1923
+msgid "Bluetooth Tethers"
+msgstr "ການເຊື່ອມຕໍ່ອິນເຕີເນັດຜ່ານບລູທູທ"
+
+#: js/ui/status/network.js:1924
+msgid "Open Bluetooth tethers menu"
+msgstr "ເປີດເມນູການເຊື່ອມຕໍ່ອິນເຕີເນັດຜ່ານບລູທູທ"
+
+#. Translators: "Tether" from "Bluetooth Tether"
+#: js/ui/status/network.js:1931
+msgid "Tether"
+msgstr "ການເຊື່ອມຕໍ່ອິນເຕີເນັດ"
+
+#: js/ui/status/network.js:1944
+msgid "Mobile Connections"
+msgstr "ການເຊື່ອມຕໍ່ມືຖື"
+
+#: js/ui/status/network.js:1945
+msgid "Open mobile connections menu"
+msgstr "ເປີດເມນູການເຊື່ອມຕໍ່ມືຖື"
+
+#: js/ui/status/network.js:1947
+msgid "Mobile Broadband Settings"
+msgstr "ການຕັ້ງຄ່າອິນເຕີເນັດມືຖື"
+
+#. Translators: "Mobile" from "Mobile Broadband"
+#: js/ui/status/network.js:1956
+msgid "Mobile"
+msgstr "ມືຖື"
+
+#: js/ui/status/network.js:1990
+msgid "Sign in to Network"
+msgstr "ເຂົ້າສູ່ລະບົບເຄືອຂ່າຍ"
+
+#: js/ui/status/network.js:2177
+msgid "Connection failed"
+msgstr "ການເຊື່ອມຕໍ່ລົ້ມເຫຼວ"
+
+#: js/ui/status/network.js:2178
+msgid "Activation of network connection failed"
+msgstr "ການເປີດໃຊ້ງານການເຊື່ອມຕໍ່ເຄືອຂ່າຍລົ້ມເຫຼວ"
+
+#: js/ui/status/nightLight.js:19
+msgid "Night Light"
+msgstr "ໂໝດກາງຄືນ"
+
+#: js/ui/status/powerProfiles.js:19
+msgctxt "Power profile"
+msgid "Performance"
+msgstr "ປະສິດທິພາບສູງ"
+
+#: js/ui/status/powerProfiles.js:24
+msgctxt "Power profile"
+msgid "Balanced"
+msgstr "ສົມດຸນ"
+
+#: js/ui/status/powerProfiles.js:29
+msgctxt "Power profile"
+msgid "Power Saver"
+msgstr "ປະຢັດພະລັງງານ"
+
+#: js/ui/status/powerProfiles.js:35
+msgctxt "Power profile"
+msgid "Custom"
+msgstr "ກຳນົດເອງ"
+
+#: js/ui/status/powerProfiles.js:45 js/ui/status/powerProfiles.js:77
+msgid "Power Mode"
+msgstr "ໂໝດພະລັງງານ"
+
+#: js/ui/status/powerProfiles.js:46
+msgid "Open power profiles menu"
+msgstr "ເປີດເມນູໂໝດພະລັງງານ"
+
+#: js/ui/status/powerProfiles.js:79
+msgid "Power Settings"
+msgstr "ການຕັ້ງຄ່າພະລັງງານ"
+
+#: js/ui/status/remoteAccess.js:74
+msgid "Stop Screencast"
+msgstr "ຢຸດການບັນທຶກໜ້າຈໍ"
+
+#: js/ui/status/remoteAccess.js:144
+msgid "Stop Screen Sharing"
+msgstr "ຢຸດການແບ່ງປັນໜ້າຈໍ"
+
+#: js/ui/status/rfkill.js:97
+msgid "Airplane Mode"
+msgstr "ໂໝດເຮືອບິນ"
+
+#: js/ui/status/system.js:175
+msgid "Power Off Menu"
+msgstr "ເມນູປິດເຄື່ອງ"
+
+#: js/ui/status/system.js:183
+msgid "Suspend"
+msgstr "ພັກເຄື່ອງ"
+
+#: js/ui/status/system.js:188
+msgid "Restart…"
+msgstr "ເລີ່ມໃໝ່…"
+
+#: js/ui/status/system.js:193
+msgid "Power Off…"
+msgstr "ປິດເຄື່ອງ…"
+
+#: js/ui/status/system.js:200
+msgid "Log Out…"
+msgstr "ອອກຈາກລະບົບ…"
+
+#: js/ui/status/system.js:205
+msgid "Switch User…"
+msgstr "ປ່ຽນຜູ້ໃຊ້…"
+
+#: js/ui/status/system.js:249
+msgctxt "action"
+msgid "Lock Screen"
+msgstr "ລັອກໜ້າຈໍ"
+
+#: js/ui/status/thunderbolt.js:311
+msgid "Unknown Thunderbolt device"
+msgstr "ອຸປະກອນ Thunderbolt ບໍ່ຮູ້ຈັກ"
+
+#: js/ui/status/thunderbolt.js:312
+msgid ""
+"New device has been detected while you were away. Please disconnect and "
+"reconnect the device to start using it."
+msgstr "ກວດພົບອຸປະກອນໃໝ່ໃນຂະນະທີ່ທ່ານບໍ່ຢູ່. ກະລຸນາຕັດການເຊື່ອມຕໍ່ ແລະ ເຊື່ອມຕໍ່ອຸປະກອນຄືນໃໝ່ເພື່ອເລີ່ມໃຊ້ງານ."
+
+#: js/ui/status/thunderbolt.js:315
+msgid "Unauthorized Thunderbolt device"
+msgstr "ອຸປະກອນ Thunderbolt ບໍ່ໄດ້ຮັບອະນຸຍາດ"
+
+#: js/ui/status/thunderbolt.js:316
+msgid ""
+"New device has been detected and needs to be authorized by an administrator"
+msgstr "ກວດພົບອຸປະກອນໃໝ່ ແລະ ຕ້ອງໄດ້ຮັບການອະນຸຍາດຈາກຜູ້ດູແລລະບົບ"
+
+#: js/ui/status/thunderbolt.js:322
+msgid "Thunderbolt authorization error"
+msgstr "ຂໍ້ຜິດພາດໃນການອະນຸຍາດ Thunderbolt"
+
+#: js/ui/status/thunderbolt.js:323
+#, javascript-format
+msgid "Could not authorize the Thunderbolt device: %s"
+msgstr "ບໍ່ສາມາດອະນຸຍາດອຸປະກອນ Thunderbolt: %s"
+
+#: js/ui/status/volume.js:218
+msgid "Volume changed"
+msgstr "ລະດັບສຽງປ່ຽນແປງ"
+
+#: js/ui/status/volume.js:231
+msgid "Unmute"
+msgstr "ເປີດສຽງ"
+
+#: js/ui/status/volume.js:231
+msgid "Mute"
+msgstr "ປິດສຽງ"
+
+#: js/ui/status/volume.js:293
+msgid "Volume"
+msgstr "ລະດັບສຽງ"
+
+#: js/ui/status/volume.js:309
+msgid "Sound Output"
+msgstr "ສຽງອອກ"
+
+#: js/ui/status/volume.js:310
+msgid "Open sound output menu"
+msgstr "ເປີດເມນູສຽງອອກ"
+
+#: js/ui/status/volume.js:385
+msgid "Sound Input"
+msgstr "ສຽງເຂົ້າ"
+
+#: js/ui/status/volume.js:386
+msgid "Open sound input menu"
+msgstr "ເປີດເມນູສຽງເຂົ້າ"
+
+#. Translators: this is for display mirroring i.e. cloning.
+#. * Try to keep it under around 15 characters.
+#.
+#: js/ui/switchMonitor.js:20
+msgid "Mirror"
+msgstr "ສະທ້ອນພາບ"
+
+#. Translators: this is for the desktop spanning displays.
+#. * Try to keep it under around 15 characters.
+#.
+#: js/ui/switchMonitor.js:29
+msgid "Join Displays"
+msgstr "ລວມຈໍສະແດງຜົນ"
+
+#. Translators: this is for using only external displays.
+#. * Try to keep it under around 15 characters.
+#.
+#: js/ui/switchMonitor.js:39
+msgid "External Only"
+msgstr "ຈໍພາຍນອກເທົ່ານັ້ນ"
+
+#. Translators: this is for using only the laptop display.
+#. * Try to keep it under around 15 characters.
+#.
+#: js/ui/switchMonitor.js:47
+msgid "Built-in Only"
+msgstr "ຈໍໃນຕົວເທົ່ານັ້ນ"
+
+#. Translators: This is a time format for a date in
+#. long format
+#: js/ui/unlockDialog.js:414
+msgid "%A %B %-d"
+msgstr "%A %B %-d"
+
+#: js/ui/unlockDialog.js:420
+msgid "Swipe up to unlock"
+msgstr "ປັດຂຶ້ນເພື່ອປົດລັອກ"
+
+#: js/ui/unlockDialog.js:421
+msgid "Click or press a key to unlock"
+msgstr "ຄລິກ ຫຼື ກົດປຸ່ມໃດໜຶ່ງເພື່ອປົດລັອກ"
+
+#: js/ui/unlockDialog.js:609
+msgid "Unlock Window"
+msgstr "ປົດລັອກໜ້າຕ່າງ"
+
+#: js/ui/unlockDialog.js:618
+msgid "Log in as another user"
+msgstr "ເຂົ້າສູ່ລະບົບເປັນຜູ້ໃຊ້ອື່ນ"
+
+#: js/ui/welcomeDialog.js:47
+#, javascript-format
+msgid "GNOME %s"
+msgstr "GNOME %s"
+
+#: js/ui/welcomeDialog.js:51
+#, javascript-format
+msgid "Welcome to %s"
+msgstr "ຍິນດີຕ້ອນຮັບສູ່ %s"
+
+#: js/ui/welcomeDialog.js:52
+msgid "If you want to learn your way around, check out the tour"
+msgstr "ຖ້າທ່ານຕ້ອງການຮຽນຮູ້ວິທີໃຊ້ງານ, ລອງເບິ່ງການແນະນຳ"
+
+#: js/ui/welcomeDialog.js:66
+msgid "Take Tour"
+msgstr "ເລີ່ມການແນະນຳ"
+
+#: js/ui/windowAttentionHandler.js:18
+#, javascript-format
+msgid "“%s” is ready"
+msgstr "“%s” ພ້ອມແລ້ວ"
+
+#. Translators: This string should be shorter than 30 characters
+#: js/ui/windowManager.js:60
+msgid "Keep these display settings?"
+msgstr "ເກັບການຕັ້ງຄ່າຈໍສະແດງຜົນນີ້ໄວ້ບໍ?"
+
+#: js/ui/windowManager.js:70
+msgid "Revert Settings"
+msgstr "ຍົກເລີກການຕັ້ງຄ່າ"
+
+#: js/ui/windowManager.js:75
+msgid "Keep Changes"
+msgstr "ເກັບການປ່ຽນແປງ"
+
+#: js/ui/windowManager.js:95
+#, javascript-format
+msgid "Settings changes will revert in %d second"
+msgstr "ການຕັ້ງຄ່າຈະຖືກຍົກເລີກໃນອີກ %d ວິນາທີ"
+
+#. Translators: This represents the size of a window. The first number is
+#. * the width of the window and the second is the height.
+#: js/ui/windowManager.js:492
+#, javascript-format
+msgid "%d × %d"
+msgstr "%d × %d"
+
+#. Translators: entry in the window right click menu.
+#: js/ui/windowMenu.js:27
+msgctxt "window-menu"
+msgid "Take Screenshot"
+msgstr "ຖ່າຍພາບໜ້າຈໍ"
+
+#: js/ui/windowMenu.js:39
+msgid "Hide"
+msgstr "ເຊື່ອງ"
+
+#: js/ui/windowMenu.js:46
+msgid "Restore"
+msgstr "ຟື້ນຟູ"
+
+#: js/ui/windowMenu.js:50
+msgid "Maximize"
+msgstr "ຂະຫຍາຍໃຫຍ່ສຸດ"
+
+#: js/ui/windowMenu.js:57
+msgid "Move"
+msgstr "ຍ້າຍ"
+
+#: js/ui/windowMenu.js:71
+msgid "Resize"
+msgstr "ປັບຂະໜາດ"
+
+#: js/ui/windowMenu.js:85
+msgid "Always on Top"
+msgstr "ຢູ່ເທິງສຸດສະເໝີ"
+
+#: js/ui/windowMenu.js:104
+msgid "Always on Visible Workspace"
+msgstr "ຢູ່ເທິງພື້ນທີ່ເຮັດວຽກທີ່ເຫັນໄດ້ສະເໝີ"
+
+#: js/ui/windowMenu.js:118
+msgid "Move to Workspace Left"
+msgstr "ຍ້າຍໄປພື້ນທີ່ເຮັດວຽກດ້ານຊ້າຍ"
+
+#: js/ui/windowMenu.js:124
+msgid "Move to Workspace Right"
+msgstr "ຍ້າຍໄປພື້ນທີ່ເຮັດວຽກດ້ານຂວາ"
+
+#: js/ui/windowMenu.js:130
+msgid "Move to Workspace Up"
+msgstr "ຍ້າຍໄປພື້ນທີ່ເຮັດວຽກດ້ານເທິງ"
+
+#: js/ui/windowMenu.js:136
+msgid "Move to Workspace Down"
+msgstr "ຍ້າຍໄປພື້ນທີ່ເຮັດວຽກດ້ານລຸ່ມ"
+
+#: js/ui/windowMenu.js:154
+msgid "Move to Monitor Up"
+msgstr "ຍ້າຍໄປຈໍເທິງ"
+
+#: js/ui/windowMenu.js:163
+msgid "Move to Monitor Down"
+msgstr "ຍ້າຍໄປຈໍລຸ່ມ"
+
+#: js/ui/windowMenu.js:172
+msgid "Move to Monitor Left"
+msgstr "ຍ້າຍໄປຈໍຊ້າຍ"
+
+#: js/ui/windowMenu.js:181
+msgid "Move to Monitor Right"
+msgstr "ຍ້າຍໄປຈໍຂວາ"
+
+#: js/ui/windowMenu.js:189
+msgid "Close"
+msgstr "ປິດ"
+
+#: src/main.c:515 subprojects/extensions-tool/src/main.c:336
+msgid "Print version"
+msgstr "ພິມເວີຊັນ"
+
+#: src/main.c:521
+msgid "Mode used by GDM for login screen"
+msgstr "ໂໝດທີ່ GDM ໃຊ້ສຳລັບໜ້າຈໍເຂົ້າສູ່ລະບົບ"
+
+#: src/main.c:527
+msgid "Use a specific mode, e.g. “gdm” for login screen"
+msgstr "ໃຊ້ໂໝດສະເພາະ, ເຊັ່ນ “gdm” ສຳລັບໜ້າຈໍເຂົ້າສູ່ລະບົບ"
+
+#: src/main.c:533
+msgid "List possible modes"
+msgstr "ສະແດງລາຍການໂໝດທີ່ເປັນໄປໄດ້"
+
+#: src/main.c:539
+msgid "Force animations to be enabled"
+msgstr "ບັງຄັບເປີດອະນິເມຊັນ"
+
+#: src/shell-app.c:267
+msgctxt "program"
+msgid "Unknown"
+msgstr "ບໍ່ຮູ້ຈັກ"
+
+#: src/shell-app.c:518
+#, c-format
+msgid "Failed to launch “%s”"
+msgstr "ເປີດ “%s” ບໍ່ສຳເລັດ"
+
+#: src/shell-keyring-prompt.c:779
+msgid "Passwords do not match"
+msgstr "ລະຫັດຜ່ານບໍ່ກົງກັນ"
+
+#: src/shell-keyring-prompt.c:787
+msgid "Password cannot be blank"
+msgstr "ລະຫັດຜ່ານບໍ່ສາມາດເປັນຄ່າວ່າງໄດ້"
+
+#: src/shell-polkit-authentication-agent.c:344
+msgid "Authentication dialog was dismissed by the user"
+msgstr "ກ່ອງໂຕ້ຕອບການຢືນຢັນຕົວຕົນຖືກຍົກເລີກໂດຍຜູ້ໃຊ້"
+
+#: src/st/st-icon-theme.c:1859
+#, c-format
+msgid "Icon '%s' not present in theme %s"
+msgstr "ໄອຄອນ '%s' ບໍ່ມີຢູ່ໃນທີມ %s"
+
+#: src/st/st-icon-theme.c:3452 src/st/st-icon-theme.c:3755
+msgid "Failed to load icon"
+msgstr "ໂຫຼດໄອຄອນບໍ່ສຳເລັດ"
+
+#: subprojects/extensions-app/data/metainfo/org.gnome.Extensions.metainfo.xml.in:6
+msgid "Manage your GNOME Extensions"
+msgstr "ຈັດການສ່ວນຂະຫຍາຍ GNOME ຂອງທ່ານ"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: subprojects/extensions-app/data/metainfo/org.gnome.Extensions.metainfo.xml.in:20
+msgid "The GNOME Project"
+msgstr "ໂຄງການ GNOME"
+
+#: subprojects/extensions-app/data/metainfo/org.gnome.Extensions.metainfo.xml.in:52
+msgid ""
+"GNOME Extensions handles updating extensions, configuring extension "
+"preferences and removing or disabling unwanted extensions."
+msgstr "ສ່ວນຂະຫຍາຍ GNOME ຈັດການອັບເດດ, ຕັ້ງຄ່າ, ແລະ ລຶບ ຫຼື ປິດໃຊ້ງານສ່ວນຂະຫຍາຍທີ່ບໍ່ຕ້ອງການ."
+
+#: subprojects/extensions-app/data/metainfo/org.gnome.Extensions.metainfo.xml.in:69
+msgid "Main Window"
+msgstr "ໜ້າຕ່າງຫຼັກ"
+
+#: subprojects/extensions-app/data/metainfo/org.gnome.Extensions.metainfo.xml.in:73
+msgid "Available Updates"
+msgstr "ອັບເດດທີ່ມີຢູ່"
+
+#: subprojects/extensions-app/data/metainfo/org.gnome.Extensions.metainfo.xml.in:77
+msgid "Search View"
+msgstr "ມຸມມອງການຄົ້ນຫາ"
+
+#: subprojects/extensions-app/data/org.gnome.Extensions.desktop.in.in:6
+msgid "Configure GNOME Shell Extensions"
+msgstr "ຕັ້ງຄ່າສ່ວນຂະຫຍາຍ GNOME Shell"
+
+#: subprojects/extensions-app/js/extensionManager.js:237
+#, javascript-format
+msgid ""
+"The installed version of this extension (%s) is incompatible with the "
+"current version of GNOME (%s). The extension has been disabled."
+msgstr "ເວີຊັນທີ່ຕິດຕັ້ງຂອງສ່ວນຂະຫຍາຍນີ້ (%s) ບໍ່ເຂົ້າກັນກັບເວີຊັນປັດຈຸບັນຂອງ GNOME (%s). ສ່ວນຂະຫຍາຍໄດ້ຖືກປິດໃຊ້ງານແລ້ວ."
+
+#: subprojects/extensions-app/js/extensionManager.js:238
+#, javascript-format
+msgid ""
+"The installed version of this extension is incompatible with the current "
+"version of GNOME (%s). The extension has been disabled."
+msgstr "ເວີຊັນທີ່ຕິດຕັ້ງຂອງສ່ວນຂະຫຍາຍນີ້ບໍ່ເຂົ້າກັນກັບເວີຊັນປັດຈຸບັນຂອງ GNOME (%s). ສ່ວນຂະຫຍາຍໄດ້ຖືກປິດໃຊ້ງານແລ້ວ."
+
+#: subprojects/extensions-app/js/extensionManager.js:242
+msgid ""
+"An error has occurred in this extension. This could cause issues elsewhere "
+"in the system. It is recommended to turn the extension off until the error "
+"is resolved."
+msgstr "ເກີດຂໍ້ຜິດພາດໃນສ່ວນຂະຫຍາຍນີ້. ອາດຈະເຮັດໃຫ້ເກີດບັນຫາໃນສ່ວນອື່ນຂອງລະບົບ. ແນະນຳໃຫ້ປິດສ່ວນຂະຫຍາຍຈົນກວ່າຂໍ້ຜິດພາດຈະຖືກແກ້ໄຂ."
+
+#. translators: Details for an extension error
+#: subprojects/extensions-app/js/extensionManager.js:248
+msgid "Error details:"
+msgstr "ລາຍລະອຽດຂໍ້ຜິດພາດ:"
+
+#: subprojects/extensions-app/js/extensionRow.js:82
+#, javascript-format
+msgid "Version %s"
+msgstr "ເວີຊັນ %s"
+
+#: subprojects/extensions-app/js/extensionsWindow.js:108
+#, javascript-format
+msgid "Remove “%s”?"
+msgstr "ລຶບ “%s” ບໍ?"
+
+#: subprojects/extensions-app/js/extensionsWindow.js:109
+msgid ""
+"If you remove the extension, you need to return to download it if you want "
+"to enable it again"
+msgstr "ຖ້າທ່ານລຶບສ່ວນຂະຫຍາຍ, ທ່ານຈະຕ້ອງດາວໂຫຼດມັນຄືນໃໝ່ຖ້າຕ້ອງການເປີດໃຊ້ມັນອີກຄັ້ງ"
+
+#: subprojects/extensions-app/js/extensionsWindow.js:112
+msgid "_Cancel"
+msgstr "_ຍົກເລີກ"
+
+#: subprojects/extensions-app/js/extensionsWindow.js:113
+msgid "_Remove"
+msgstr "_ລຶບ"
+
+#: subprojects/extensions-app/js/extensionsWindow.js:153
+msgid "translator-credits"
+msgstr "ທີມງານແປພາສາລາວ l10n.gnome.org/teams/lo"
+
+#: subprojects/extensions-app/js/extensionsWindow.js:198
+#, javascript-format
+msgid "%d extension will be updated on next login."
+msgstr "ສ່ວນຂະຫຍາຍ %d ອັນຈະຖືກອັບເດດໃນການເຂົ້າສູ່ລະບົບຄັ້ງຕໍ່ໄປ."
+
+#: subprojects/extensions-app/data/ui/extension-row.ui:51
+msgid "Updates Details"
+msgstr "ລາຍລະອຽດການອັບເດດ"
+
+#: subprojects/extensions-app/data/ui/extension-row.ui:68
+msgid ""
+"A new version of this extension is ready and will be loaded on next login."
+msgstr "ເວີຊັນໃໝ່ຂອງສ່ວນຂະຫຍາຍນີ້ພ້ອມແລ້ວ ແລະ ຈະຖືກໂຫຼດໃນການເຂົ້າສູ່ລະບົບຄັ້ງຕໍ່ໄປ."
+
+#: subprojects/extensions-app/data/ui/extension-row.ui:100
+msgid "Extension Details"
+msgstr "ລາຍລະອຽດສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-app/data/ui/extension-row.ui:188
+msgid "_Website"
+msgstr "_ເວັບໄຊ"
+
+#: subprojects/extensions-app/data/ui/extension-row.ui:215
+msgid "_Settings"
+msgstr "_ການຕັ້ງຄ່າ"
+
+#: subprojects/extensions-app/data/ui/extension-row.ui:242
+msgid "_Remove…"
+msgstr "_ລຶບ…"
+
+#: subprojects/extensions-app/data/ui/extensions-window.ui:6
+msgid "Keyboard Shortcuts"
+msgstr "ປຸ່ມລັດແປ້ນພິມ"
+
+#: subprojects/extensions-app/data/ui/extensions-window.ui:10
+msgid "About Extensions"
+msgstr "ກ່ຽວກັບສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-app/data/ui/extensions-window.ui:64
+msgid "Main Menu"
+msgstr "ເມນູຫຼັກ"
+
+#: subprojects/extensions-app/data/ui/extensions-window.ui:106
+msgid "Search extensions"
+msgstr "ຄົ້ນຫາສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-app/data/ui/extensions-window.ui:123
+msgid "_Log Out…"
+msgstr "_ອອກຈາກລະບົບ…"
+
+#: subprojects/extensions-app/data/ui/extensions-window.ui:131
+msgid "_Extensions"
+msgstr "_ສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-app/data/ui/extensions-window.ui:136
+msgid "More Information"
+msgstr "ຂໍ້ມູນເພີ່ມເຕີມ"
+
+#: subprojects/extensions-app/data/ui/extensions-window.ui:148
+msgid ""
+"Extensions can cause performance and stability issues. It is recommended to "
+"disable all extensions if you experience problems with your system."
+msgstr "ສ່ວນຂະຫຍາຍອາດເຮັດໃຫ້ເກີດບັນຫາດ້ານປະສິດທິພາບ ແລະ ຄວາມສະຖຽນ. ແນະນຳໃຫ້ປິດໃຊ້ງານສ່ວນຂະຫຍາຍທັງໝົດຖ້າທ່ານພົບບັນຫາກັບລະບົບ."
+
+#: subprojects/extensions-app/data/ui/extensions-window.ui:175
+msgid "User Extensions"
+msgstr "ສ່ວນຂະຫຍາຍຂອງຜູ້ໃຊ້"
+
+#: subprojects/extensions-app/data/ui/extensions-window.ui:184
+msgid "System Extensions"
+msgstr "ສ່ວນຂະຫຍາຍຂອງລະບົບ"
+
+#: subprojects/extensions-app/data/ui/extensions-window.ui:203
+msgid "Search Results"
+msgstr "ຜົນການຄົ້ນຫາ"
+
+#: subprojects/extensions-app/data/ui/extensions-window.ui:217
+msgid "No Results Found"
+msgstr "ບໍ່ພົບຜົນລັບ"
+
+#: subprojects/extensions-app/data/ui/extensions-window.ui:218
+msgid "Try a different search"
+msgstr "ລອງຄົ້ນຫາດ້ວຍຄຳອື່ນ"
+
+#: subprojects/extensions-app/data/ui/extensions-window.ui:229
+msgid "No Installed Extensions"
+msgstr "ບໍ່ມີສ່ວນຂະຫຍາຍທີ່ຕິດຕັ້ງ"
+
+#: subprojects/extensions-app/data/ui/extensions-window.ui:230
+msgid ""
+"To find and add extensions, visit <a href=\"https://"
+"extensions.gnome.org\">extensions.gnome.org</a>."
+msgstr "ເພື່ອຊອກຫາ ແລະ ເພີ່ມສ່ວນຂະຫຍາຍ, ເຂົ້າໄປທີ່ <a href=\"https://extensions.gnome.org\">extensions.gnome.org</a>."
+
+#: subprojects/extensions-app/data/ui/extensions-window.ui:240
+msgid "Something’s gone wrong"
+msgstr "ມີບາງຢ່າງຜິດພາດ"
+
+#: subprojects/extensions-app/data/ui/extensions-window.ui:241
+msgid ""
+"We’re very sorry, but it was not possible to get the list of installed "
+"extensions. Make sure you are logged into GNOME and try again."
+msgstr "ຂໍອະໄພ, ບໍ່ສາມາດເອົາລາຍການສ່ວນຂະຫຍາຍທີ່ຕິດຕັ້ງໄດ້. ກະລຸນາກວດສອບວ່າທ່ານໄດ້ເຂົ້າສູ່ລະບົບ GNOME ແລະ ລອງໃໝ່ອີກຄັ້ງ."
+
+#: subprojects/extensions-app/data/ui/shortcuts-dialog.ui:6
+msgctxt "shortcut window"
+msgid "General"
+msgstr "ທົ່ວໄປ"
+
+#: subprojects/extensions-app/data/ui/shortcuts-dialog.ui:9
+msgctxt "shortcut window"
+msgid "Open Menu"
+msgstr "ເປີດເມນູ"
+
+#: subprojects/extensions-app/data/ui/shortcuts-dialog.ui:15
+msgctxt "shortcut window"
+msgid "Toggle Search"
+msgstr "ສະຫຼັບການຄົ້ນຫາ"
+
+#: subprojects/extensions-app/data/ui/shortcuts-dialog.ui:21
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "ສະແດງປຸ່ມລັດ"
+
+#: subprojects/extensions-app/data/ui/shortcuts-dialog.ui:27
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "ອອກ"
+
+#. Translators: a file path to an extension directory
+#: subprojects/extensions-tool/src/command-create.c:284
+#, c-format
+msgid "The new extension was successfully created in %s.\n"
+msgstr "ສ່ວນຂະຫຍາຍໃໝ່ຖືກສ້າງສຳເລັດແລ້ວໃນ %s.\n"
+
+#: subprojects/extensions-tool/src/command-create.c:376
+#, c-format
+msgid ""
+"Name should be a very short (ideally descriptive) string.\n"
+"Examples are: %s"
+msgstr "ຊື່ຄວນເປັນຂໍ້ຄວາມສັ້ນໆ (ທີ່ອະທິບາຍໄດ້ດີ).\nຕົວຢ່າງ: %s"
+
+#: subprojects/extensions-tool/src/command-create.c:382
+#: subprojects/extensions-tool/src/main.c:243
+msgid "Name"
+msgstr "ຊື່"
+
+#: subprojects/extensions-tool/src/command-create.c:396
+#, c-format
+msgid ""
+"Description is a single-sentence explanation of what your extension does.\n"
+"Examples are: %s"
+msgstr "ຄຳອະທິບາຍແມ່ນປະໂຫຍກດຽວທີ່ບອກວ່າສ່ວນຂະຫຍາຍຂອງທ່ານເຮັດຫຍັງ.\nຕົວຢ່າງ: %s"
+
+#: subprojects/extensions-tool/src/command-create.c:402
+#: subprojects/extensions-tool/src/main.c:246
+msgid "Description"
+msgstr "ຄຳອະທິບາຍ"
+
+#: subprojects/extensions-tool/src/command-create.c:416
+msgid ""
+"UUID is a globally-unique identifier for your extension.\n"
+"This should be in the format of an email address "
+"(clicktofocus@janedoe.example.com)\n"
+msgstr "UUID ແມ່ນຕົວລະບຸທີ່ບໍ່ຊ້ຳກັນທົ່ວໂລກສຳລັບສ່ວນຂະຫຍາຍຂອງທ່ານ.\nຄວນຢູ່ໃນຮູບແບບທີ່ຢູ່ອີເມວ (clicktofocus@janedoe.example.com)\n"
+
+#: subprojects/extensions-tool/src/command-create.c:443
+msgid "Choose one of the available templates:\n"
+msgstr "ເລືອກແມ່ແບບທີ່ມີຢູ່:\n"
+
+#: subprojects/extensions-tool/src/command-create.c:457
+msgid "Template"
+msgstr "ແມ່ແບບ"
+
+#: subprojects/extensions-tool/src/command-create.c:515
+msgid "The unique identifier of the new extension"
+msgstr "ຕົວລະບຸທີ່ບໍ່ຊ້ຳກັນຂອງສ່ວນຂະຫຍາຍໃໝ່"
+
+#: subprojects/extensions-tool/src/command-create.c:518
+msgid "NAME"
+msgstr "ຊື່"
+
+#: subprojects/extensions-tool/src/command-create.c:519
+msgid "The user-visible name of the new extension"
+msgstr "ຊື່ຂອງສ່ວນຂະຫຍາຍໃໝ່ທີ່ຜູ້ໃຊ້ເຫັນ"
+
+#: subprojects/extensions-tool/src/command-create.c:521
+msgid "DESCRIPTION"
+msgstr "ຄຳອະທິບາຍ"
+
+#: subprojects/extensions-tool/src/command-create.c:523
+msgid "A short description of what the extension does"
+msgstr "ຄຳອະທິບາຍສັ້ນໆວ່າສ່ວນຂະຫຍາຍເຮັດຫຍັງ"
+
+#: subprojects/extensions-tool/src/command-create.c:525
+#: subprojects/extensions-tool/src/command-pack.c:455
+msgid "DOMAIN"
+msgstr "ໂດເມນ"
+
+#: subprojects/extensions-tool/src/command-create.c:527
+msgid "The gettext domain used by the extension"
+msgstr "ໂດເມນ gettext ທີ່ໃຊ້ໂດຍສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/command-create.c:529
+#: subprojects/extensions-tool/src/command-pack.c:448
+msgid "SCHEMA"
+msgstr "ສະກີມາ"
+
+#: subprojects/extensions-tool/src/command-create.c:531
+msgid "The GSettings schema used by the extension"
+msgstr "ສະກີມາ GSettings ທີ່ໃຊ້ໂດຍສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/command-create.c:534
+msgid "TEMPLATE"
+msgstr "ແມ່ແບບ"
+
+#: subprojects/extensions-tool/src/command-create.c:535
+msgid "The template to use for the new extension"
+msgstr "ແມ່ແບບທີ່ຈະໃຊ້ສຳລັບສ່ວນຂະຫຍາຍໃໝ່"
+
+#: subprojects/extensions-tool/src/command-create.c:538
+msgid "Include prefs.js template"
+msgstr "ລວມແມ່ແບບ prefs.js"
+
+#: subprojects/extensions-tool/src/command-create.c:544
+msgid "Enter extension information interactively"
+msgstr "ປ້ອນຂໍ້ມູນສ່ວນຂະຫຍາຍແບບໂຕ້ຕອບ"
+
+#: subprojects/extensions-tool/src/command-create.c:552
+msgid "Create a new extension"
+msgstr "ສ້າງສ່ວນຂະຫຍາຍໃໝ່"
+
+#: subprojects/extensions-tool/src/command-create.c:570
+#: subprojects/extensions-tool/src/command-list.c:190
+msgid "Unknown arguments"
+msgstr "ອາກິວເມັນບໍ່ຮູ້ຈັກ"
+
+#: subprojects/extensions-tool/src/command-create.c:595
+msgid "UUID, name and description are required"
+msgstr "ຕ້ອງການ UUID, ຊື່, ແລະ ຄຳອະທິບາຍ"
+
+#: subprojects/extensions-tool/src/command-disable.c:62
+#: subprojects/extensions-tool/src/command-enable.c:62
+#, c-format
+msgid "Extension “%s” does not exist\n"
+msgstr "ສ່ວນຂະຫຍາຍ “%s” ບໍ່ມີຢູ່\n"
+
+#: subprojects/extensions-tool/src/command-disable.c:98
+msgid "Disable an extension"
+msgstr "ປິດໃຊ້ງານສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/command-disable.c:116
+#: subprojects/extensions-tool/src/command-enable.c:116
+#: subprojects/extensions-tool/src/command-info.c:103
+#: subprojects/extensions-tool/src/command-prefs.c:105
+#: subprojects/extensions-tool/src/command-reset.c:76
+#: subprojects/extensions-tool/src/command-uninstall.c:104
+msgid "No UUID given"
+msgstr "ບໍ່ໄດ້ລະບຸ UUID"
+
+#: subprojects/extensions-tool/src/command-disable.c:121
+#: subprojects/extensions-tool/src/command-enable.c:121
+#: subprojects/extensions-tool/src/command-info.c:108
+#: subprojects/extensions-tool/src/command-prefs.c:110
+#: subprojects/extensions-tool/src/command-reset.c:81
+#: subprojects/extensions-tool/src/command-uninstall.c:109
+msgid "More than one UUID given"
+msgstr "ລະບຸ UUID ຫຼາຍກວ່າໜຶ່ງ"
+
+#: subprojects/extensions-tool/src/command-enable.c:98
+msgid "Enable an extension"
+msgstr "ເປີດໃຊ້ງານສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/command-info.c:50
+#: subprojects/extensions-tool/src/command-list.c:66
+#: subprojects/extensions-tool/src/main.c:150
+msgid "Failed to connect to GNOME Shell\n"
+msgstr "ເຊື່ອມຕໍ່ກັບ GNOME Shell ບໍ່ສຳເລັດ\n"
+
+#: subprojects/extensions-tool/src/command-info.c:59
+#: subprojects/extensions-tool/src/main.c:159
+#, c-format
+msgid "Extension “%s” doesn't exist\n"
+msgstr "ສ່ວນຂະຫຍາຍ “%s” ບໍ່ມີຢູ່\n"
+
+#: subprojects/extensions-tool/src/command-info.c:85
+msgid "Show extensions info"
+msgstr "ສະແດງຂໍ້ມູນສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/command-install.c:190
+msgid "Overwrite an existing extension"
+msgstr "ຂຽນທັບສ່ວນຂະຫຍາຍທີ່ມີຢູ່"
+
+#: subprojects/extensions-tool/src/command-install.c:192
+msgid "EXTENSION_BUNDLE"
+msgstr "ຊຸດສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/command-install.c:201
+msgid "Install an extension bundle"
+msgstr "ຕິດຕັ້ງຊຸດສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/command-install.c:219
+msgid "No extension bundle specified"
+msgstr "ບໍ່ໄດ້ລະບຸຊຸດສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/command-install.c:225
+msgid "More than one extension bundle specified"
+msgstr "ລະບຸຊຸດສ່ວນຂະຫຍາຍຫຼາຍກວ່າໜຶ່ງ"
+
+#: subprojects/extensions-tool/src/command-list.c:140
+msgid "Show user-installed extensions"
+msgstr "ສະແດງສ່ວນຂະຫຍາຍທີ່ຜູ້ໃຊ້ຕິດຕັ້ງ"
+
+#: subprojects/extensions-tool/src/command-list.c:143
+msgid "Show system-installed extensions"
+msgstr "ສະແດງສ່ວນຂະຫຍາຍທີ່ລະບົບຕິດຕັ້ງ"
+
+#: subprojects/extensions-tool/src/command-list.c:146
+msgid "Show enabled extensions"
+msgstr "ສະແດງສ່ວນຂະຫຍາຍທີ່ເປີດໃຊ້ງານ"
+
+#: subprojects/extensions-tool/src/command-list.c:149
+msgid "Show disabled extensions"
+msgstr "ສະແດງສ່ວນຂະຫຍາຍທີ່ປິດໃຊ້ງານ"
+
+#: subprojects/extensions-tool/src/command-list.c:152
+msgid "Show extensions in active state"
+msgstr "ສະແດງສ່ວນຂະຫຍາຍໃນສະຖານະເປີດໃຊ້"
+
+#: subprojects/extensions-tool/src/command-list.c:155
+msgid "Show extensions in inactive state"
+msgstr "ສະແດງສ່ວນຂະຫຍາຍໃນສະຖານະປິດໃຊ້"
+
+#: subprojects/extensions-tool/src/command-list.c:158
+msgid "Show extensions with preferences"
+msgstr "ສະແດງສ່ວນຂະຫຍາຍທີ່ມີການຕັ້ງຄ່າ"
+
+#: subprojects/extensions-tool/src/command-list.c:161
+msgid "Show extensions with updates"
+msgstr "ສະແດງສ່ວນຂະຫຍາຍທີ່ມີອັບເດດ"
+
+#: subprojects/extensions-tool/src/command-list.c:164
+msgid "Print extension details"
+msgstr "ພິມລາຍລະອຽດສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/command-list.c:172
+msgid "List installed extensions"
+msgstr "ສະແດງລາຍການສ່ວນຂະຫຍາຍທີ່ຕິດຕັ້ງ"
+
+#: subprojects/extensions-tool/src/command-pack.c:444
+#: subprojects/extensions-tool/src/command-upload.c:427
+msgid "FILE"
+msgstr "ແຟ້ມ"
+
+#: subprojects/extensions-tool/src/command-pack.c:445
+msgid "Additional source to include in the bundle"
+msgstr "ແຫຼ່ງຂໍ້ມູນເພີ່ມເຕີມທີ່ຈະລວມໃນຊຸດ"
+
+#: subprojects/extensions-tool/src/command-pack.c:449
+msgid "A GSettings schema that should be included"
+msgstr "ສະກີມາ GSettings ທີ່ຄວນຈະລວມຢູ່"
+
+#: subprojects/extensions-tool/src/command-pack.c:451
+#: subprojects/extensions-tool/src/command-pack.c:462
+msgid "DIRECTORY"
+msgstr "ໄດເຣັກທໍຣີ"
+
+#: subprojects/extensions-tool/src/command-pack.c:453
+msgid "The directory where translations are found"
+msgstr "ໄດເຣັກທໍຣີທີ່ມີໄຟລ໌ແປ"
+
+#: subprojects/extensions-tool/src/command-pack.c:457
+msgid "The gettext domain to use for translations"
+msgstr "ໂດເມນ gettext ທີ່ຈະໃຊ້ສຳລັບການແປ"
+
+#: subprojects/extensions-tool/src/command-pack.c:460
+msgid "Overwrite an existing pack"
+msgstr "ຂຽນທັບຊຸດທີ່ມີຢູ່"
+
+#: subprojects/extensions-tool/src/command-pack.c:464
+msgid "The directory where the pack should be created"
+msgstr "ໄດເຣັກທໍຣີທີ່ຈະສ້າງຊຸດ"
+
+#: subprojects/extensions-tool/src/command-pack.c:466
+msgid "SOURCE_DIRECTORY"
+msgstr "ໄດເຣັກທໍຣີຕົ້ນທາງ"
+
+#: subprojects/extensions-tool/src/command-pack.c:475
+msgid "Create an extension bundle"
+msgstr "ສ້າງຊຸດສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/command-pack.c:495
+msgid "More than one source directory specified"
+msgstr "ລະບຸໄດເຣັກທໍຣີຕົ້ນທາງຫຼາຍກວ່າໜຶ່ງ"
+
+#: subprojects/extensions-tool/src/command-prefs.c:47
+#, c-format
+msgid "Extension “%s” doesn't have preferences\n"
+msgstr "ສ່ວນຂະຫຍາຍ “%s” ບໍ່ມີການຕັ້ງຄ່າ\n"
+
+#: subprojects/extensions-tool/src/command-prefs.c:62
+#, c-format
+msgid "Failed to open prefs for extension “%s”: %s\n"
+msgstr "ເປີດການຕັ້ງຄ່າຂອງສ່ວນຂະຫຍາຍ “%s” ບໍ່ສຳເລັດ: %s\n"
+
+#: subprojects/extensions-tool/src/command-prefs.c:87
+msgid "Opens extension preferences"
+msgstr "ເປີດການຕັ້ງຄ່າສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/command-reset.c:58
+msgid "Reset an extension"
+msgstr "ຣີເຊັດສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/command-uninstall.c:49
+msgid "Cannot uninstall system extensions\n"
+msgstr "ບໍ່ສາມາດຖອນການຕິດຕັ້ງສ່ວນຂະຫຍາຍຂອງລະບົບໄດ້\n"
+
+#: subprojects/extensions-tool/src/command-uninstall.c:64
+#, c-format
+msgid "Failed to uninstall “%s”\n"
+msgstr "ຖອນການຕິດຕັ້ງ “%s” ບໍ່ສຳເລັດ\n"
+
+#: subprojects/extensions-tool/src/command-uninstall.c:86
+msgid "Uninstall an extension"
+msgstr "ຖອນການຕິດຕັ້ງສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/command-upload.c:226
+msgid "Login to extensions.gnome.org\n"
+msgstr "ເຂົ້າສູ່ລະບົບ extensions.gnome.org\n"
+
+#: subprojects/extensions-tool/src/command-upload.c:256
+msgid "Warning! Password will be echoed"
+msgstr "ຄຳເຕືອນ! ລະຫັດຜ່ານຈະຖືກສະແດງ"
+
+#: subprojects/extensions-tool/src/command-upload.c:419
+msgid "USERNAME"
+msgstr "ຊື່ຜູ້ໃຊ້"
+
+#: subprojects/extensions-tool/src/command-upload.c:421
+msgid "Username to log into https://extensions.gnome.org"
+msgstr "ຊື່ຜູ້ໃຊ້ເພື່ອເຂົ້າສູ່ລະບົບ https://extensions.gnome.org"
+
+#: subprojects/extensions-tool/src/command-upload.c:423
+msgid "PASSWORD"
+msgstr "ລະຫັດຜ່ານ"
+
+#: subprojects/extensions-tool/src/command-upload.c:425
+msgid "Password to log into https://extensions.gnome.org"
+msgstr "ລະຫັດຜ່ານເພື່ອເຂົ້າສູ່ລະບົບ https://extensions.gnome.org"
+
+#: subprojects/extensions-tool/src/command-upload.c:429
+msgid ""
+"Read https://extensions.gnome.org password from file, use \"-\" for stdin"
+msgstr "ອ່ານລະຫັດຜ່ານ https://extensions.gnome.org ຈາກແຟ້ມ, ໃຊ້ \"-\" ສຳລັບ stdin"
+
+#: subprojects/extensions-tool/src/command-upload.c:432
+msgid "Accept the terms of service at https://extensions.gnome.org/upload/"
+msgstr "ຍອມຮັບເງື່ອນໄຂການໃຫ້ບໍລິການທີ່ https://extensions.gnome.org/upload/"
+
+#: subprojects/extensions-tool/src/command-upload.c:434
+msgid "FILE…"
+msgstr "ແຟ້ມ…"
+
+#: subprojects/extensions-tool/src/command-upload.c:443
+msgid "Upload new extension versions"
+msgstr "ອັບໂຫຼດເວີຊັນສ່ວນຂະຫຍາຍໃໝ່"
+
+#: subprojects/extensions-tool/src/command-upload.c:461
+msgid "Only one of --password and --password-file can be used"
+msgstr "ສາມາດໃຊ້ໄດ້ພຽງ --password ຫຼື --password-file ເທົ່ານັ້ນ"
+
+#: subprojects/extensions-tool/src/command-upload.c:467
+msgid "You must accept the terms of service to upload extensions"
+msgstr "ທ່ານຕ້ອງຍອມຮັບເງື່ອນໄຂການໃຫ້ບໍລິການເພື່ອອັບໂຫຼດສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/command-upload.c:473
+msgid "No files given"
+msgstr "ບໍ່ໄດ້ລະບຸແຟ້ມ"
+
+#: subprojects/extensions-tool/src/main.c:76
+msgid "Do not print error messages"
+msgstr "ບໍ່ຕ້ອງພິມຂໍ້ຄວາມຜິດພາດ"
+
+#: subprojects/extensions-tool/src/main.c:249
+msgid "Path"
+msgstr "ເສັ້ນທາງ"
+
+#: subprojects/extensions-tool/src/main.c:252
+msgid "URL"
+msgstr "URL"
+
+#: subprojects/extensions-tool/src/main.c:255
+msgid "Original author"
+msgstr "ຜູ້ຂຽນຕົ້ນສະບັບ"
+
+#: subprojects/extensions-tool/src/main.c:261
+#: subprojects/extensions-tool/src/main.c:263
+#: subprojects/extensions-tool/src/main.c:265
+msgid "Version"
+msgstr "ເວີຊັນ"
+
+#: subprojects/extensions-tool/src/main.c:268
+msgid "Enabled"
+msgstr "ເປີດໃຊ້ງານ"
+
+#: subprojects/extensions-tool/src/main.c:268
+msgid "Yes"
+msgstr "ແມ່ນ"
+
+#: subprojects/extensions-tool/src/main.c:268
+msgid "No"
+msgstr "ບໍ່"
+
+#: subprojects/extensions-tool/src/main.c:271
+msgid "State"
+msgstr "ສະຖານະ"
+
+#: subprojects/extensions-tool/src/main.c:309
+msgid "“version” takes no arguments"
+msgstr "“version” ບໍ່ຮັບອາກິວເມັນ"
+
+#: subprojects/extensions-tool/src/main.c:311
+#: subprojects/extensions-tool/src/main.c:331
+msgid "Usage:"
+msgstr "ວິທີໃຊ້:"
+
+#: subprojects/extensions-tool/src/main.c:314
+msgid "Print version information and exit."
+msgstr "ພິມຂໍ້ມູນເວີຊັນ ແລະ ອອກ."
+
+#: subprojects/extensions-tool/src/main.c:329
+#: subprojects/extensions-tool/src/main.c:332
+msgid "COMMAND"
+msgstr "ຄຳສັ່ງ"
+
+#: subprojects/extensions-tool/src/main.c:332
+msgid "[ARGS…]"
+msgstr "[ອາກິວເມັນ…"
+
+#: subprojects/extensions-tool/src/main.c:334
+msgid "Commands:"
+msgstr "ຄຳສັ່ງ:"
+
+#: subprojects/extensions-tool/src/main.c:335
+msgid "Print help"
+msgstr "ພິມຄຳແນະນຳ"
+
+#: subprojects/extensions-tool/src/main.c:337
+msgid "Enable extension"
+msgstr "ເປີດໃຊ້ງານສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/main.c:338
+msgid "Disable extension"
+msgstr "ປິດໃຊ້ງານສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/main.c:339
+msgid "Reset extension"
+msgstr "ຣີເຊັດສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/main.c:340
+msgid "Uninstall extension"
+msgstr "ຖອນການຕິດຕັ້ງສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/main.c:341
+msgid "List extensions"
+msgstr "ສະແດງລາຍການສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/main.c:342
+#: subprojects/extensions-tool/src/main.c:343
+msgid "Show extension info"
+msgstr "ສະແດງຂໍ້ມູນສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/main.c:344
+msgid "Open extension preferences"
+msgstr "ເປີດການຕັ້ງຄ່າສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/main.c:345
+msgid "Create extension"
+msgstr "ສ້າງສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/main.c:346
+msgid "Package extension"
+msgstr "ສ້າງຊຸດສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/main.c:347
+msgid "Install extension bundle"
+msgstr "ຕິດຕັ້ງຊຸດສ່ວນຂະຫຍາຍ"
+
+#: subprojects/extensions-tool/src/main.c:349
+#, c-format
+msgid "Use “%s” to get detailed help.\n"
+msgstr "ໃຊ້ “%s” ເພື່ອເບິ່ງຄຳແນະນຳລະອຽດ.\n"
+
+#: subprojects/extensions-tool/src/templates/00-plain.desktop.in:3
+msgid "Plain"
+msgstr "ທຳມະດາ"
+
+#: subprojects/extensions-tool/src/templates/00-plain.desktop.in:4
+msgid "An empty extension"
+msgstr "ສ່ວນຂະຫຍາຍເປົ່າ"
+
+#: subprojects/extensions-tool/src/templates/indicator.desktop.in:3
+msgid "Indicator"
+msgstr "ຕົວຊີ້ບອກ"
+
+#: subprojects/extensions-tool/src/templates/indicator.desktop.in:4
+msgid "Add an icon to the top bar"
+msgstr "ເພີ່ມໄອຄອນໃສ່ແຖບດ້ານເທິງ"
+
+#: subprojects/extensions-tool/src/templates/quick-settings.desktop.in:3
+msgid "Quick Settings Item"
+msgstr "ລາຍການຕັ້ງຄ່າດ່ວນ"
+
+#: subprojects/extensions-tool/src/templates/quick-settings.desktop.in:4
+msgid "Add an item to quick settings"
+msgstr "ເພີ່ມລາຍການໃສ່ການຕັ້ງຄ່າດ່ວນ"
+
+#. translators:
+#. * The device has been disabled
+#: subprojects/gvc/gvc-mixer-control.c:1908
+msgid "Disabled"
+msgstr "ປິດໃຊ້ງານ"
+
+#. translators:
+#. * The number of sound outputs on a particular device
+#: subprojects/gvc/gvc-mixer-control.c:1915
+#, c-format
+msgid "%u Output"
+msgstr "%u ສຽງອອກ"
+
+#. translators:
+#. * The number of sound inputs on a particular device
+#: subprojects/gvc/gvc-mixer-control.c:1925
+#, c-format
+msgid "%u Input"
+msgstr "%u ສຽງເຂົ້າ"
+
+#: subprojects/gvc/gvc-mixer-control.c:2876
+msgid "System Sounds"
+msgstr "ສຽງລະບົບ"

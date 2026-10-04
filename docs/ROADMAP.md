@@ -19,7 +19,8 @@ Delivered:
 * [x] aarch64 / riscv64 scaffolds, type-checked in CI
 * [x] Boot tests: Unicorn emulation (no QEMU) + GRUB2/QEMU ISO, both
       asserting `BOOT OK` on every push
-* [x] GNOME mutter + gnome-shell + Yaru codebases staged in `/UI`
+* [x] Native text-mode desktop shell in `UI/` (theme, shell, compositor)
+      rendering on the boot framebuffer via the display service
 
 ## M1 — Interrupts and time
 
@@ -66,7 +67,7 @@ workload with documented latency bounds; sched self-tests in CI.
 * [ ] PCI/PCIe enumeration; driver probe/DMA/IRQ framework over the HAL
 * [ ] virtio-blk + NVMe storage; ext2 r/w with journaling on top
 * [ ] VFS with Linux path/fd semantics; RAMFS + initial asset mount
-      (serving `/UI` content)
+      (serving UI theme assets)
 * [ ] virtio-gpu + basic DRM/KMS surface; USB HID input path
 
 **Acceptance:** kernel mounts an ext2 image from CI artifacts, reads and
@@ -85,18 +86,18 @@ echoes it back bit-exact.
 
 ## M6 — Linux-ABI compatibility layer
 
-**Goal:** run the real desktop. This is where `/UI` stops being "staged"
-and becomes "the default UI".
+**Goal:** run real software. Existing Linux userland — tools, runtimes,
+whole distro userlands — boots beside the native desktop, unported.
 
-* [ ] Syscall ABI: the GLib/GNOME practical subset (epoll, signalfd,
-      memfd, pidfd, io_uring, eventfd, FUTEX, …)
+* [ ] Syscall ABI: the practical subset real userland exercises (epoll,
+      signalfd, memfd, pidfd, io_uring, eventfd, FUTEX, …)
 * [ ] Process model: CLONE_VM/FILES semantics, exec, zombies
 * [ ] Userland base image build (documented, reproducible)
-* [ ] Session bring-up: dbus-broker → wayland compositor (mutter) →
-      gnome-shell → Yaru theme assets
+* [ ] Session bring-up: init → services → a Wayland session compositor
+      alongside the native desktop
 
-**Acceptance:** an unmodified `gnome-shell` binary compiled from `/UI`
-sources shows the Yaru-styled desktop in QEMU `-vga virtio`.
+**Acceptance:** an unmodified statically linked Linux binary runs to
+completion under QEMU beside the native desktop session.
 
 ## M7 — Hardware breadth program
 

@@ -46,7 +46,7 @@ Details: [tools/boot-unicorn/README.md](../tools/boot-unicorn/README.md).
 ## Boot test (real GRUB2 + QEMU)
 
 ```sh
-# Debian/Ubuntu:
+# Debian-based:
 sudo apt install qemu-system-x86 grub-pc-bin xorriso mtools
 
 cargo build --release
@@ -92,10 +92,11 @@ no NICs, nothing else.
 
 Every push and PR runs (see [.github/workflows/ci.yml](../.github/workflows/ci.yml)):
 
-1. `cargo fmt --check` + `cargo clippy` on the kernel,
+1. `cargo fmt --check` + `cargo clippy` on the kernel and the desktop,
 2. debug **and** release builds for x86-64,
 3. `cargo check` for aarch64 and riscv64 scaffolds,
-4. the Unicorn boot test on both artifacts,
+4. the Unicorn boot test on both artifacts, asserting the serial boot
+   path **and** the rendered desktop on the decoded VGA screen,
 5. a real GRUB2/QEMU boot of the release ISO, grepping serial for
    `BOOT OK`.
 

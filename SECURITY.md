@@ -31,7 +31,6 @@ responsible disclosure: patched on `main`, credited in the release notes
 
 ## Scope
 
-In scope: the kernel (`kernel/`), repository tooling (`tools/`), and CI.
-The `UI/` directory is a verbatim vendored snapshot of upstream GNOME /
-Yaru codebases — vulnerabilities in that code belong to those upstream
-projects' security processes, not here.
+In scope: the kernel (`kernel/`), the native desktop (`UI/`), repository
+tooling (`tools/`), and CI. Everything here is first-party code under
+the repository's own review process.

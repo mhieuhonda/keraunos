@@ -10,10 +10,10 @@ gets you from clone to a merged PR without mystery.
 * **CI must boot.** A PR is done when the kernel *builds on three
   architectures, passes fmt/clippy, and reaches `BOOT OK` under both boot
   tests* — not when the diff looks finished.
-* **`UI/` is read-only.** It is a vendored, pinned snapshot of upstream
-  GNOME (mutter, gnome-shell) and Yaru. Changes to those projects belong
-  upstream; upgrades here are deliberate re-import PRs that update the
-  pinned SHAs in [UI/README.md](UI/README.md).
+* **The desktop follows kernel bars.** `UI/` is native workspace code —
+  no_std, dependency-free, `unsafe`-free. It passes the same fmt/clippy
+  gates and the same boot tests as the kernel, and it only ever displays
+  facts the kernel reported via `SessionInfo`.
 * **No diaries.** Commit messages, docs and PR descriptions are written
   for the community's future readers — state what, why, and how to
   verify, in the imperative. Progress narratives belong in your own

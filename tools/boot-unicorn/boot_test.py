@@ -179,7 +179,13 @@ checks = {
     "bump alloc": "bump allocator armed" in text,
     "frame smoke": "frame smoke test" in text,
     "subsystem table": "subsystem bring-up status" in text,
+    "session handoff": "console handoff: vga sink detached" in text,
+    "compositor": "compositor: system, memory, boot log, subsystems mapped" in text,
     "final": "BOOT OK" in text,
+    # Desktop assertions on the decoded VGA screen.
+    "desktop top bar": any(l.startswith(" Keraunos ") for l in screen_lines),
+    "desktop windows": "usable memory" in "\n".join(screen_lines),
+    "desktop notification": "BOOT OK  Keraunos" in "\n".join(screen_lines),
 }
 print("checks:")
 all_ok = True

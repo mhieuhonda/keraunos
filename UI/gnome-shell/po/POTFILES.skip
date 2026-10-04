@@ -1,5 +1,0 @@
-data/org.gnome.Shell@.service.in
-js/ui/init.js
-subprojects/extensions-tool/src/templates/indicator/extension.js
-subprojects/extensions-tool/src/templates/prefs.js
-subprojects/extensions-tool/src/templates/quick-settings/extension.js

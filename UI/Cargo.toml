@@ -1,0 +1,13 @@
+[package]
+name = "keraunos-ui"
+description = "The Keraunos desktop: theme, shell and compositor over the kernel's text surfaces."
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+# Deliberately empty: the desktop is no_std, allocator-free and unsafe-free.
+# Everything hardware-shaped stays behind the Surface contract that the
+# kernel implements.

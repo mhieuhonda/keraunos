@@ -32,8 +32,11 @@ python tools/boot-unicorn/boot_test.py target/x86_64-unknown-none/release/keraun
 The test asserts, on the captured serial log: the banner, multiboot2
 hand-off (bootloader name + command line tags), GDT bring-up, CPUID
 vendor reporting, boot memory map parsing, the early bump allocator's
-frame smoke test, the subsystem status table, and the final `BOOT OK`
-marker.
+frame smoke test, the subsystem status table, the console handoff to the
+display service, and the final `BOOT OK` marker.
+
+On the decoded VGA screen it also asserts the desktop session rendered:
+the shell's top bar, the window set and the completion notification.
 
 ## What it does not prove
 

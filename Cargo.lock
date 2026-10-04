@@ -5,3 +5,10 @@ version = 4
 [[package]]
 name = "keraunos-kernel"
 version = "0.1.0"
+dependencies = [
+ "keraunos-ui",
+]
+
+[[package]]
+name = "keraunos-ui"
+version = "0.1.0"

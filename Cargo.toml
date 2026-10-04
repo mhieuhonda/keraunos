@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["kernel"]
+members = ["kernel", "UI"]
 
 [workspace.package]
 version = "0.1.0"
@@ -8,9 +8,9 @@ edition = "2021"
 authors = ["Keraunos Contributors"]
 license = "MIT"
 
-# The kernel is the only crate today. Additional crates (hal, drivers, userland
-# tooling, the Linux-ABI compatibility layer) will join this workspace as the
-# roadmap advances — see docs/ROADMAP.md.
+# Two crates today: the kernel and the native desktop (UI/). Further crates
+# (hal, drivers, userland tooling, the Linux-ABI compatibility layer) join
+# this workspace as the roadmap advances — see docs/ROADMAP.md.
 
 [profile.dev]
 panic = "abort"

@@ -91,6 +91,29 @@ pub fn init() {
     sync_hardware_cursor();
 }
 
+/// Raw framebuffer write for the display service (post-console-handoff).
+///
+/// Contract: `index < COLUMNS * ROWS`; the display service honors the
+/// Surface geometry (`w <= 80`, `h <= 25`).
+pub fn write_entry(index: usize, ch: u8, attr: u8) {
+    let word = ((attr as u16) << 8) | ch as u16;
+    // SAFETY: index is within the 80x25 buffer per the contract above and
+    // VGA_BUFFER points at the mapped VGA text frame buffer.
+    unsafe {
+        write_volatile(VGA_BUFFER.add(index), word);
+    }
+}
+
+/// Hide the hardware cursor: the display service owns the screen and draws
+/// its own focus indicators.
+pub fn hide_cursor() {
+    // CRTC register 0x0A (cursor scanline start), bit 5 disables the cursor.
+    unsafe {
+        outb(CRTC_INDEX_PORT, 0x0A);
+        outb(CRTC_DATA_PORT, 0x20);
+    }
+}
+
 /// Write a string, honoring `\n` (newline + scroll) and expanding tabs.
 pub fn write_str(s: &str) {
     for b in s.bytes() {

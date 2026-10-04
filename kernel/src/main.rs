@@ -23,6 +23,8 @@ mod klog;
 mod arch;
 mod boot;
 mod console;
+#[cfg(target_arch = "x86_64")]
+mod display;
 mod drivers;
 mod fs;
 mod hal;
@@ -30,6 +32,9 @@ mod ipc;
 mod mm;
 mod net;
 mod sched;
+
+use keraunos_ui as ui;
+use ui::State::{Online, Planned, Scaffold};
 
 #[cfg(target_arch = "x86_64")]
 use core::arch::global_asm;
@@ -39,6 +44,71 @@ use boot::multiboot2::MULTIBOOT2_BOOT_MAGIC;
 
 /// Keraunos release string, baked in from the workspace version at compile time.
 const VERSION: &str = env!("CARGO_PKG_VERSION");
+
+/// Subsystem bring-up status, kept in sync with docs/ROADMAP.md. Printed
+/// to the console at boot and mirrored on the desktop by the UI crate.
+const SUBSYSTEMS: &[ui::Subsystem] = &[
+    ui::Subsystem {
+        name: "console",
+        state: Online,
+        note: "vga text + debug uart",
+    },
+    ui::Subsystem {
+        name: "boot",
+        state: Online,
+        note: "multiboot2",
+    },
+    ui::Subsystem {
+        name: "arch",
+        state: Online,
+        note: "x86-64 long mode",
+    },
+    ui::Subsystem {
+        name: "mm",
+        state: Online,
+        note: "memory map + bump frames",
+    },
+    ui::Subsystem {
+        name: "interrupts",
+        state: Planned,
+        note: "M1",
+    },
+    ui::Subsystem {
+        name: "scheduler",
+        state: Scaffold,
+        note: "M3",
+    },
+    ui::Subsystem {
+        name: "drivers",
+        state: Scaffold,
+        note: "M4",
+    },
+    ui::Subsystem {
+        name: "fs",
+        state: Planned,
+        note: "M4",
+    },
+    ui::Subsystem {
+        name: "net",
+        state: Planned,
+        note: "M5",
+    },
+    ui::Subsystem {
+        name: "ipc",
+        state: Planned,
+        note: "M5",
+    },
+    ui::Subsystem {
+        name: "linux-abi",
+        state: Planned,
+        note: "M6 (unmodified userland)",
+    },
+    ui::Subsystem {
+        name: "ui",
+        state: Online,
+        note: "text desktop (UI crate)",
+    },
+];
 
 // The multiboot2 header and the 64-bit entry stub are x86-64 specific. The
 // aarch64/riscv64 scaffolds provide their own `_start` below.
@@ -201,6 +271,7 @@ extern "C" fn kmain(magic: u32, mbi_addr: usize) -> ! {
     kinfo!("arch", "GDT loaded (null / code64 / data)");
     let vendor = arch::x86_64::cpu::vendor_string();
     let vendor = core::str::from_utf8(&vendor).unwrap_or("unknown");
+    let vendor = vendor.trim_end_matches('\0');
     kinfo!("arch", "cpu vendor: {} | long mode active | BSP", vendor);
 
     // Memory bring-up.
@@ -233,7 +304,40 @@ extern "C" fn kmain(magic: u32, mbi_addr: usize) -> ! {
     print_subsystem_table();
 
     kinfo!("kernel", "keraunos {} framework ready -- BOOT OK", VERSION);
+    start_desktop_session(&mbi, vendor);
     arch::halt_forever();
+}
+
+/// Bring up the desktop: hand the VGA framebuffer to the display service
+/// and let the UI crate render the session over the facts collected above.
+/// Logging continues on the UART; the boot log lives on as a desktop view.
+#[cfg(target_arch = "x86_64")]
+fn start_desktop_session(mbi: &boot::multiboot2::Info, vendor: &str) {
+    kinfo!("ui", "starting desktop session");
+
+    let map = mbi.memory_map();
+    let mut snapshot = [0u8; console::MIRROR_BYTES];
+    let boot_log = console::mirror_snapshot(&mut snapshot);
+    let info = ui::SessionInfo {
+        version: VERSION,
+        arch: "x86-64",
+        vendor,
+        bootloader: mbi.bootloader_name(),
+        cmdline: mbi.cmdline().filter(|cmd| !cmd.is_empty()),
+        regions: map.regions().len(),
+        usable_kib: map.usable_bytes() / 1024,
+        subsystems: SUBSYSTEMS,
+        boot_log,
+        log: console::log_info,
+    };
+
+    let mut display = display::TextDisplay::take_over();
+    kinfo!(
+        "ui",
+        "console handoff: vga sink detached, display service owns the framebuffer"
+    );
+    ui::boot_session(&mut display, &info);
+    kinfo!("ui", "session idle -- parking cpu");
 }
 
 /// Scaffold entry for architectures without a wired boot protocol yet.
@@ -272,16 +376,12 @@ fn print_banner() {
 /// Subsystem bring-up status, kept in sync with docs/ROADMAP.md.
 fn print_subsystem_table() {
     kinfo!("status", "subsystem bring-up status:");
-    console::write_str("    console      online    vga text + debug uart\n");
-    console::write_str("    boot         online    multiboot2\n");
-    console::write_str("    arch         online    x86-64 long mode\n");
-    console::write_str("    mm           online    memory map + bump frames\n");
-    console::write_str("    interrupts   planned   M1\n");
-    console::write_str("    scheduler    scaffold  M3\n");
-    console::write_str("    drivers      scaffold  M4\n");
-    console::write_str("    fs           planned   M4\n");
-    console::write_str("    net          planned   M5\n");
-    console::write_str("    ipc          planned   M5\n");
-    console::write_str("    linux-abi    planned   M6 (unmodified userland)\n");
-    console::write_str("    ui           staged    GNOME mutter/shell + Yaru in /UI\n");
+    for s in SUBSYSTEMS {
+        console::write_line(format_args!(
+            "    {:<13}{:<9}{}",
+            s.name,
+            s.state.label(),
+            s.note
+        ));
+    }
 }

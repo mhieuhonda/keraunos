@@ -8,6 +8,7 @@ license.workspace = true
 publish = false
 
 [dependencies]
-# The kernel core is deliberately dependency-free: no_std, no allocator, no
-# third-party crates. Subsystems will pull in vetted crates behind feature
-# flags as the roadmap advances (see docs/ROADMAP.md).
+# The desktop is a first-party path dependency; third-party crates stay
+# off-limits until audited, and enter only behind feature flags
+# (see docs/ROADMAP.md).
+keraunos-ui = { path = "../UI" }

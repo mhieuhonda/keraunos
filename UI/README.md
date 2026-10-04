@@ -1,65 +1,57 @@
-# UI — the staged default interface stack
+# UI — the Keraunos desktop
 
-This directory holds the **verbatim codebases** of the projects that will
-become Keraunos' default desktop experience. They are imported as-is, at
-pinned upstream commits, Keraunos will run
-them unmodified on top of its Linux-ABI compatibility layer (roadmap
-milestone M6, see `docs/ROADMAP.md`).
+The native interface stack: theme, shell and compositor over the kernel's
+text surfaces, written in Rust like everything else in the system. The
+whole desktop is one deliberate file — small enough to read in a sitting,
+with nothing hidden behind layers of scaffolding.
 
-## Why these projects?
+## What it is
 
-* **mutter** — the compositor and window manager (Wayland). It owns every
-  pixel on screen, so it is where "fast" is most visible: Keraunos'
-  performance-first kernel + a compositing stack that already drives most
-  of the Linux desktop world.
-* **gnome-shell** — the shell itself: top bar, overview, notifications,
-  app launching, the whole user-facing desktop model.
-* **Yaru** — the Ubuntu visual identity: icons, themes, cursors, sounds and
-  wallpapers; the look users recognize instantly.
+* **compositor** — owns every pixel of the frame: back-buffer canvas,
+  window chrome, wallpaper, top bar, notification toasts, one blit per
+  frame.
+* **shell** — the user-facing desktop model: system and memory views, the
+  live boot log, the subsystem status board, session notifications.
+* **theme** — the Keraunos look: storm-black palette, thunder accents,
+  box-glyph chrome, per-window badges, the drizzle wallpaper.
 
-Together they form a complete, production-grade desktop — and a demanding
-one, which is exactly what a performance-focused kernel wants as its
-first showcase workload.
+## Kernel contract
 
-## Imports
+The crate is `no_std`, allocator-free and `unsafe`-free. It never touches
+hardware: the kernel's display service implements the `Surface` trait and
+hands over a `SessionInfo` containing every fact the desktop shows —
+version, architecture, CPU vendor, memory map, subsystem table and the
+captured boot log. If the kernel did not report it, the desktop cannot
+display it.
 
-| Component   | Upstream                                           | Imported commit                                   | License                  |
-| ----------- | -------------------------------------------------- | -------------------------------------------------- | ------------------------ |
-| mutter      | <https://gitlab.gnome.org/GNOME/mutter> (GitHub mirror: <https://github.com/GNOME/mutter>) | `285f54d394b6c041dcdab90d79ecdb761af655ec` | GPL-2.0-or-later         |
-| gnome-shell | <https://gitlab.gnome.org/GNOME/gnome-shell> (GitHub mirror: <https://github.com/GNOME/gnome-shell>) | `f9cd9aaedf046ab75ab6d5e9d110ec126ff34995` | GPL-2.0-or-later         |
-| Yaru        | <https://github.com/ubuntu/yaru>                   | `7f18973e05607c609c4b972f0dd9bff36fa2a13e`        | GPL-3.0 / CC-BY-SA (per-directory) |
-
-Imported: 2026-10-04, shallow clone of the default branch (`main`,
-`main`, `master` respectively), history excluded by design — this tree is
-a vendored codebase, not a fork. **No file inside `mutter/`,
-`gnome-shell/` or `yaru/` has been changed.** Verify it yourself:
-
-```sh
-# compares the vendored tree against a fresh clone of the pinned commit
-git clone https://github.com/GNOME/mutter.git /tmp/mutter
-git -C /tmp/mutter checkout 285f54d394b6c041dcdab90d79ecdb761af655ec
-diff -r --exclude=.git /tmp/mutter UI/mutter
+```
+kernel kmain ──handoff──▶ display service ──Surface──▶ boot_session()
+   serial log ◀────────────── narration callback ◀──────────┘
 ```
 
-## Policies
-
-1. **Read-only by default.** Keraunos must run these codebases unmodified —
-   the compat layer adapts to them, not the other way around. Patches that
-   "fix" UI projects locally are rejected by default.
-2. **Upstream pinning.** Each import records its commit SHA in the table
-   above and in the importing commit message. Upgrades are deliberate,
-   reviewable re-imports.
-3. **Licensing.** Each subdirectory retains its own upstream license files
-   and headers. The repository's top-level MIT license does not apply to
-   the contents of `mutter/`, `gnome-shell/` or `yaru/`.
-4. **Upstream contributions welcome.** Improvements to these projects
-   should go upstream (GNOME / Ubuntu); Keraunos then re-imports them here.
+Boot order: splash, desktop base, mapped windows, notification. Each phase
+renders exactly one deterministic frame, so serial logs, CI screen dumps
+and real hardware always agree.
 
 ## Layout
 
 ```
 UI/
-├── mutter/        # compositor / window manager (C, Meson)
-├── gnome-shell/   # the shell (JS + C, Meson)
-└── yaru/          # icons, themes, sounds, wallpapers (SVG/PNG/CSS/audio)
+├── Cargo.toml   # keraunos-ui, workspace member, zero dependencies
+├── README.md    # this file
+└── src/lib.rs   # palette, canvas, theme, apps, compositor, session
 ```
+
+## Running it
+
+The desktop ships inside the kernel image, so building and booting the
+kernel is building and booting the UI:
+
+```sh
+cargo build                        # kernel + desktop for x86-64
+python tools/boot-unicorn/boot_test.py   # asserts BOOT OK + desktop frames
+```
+
+Both CI boot tests (Unicorn and GRUB2/QEMU) decode the VGA screen and
+verify the desktop rendered. Milestone M1 (interrupts) wires input; M4
+(virtio-gpu) moves the same shell onto real graphics.

@@ -20,6 +20,13 @@
 #[macro_use]
 mod klog;
 
+// The slab heap (mm/heap.rs) provides the GlobalAlloc; alloc types become
+// available to the whole kernel once it is armed in `kmain`. The
+// architecture scaffolds carry no heap yet, so the crate stays x86-64
+// only until their memory ports land.
+#[cfg(target_arch = "x86_64")]
+extern crate alloc;
+
 mod arch;
 mod boot;
 mod console;
@@ -303,6 +310,39 @@ extern "C" fn kmain(magic: u32, mbi_addr: usize) -> ! {
     // Fresh page tables: kernel image aliased in the higher half, tables
     // switched away from the bare boot-stub map.
     mm::paging::init();
+
+    // Slab heap over the PMM; alloc crate types come alive here.
+    mm::heap::init();
+
+    // Heap smoke test: a Vec round trip through the slab caches must
+    // return every byte to the free lists.
+    let heap_before = mm::heap::in_use_bytes();
+    let mut probe = alloc::vec::Vec::<u64>::new();
+    for i in 0..256u64 {
+        probe.push(i.rotate_left(7));
+    }
+    let checksum = probe.iter().fold(0u64, |acc, v| acc ^ *v);
+    let expected: u64 = (0..256u64)
+        .map(|i| i.rotate_left(7))
+        .fold(0, |acc, v| acc ^ v);
+    if probe.len() != 256 || checksum != expected {
+        kerror!(
+            "mm",
+            "heap smoke test: content corruption (xor {:#x})",
+            checksum
+        );
+        arch::halt_forever();
+    }
+    drop(probe);
+    if mm::heap::in_use_bytes() != heap_before {
+        kerror!(
+            "mm",
+            "heap smoke test: leaked {} bytes",
+            mm::heap::in_use_bytes() - heap_before
+        );
+        arch::halt_forever();
+    }
+    kinfo!("mm", "heap smoke test: 256 objects round-tripped, xor ok");
 
     // Frame smoke test: round-trip a lone frame and a contiguous run
     // through the Normal zone; the free count must come back exactly.

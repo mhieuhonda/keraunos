@@ -53,10 +53,6 @@ const PML4_RECURSIVE: usize = 510;
 /// PDPT slot of the 1 GiB higher-half alias inside the kernel window.
 const PDPT_PHYSMAP: usize = 510;
 
-/// Recursive self-map base: PML4[510] -> itself. Adding the shifted
-/// indexes of a virtual address reaches each table entry on its path.
-const REC_BASE: u64 = 0xFFFF_0000_0000_0000 | (510 << 39) | (510 << 30) | (510 << 21) | (510 << 12);
-
 const PRESENT: u64 = 1 << 0;
 const WRITE: u64 = 1 << 1;
 const NO_CACHE: u64 = 1 << 4;
@@ -104,30 +100,64 @@ fn index_of(virt: u64, shift: u32) -> usize {
     ((virt >> shift) & 0x1FF) as usize
 }
 
+/// Virtual address reaching one entry through the recursive self-map.
+///
+/// The self-map sits at PML4[510]. A recursive address walks back into
+/// the PML4 once per self index, so the self index fills the levels from
+/// the top and the real page indexes fill in beneath it: reading the PML4
+/// entry of a page self-references four times, its PDPT entry three, and
+/// so on down to the PT entry, which keeps only the PML4 slot for itself.
+/// `i30..i12` are the address's PDPT, PD and PT index fields, `off` the
+/// byte offset of the entry inside the table being reached.
+fn rec_entry(i30: usize, i21: usize, i12: usize, off: u64) -> *mut u64 {
+    let s = PML4_RECURSIVE as u64;
+    let virt = (s << 39)
+        | (i30 as u64) << 30
+        | (i21 as u64) << 21
+        | (i12 as u64) << 12
+        | off
+        | 0xFFFF_0000_0000_0000;
+    virt as *mut u64
+}
+
 /// Virtual address of the PML4 entry for `virt`, through the self-map.
 fn pml4_entry(virt: u64) -> *mut u64 {
-    (REC_BASE + index_of(virt, 39) as u64 * 8) as *mut u64
+    rec_entry(
+        PML4_RECURSIVE,
+        PML4_RECURSIVE,
+        PML4_RECURSIVE,
+        index_of(virt, 39) as u64 * 8,
+    )
 }
 
 /// Virtual address of the PDPT entry for `virt`.
 fn pdpt_entry(virt: u64) -> *mut u64 {
-    (REC_BASE + index_of(virt, 39) as u64 * (1 << 30) + index_of(virt, 30) as u64 * 8) as *mut u64
+    rec_entry(
+        PML4_RECURSIVE,
+        PML4_RECURSIVE,
+        index_of(virt, 39),
+        index_of(virt, 30) as u64 * 8,
+    )
 }
 
 /// Virtual address of the PD entry for `virt`.
 fn pd_entry(virt: u64) -> *mut u64 {
-    let base =
-        REC_BASE + index_of(virt, 39) as u64 * (1 << 30) + index_of(virt, 30) as u64 * (1 << 21);
-    (base + index_of(virt, 21) as u64 * 8) as *mut u64
+    rec_entry(
+        PML4_RECURSIVE,
+        index_of(virt, 39),
+        index_of(virt, 30),
+        index_of(virt, 21) as u64 * 8,
+    )
 }
 
 /// Virtual address of the PT entry for `virt`.
 fn pt_entry(virt: u64) -> *mut u64 {
-    let base = REC_BASE
-        + index_of(virt, 39) as u64 * (1 << 30)
-        + index_of(virt, 30) as u64 * (1 << 21)
-        + index_of(virt, 21) as u64 * (1 << 12);
-    (base + index_of(virt, 12) as u64 * 8) as *mut u64
+    rec_entry(
+        index_of(virt, 39),
+        index_of(virt, 30),
+        index_of(virt, 21),
+        index_of(virt, 12) as u64 * 8,
+    )
 }
 
 /// Higher-half alias of a physical address inside the 1 GiB bring-up

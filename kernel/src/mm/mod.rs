@@ -6,6 +6,8 @@
 
 pub mod bump;
 #[cfg(target_arch = "x86_64")]
+pub mod heap;
+#[cfg(target_arch = "x86_64")]
 pub mod paging;
 pub mod pmm;
 

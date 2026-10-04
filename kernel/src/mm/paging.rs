@@ -44,6 +44,9 @@ pub const KERNEL_BASE: u64 = 0xFFFF_FFFF_8000_0000;
 /// heap and scratch pages, one PDPT slot above the physmap alias.
 pub const HEAP_BASE: u64 = KERNEL_BASE + 1024 * 1024 * 1024;
 
+/// Scratch page slot, above the 8 MiB heap arena: self-test territory.
+pub const SCRATCH_BASE: u64 = HEAP_BASE + 16 * 1024 * 1024;
+
 /// PML4 index of the higher-half kernel window.
 const PML4_KERNEL: usize = 511;
 
@@ -57,6 +60,18 @@ const PRESENT: u64 = 1 << 0;
 const WRITE: u64 = 1 << 1;
 const NO_CACHE: u64 = 1 << 4;
 const HUGE: u64 = 1 << 7;
+
+/// Frames spent on page tables, bumped as tables come into existence.
+static TABLE_FRAMES: core::sync::atomic::AtomicU64 = core::sync::atomic::AtomicU64::new(0);
+
+fn count_table() {
+    TABLE_FRAMES.fetch_add(1, core::sync::atomic::Ordering::Relaxed);
+}
+
+/// Frames of RAM currently invested in page tables themselves.
+pub fn table_frames() -> u64 {
+    TABLE_FRAMES.load(core::sync::atomic::Ordering::Relaxed)
+}
 
 /// Address bits of a 4 KiB page-table entry.
 const ADDR_MASK_4K: u64 = 0x000F_FFFF_FFFF_F000;
@@ -253,6 +268,7 @@ unsafe fn ensure_table(entry: *mut u64) -> bool {
     // alias that stays installed for the whole bring-up.
     core::ptr::write_bytes(frame as *mut u64, 0, (PAGE_SIZE / 8) as usize);
     entry.write_volatile(frame | PRESENT | WRITE);
+    count_table();
     false
 }
 
@@ -326,6 +342,10 @@ pub fn init() {
             .add(PML4_RECURSIVE)
             .write_volatile(pml4 | PRESENT | WRITE);
     }
+    // The PML4, the kernel-window PDPT and the physmap PD.
+    count_table();
+    count_table();
+    count_table();
 
     cr3_write(pml4);
 

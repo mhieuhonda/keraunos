@@ -8,8 +8,12 @@ pub mod bump;
 #[cfg(target_arch = "x86_64")]
 pub mod heap;
 #[cfg(target_arch = "x86_64")]
+pub mod meminfo;
+#[cfg(target_arch = "x86_64")]
 pub mod paging;
 pub mod pmm;
+#[cfg(target_arch = "x86_64")]
+pub mod selftest;
 
 /// Canonical page/frame size on every supported architecture.
 pub const PAGE_SIZE: u64 = 4096;

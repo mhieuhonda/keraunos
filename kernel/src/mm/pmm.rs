@@ -501,3 +501,8 @@ pub fn zone_stats(zone: Zone) -> ZoneStats {
 pub fn free_frames() -> u64 {
     pmm().free_frames
 }
+
+/// Managed RAM across all zones, in KiB.
+pub fn total_frames_kib() -> u64 {
+    pmm().total_frames * PAGE_SIZE / 1024
+}

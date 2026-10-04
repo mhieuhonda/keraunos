@@ -367,18 +367,11 @@ extern "C" fn kmain(magic: u32, mbi_addr: usize) -> ! {
         kerror!("mm", "frame round trip leaked a frame");
         arch::halt_forever();
     }
-    let (dma, normal, high) = (
-        mm::pmm::zone_stats(mm::pmm::Zone::Dma),
-        mm::pmm::zone_stats(mm::pmm::Zone::Normal),
-        mm::pmm::zone_stats(mm::pmm::Zone::High),
-    );
-    kinfo!(
-        "mm",
-        "zones free: dma {} KiB, normal {} KiB, high {} KiB",
-        dma.free * mm::PAGE_SIZE / 1024,
-        normal.free * mm::PAGE_SIZE / 1024,
-        high.free * mm::PAGE_SIZE / 1024
-    );
+
+    // The M2 acceptance gate: stress every allocator, require zero leaks,
+    // then publish the accounting in /proc/meminfo shape.
+    mm::selftest::run();
+    mm::meminfo::Snapshot::take().print();
 
     print_subsystem_table();
 

@@ -1,10 +1,11 @@
 //! Memory management subsystem.
 //!
-//! Milestone plan (see `docs/ROADMAP.md`): boot memory map -> bump
-//! allocator (today) -> PMM bitmap -> upper-half page tables -> kernel heap
-//! -> per-CPU slab caches -> user address spaces.
+//! Bring-up order (see `docs/ROADMAP.md`): boot memory map -> bump
+//! allocator -> bitmap PMM (M2) -> page tables with the kernel mapped in
+//! the higher half (M2) -> slab heap (M2) -> user address spaces (M3+).
 
 pub mod bump;
+pub mod pmm;
 
 /// Canonical page/frame size on every supported architecture.
 pub const PAGE_SIZE: u64 = 4096;

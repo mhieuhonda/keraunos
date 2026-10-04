@@ -146,7 +146,9 @@ uc.reg_write(UC_X86_REG_EBX, MBI_ADDR)
 uc.reg_write(UC_X86_REG_RIP, entry)
 
 try:
-    uc.emu_start(entry, 0, timeout=60_000_000, count=20_000_000)
+    # The debug build's unoptimized loops (bitmap sweeps, slab poisoning)
+    # need real instruction headroom; release fits far below this.
+    uc.emu_start(entry, 0, timeout=120_000_000, count=400_000_000)
 except UcError as e:
     print(f"!! emulation stopped with error: {e} (rip={uc.reg_read(UC_X86_REG_RIP):#x})")
 

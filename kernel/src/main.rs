@@ -296,10 +296,45 @@ extern "C" fn kmain(magic: u32, mbi_addr: usize) -> ! {
         }
     };
     kinfo!("mm", "early bump allocator armed above the kernel image");
-    match frame_alloc.alloc_contiguous(1) {
-        Some(frame) => kinfo!("mm", "frame smoke test: {:#012x} (4 KiB) ok", frame),
-        None => kerror!("mm", "frame allocation failed"),
+
+    // The bitmap PMM takes over frame management; the bump retires into it.
+    mm::pmm::init(&map, &mut frame_alloc);
+
+    // Frame smoke test: round-trip a lone frame and a contiguous run
+    // through the Normal zone; the free count must come back exactly.
+    let free_before = mm::pmm::free_frames();
+    let frame = match mm::pmm::alloc(mm::pmm::Zone::Normal) {
+        Some(frame) => frame,
+        None => {
+            kerror!("mm", "frame allocation failed");
+            arch::halt_forever();
+        }
+    };
+    kinfo!("mm", "frame smoke test: {:#012x} (4 KiB) ok", frame);
+    mm::pmm::free(frame);
+    match mm::pmm::alloc_contiguous(mm::pmm::Zone::Normal, 2) {
+        Some(run) => mm::pmm::free_contiguous(run, 2),
+        None => {
+            kerror!("mm", "contiguous frame allocation failed");
+            arch::halt_forever();
+        }
     }
+    if mm::pmm::free_frames() != free_before {
+        kerror!("mm", "frame round trip leaked a frame");
+        arch::halt_forever();
+    }
+    let (dma, normal, high) = (
+        mm::pmm::zone_stats(mm::pmm::Zone::Dma),
+        mm::pmm::zone_stats(mm::pmm::Zone::Normal),
+        mm::pmm::zone_stats(mm::pmm::Zone::High),
+    );
+    kinfo!(
+        "mm",
+        "zones free: dma {} KiB, normal {} KiB, high {} KiB",
+        dma.free * mm::PAGE_SIZE / 1024,
+        normal.free * mm::PAGE_SIZE / 1024,
+        high.free * mm::PAGE_SIZE / 1024
+    );
 
     print_subsystem_table();
 

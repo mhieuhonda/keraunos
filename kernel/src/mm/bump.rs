@@ -62,4 +62,10 @@ impl BumpAllocator {
     pub fn remaining_frames(&self) -> u64 {
         self.end.saturating_sub(self.cursor) / PAGE_SIZE
     }
+
+    /// Next physical address the bump would hand out. The PMM reads this
+    /// once to learn how much early-allocated RAM to keep reserved.
+    pub fn cursor(&self) -> u64 {
+        self.cursor
+    }
 }

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 180" role="img" aria-label="Keraunos">
+  <!-- Keraunos wordmark: thunderbolt monogram + type -->
+  <defs>
+    <linearGradient id="bolt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7dd3fc"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="840" height="180" fill="none"/>
+  <g transform="translate(24,28)">
+    <!-- stylized lightning bolt, 2:3-ish -->
+    <path d="M52 0 L18 62 H40 L28 124 L88 48 H58 Z" fill="url(#bolt)" stroke="#0ea5e9" stroke-width="3" stroke-linejoin="round"/>
+  </g>
+  <text x="150" y="118" font-family="ui-monospace, 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace"
+        font-size="76" font-weight="700" letter-spacing="4" fill="#e2e8f0">Keraun<tspan fill="#38bdf8">OS</tspan></text>
+</svg>

@@ -70,29 +70,104 @@ global_asm! {
     "_mb2_header_end:",
 
     // ------------------------------------------------------------------
-    // 64-bit entry point. GRUB2 loads ELF64 multiboot2 kernels and enters
-    // them in long mode with identity paging; no stack is provided and
-    // .bss is not guaranteed to be zeroed, so we do both ourselves.
+    // Entry point. GRUB2 hands off in 32-bit protected mode with paging
+    // disabled (EAX = multiboot2 magic, EBX = MBI pointer), even for
+    // ELF64 images. The 32-bit stub saves the hand-off registers, loads
+    // the boot GDT, builds identity page tables (1 GiB, 2 MiB pages),
+    // enables PAE + EFER.LME + paging and far-jumps into 64-bit mode.
+    // The 64-bit continuation then installs the boot stack, zeroes .bss
+    // and hands (magic, mbi) to kmain.
     // ------------------------------------------------------------------
     ".section .text.entry",
     ".align 16",
+    ".code32",
     ".global _start",
     "_start:",
-    "    mov r12, rax",                          // preserve multiboot2 magic
-    "    mov r13, rbx",                          // preserve MBI pointer
+    "    mov esi, eax",                          // save multiboot2 magic (survives the stub)
+    "    mov ebp, ebx",                          // save MBI pointer (EDI is used by rep stosd)
     "    cld",
-    "    lea rsp, [rip + _stack_top]",           // switch to the boot stack
+    "    lgdt [boot_gdt_ptr]",
+    // --- build identity page tables in .boot_pgtables (12 KiB) ---
+    // (lea reg, [symbol] loads the symbol's address; AT&T's $-immediate
+    // syntax is unusable inside global_asm! because $ marks operands)
+    "    lea edi, [_pml4]",
+    "    xor eax, eax",
+    "    mov ecx, 3072",                         // 3 pages of dwords
+    "    rep stosd",
+    "    lea eax, [_pdpt]",
+    "    or eax, 3",                             // PRESENT | WRITE
+    "    mov [_pml4], eax",
+    "    lea eax, [_pd]",
+    "    or eax, 3",                             // PRESENT | WRITE
+    "    mov [_pdpt], eax",
+    "    lea edi, [_pd]",
+    "    mov ecx, 512",
+    "    xor eax, eax",
+    "1:  mov edx, eax",
+    "    shl edx, 21",                            // i-th 2 MiB frame
+    "    or edx, 0x83",                          // PS | RW | PRESENT
+    "    mov [edi], edx",
+    "    add edi, 8",
+    "    inc eax",
+    "    loop 1b",
+    // --- enable PAE, load CR3, set EFER.LME, enable paging ---
+    "    mov eax, cr4",
+    "    or eax, 0x20",                           // PAE
+    "    mov cr4, eax",
+    "    lea eax, [_pml4]",
+    "    mov cr3, eax",
+    "    mov ecx, 0xC0000080",                    // IA32_EFER
+    "    rdmsr",
+    "    or eax, 0x100",                          // LME
+    "    wrmsr",
+    "    mov eax, cr0",
+    "    or eax, 0x80000000",                     // PG (PE is already set)
+    "    mov cr0, eax",
+    // Far jump into the 64-bit code segment (selector 0x08). Encoded
+    // manually (0xEA = JMP ptr16:32) because the assembler's $-syntax for
+    // far jumps collides with inline-asm operand markers.
+    "    .byte 0xEA",
+    "    .long keraunos_long_mode",
+    "    .short 0x08",
+
+    ".code64",
+    ".global keraunos_long_mode",
+    "keraunos_long_mode:",
+    "    mov ax, 0x10",                           // data selectors
+    "    mov ds, ax",
+    "    mov es, ax",
+    "    mov ss, ax",
+    "    mov fs, ax",
+    "    mov gs, ax",
+    "    mov rdx, rsi",                           // magic
+    "    mov r8, rbp",                            // MBI pointer (saved in EBP by the 32-bit stub)
+    "    lea rsp, [rip + _stack_top]",            // boot stack
     "    lea rdi, [rip + __bss_start]",
     "    lea rcx, [rip + __bss_end]",
     "    sub rcx, rdi",
     "    xor eax, eax",
-    "    rep stosb",                             // zero .bss
-    "    mov rdi, r12",
-    "    mov rsi, r13",
+    "    rep stosb",                              // zero .bss
+    "    mov rdi, rdx",                           // kmain(magic, mbi)
+    "    mov rsi, r8",
     "    call kmain",
-    "2:  cli",                                   // kmain never returns; belt & braces
+    "2:  cli",                                    // kmain never returns; belt & braces
     "    hlt",
     "    jmp 2b",
+
+    // ------------------------------------------------------------------
+    // Boot GDT: null / 64-bit code / data. Used by the 32-bit stub for
+    // the mode switch; kmain loads its own GDT afterwards (harmless).
+    // ------------------------------------------------------------------
+    ".section .rodata",
+    ".align 8",
+    "boot_gdt:",
+    "    .quad 0",
+    "    .quad 0x00209A0000000000",               // code64: L=1, D=0
+    "    .quad 0x0000920000000000",               // data64
+    "boot_gdt_end:",
+    "boot_gdt_ptr:",
+    "    .word boot_gdt_end - boot_gdt - 1",
+    "    .long boot_gdt",
 }
 
 /// Multiboot2 hand-off, called by the boot stub above.

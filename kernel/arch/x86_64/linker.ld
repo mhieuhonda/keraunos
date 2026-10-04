@@ -35,6 +35,19 @@ SECTIONS
         __bss_end = .;
     }
 
+    /* Boot page tables (PML4 / PDPT / PD), built by the 32-bit entry
+       stub. Deliberately outside [__bss_start, __bss_end) so the 64-bit
+       continuation's .bss sweep cannot wipe them. */
+    .boot_pgtables (NOLOAD) : ALIGN(4K)
+    {
+        _pml4 = .;
+        . += 4K;
+        _pdpt = .;
+        . += 4K;
+        _pd = .;
+        . += 4K;
+    }
+
     /* Boot stack (not zeroed by the entry stub). */
     .stack (NOLOAD) : ALIGN(16)
     {

@@ -2,9 +2,12 @@
 """Boot Keraunos under the Unicorn CPU emulator.
 
 This is a protocol-level smoke test: we emulate what GRUB2 does — load the
-ELF PT_LOAD segments, build a multiboot2 information block, put the magic in
-EAX and the MBI pointer in EBX — then execute the kernel entry on an
-emulated x86-64 CPU until it parks in its halt loop.
+ELF PT_LOAD segments, build a multiboot2 information block, then hand off
+**in 32-bit protected mode with paging disabled** (EAX = multiboot2 magic,
+EBX = MBI pointer), exactly as the multiboot2 specification prescribes.
+The kernel's own entry stub performs the switch to 64-bit long mode
+(PAE, identity page tables, EFER.LME, far jump); emulation runs until the
+kernel parks in its halt loop.
 
 Device model:
   * 16550 UART on COM1 — LSR always reports THR-empty; TX bytes captured.
@@ -18,11 +21,11 @@ import struct
 import sys
 
 import unicorn
-from unicorn import Uc, UC_ARCH_X86, UC_MODE_64, UcError
+from unicorn import Uc, UC_ARCH_X86, UC_MODE_32, UcError
 from unicorn import UC_HOOK_INSN, UC_HOOK_MEM_INVALID, UC_HOOK_INTR
 from unicorn.x86_const import (
-    UC_X86_REG_RAX, UC_X86_REG_RBX, UC_X86_REG_RCX, UC_X86_REG_RDX,
-    UC_X86_REG_RIP, UC_X86_REG_RSP,
+    UC_X86_REG_EAX, UC_X86_REG_EBX, UC_X86_REG_ECX, UC_X86_REG_EDX,
+    UC_X86_REG_RIP,
     UC_X86_INS_IN, UC_X86_INS_OUT, UC_X86_INS_CPUID,
 )
 
@@ -94,17 +97,20 @@ def hook_out(uc, port, size, value, user_data):
 
 
 def hook_cpuid(uc, user_data):
-    rax = uc.reg_read(UC_X86_REG_RAX)
+    # NOTE: 32-bit register ids only — on a MODE_32 unicorn the 64-bit ids
+    # (RAX/RBX/...) are deprecated no-ops even after the kernel switches the
+    # CPU into long mode.
+    rax = uc.reg_read(UC_X86_REG_EAX)
     if rax == 0:
-        uc.reg_write(UC_X86_REG_RAX, 0)
-        uc.reg_write(UC_X86_REG_RBX, int.from_bytes(b"Unic", "little"))
-        uc.reg_write(UC_X86_REG_RDX, int.from_bytes(b"ornC", "little"))
-        uc.reg_write(UC_X86_REG_RCX, int.from_bytes(b"PU\x00\x00", "little"))
+        uc.reg_write(UC_X86_REG_EAX, 0)
+        uc.reg_write(UC_X86_REG_EBX, int.from_bytes(b"Unic", "little"))
+        uc.reg_write(UC_X86_REG_EDX, int.from_bytes(b"ornC", "little"))
+        uc.reg_write(UC_X86_REG_ECX, int.from_bytes(b"PU\x00\x00", "little"))
     else:
-        uc.reg_write(UC_X86_REG_RAX, 0)
-        uc.reg_write(UC_X86_REG_RBX, 0)
-        uc.reg_write(UC_X86_REG_RCX, 0)
-        uc.reg_write(UC_X86_REG_RDX, 0)
+        uc.reg_write(UC_X86_REG_EAX, 0)
+        uc.reg_write(UC_X86_REG_EBX, 0)
+        uc.reg_write(UC_X86_REG_ECX, 0)
+        uc.reg_write(UC_X86_REG_EDX, 0)
     return 1                       # handled: skip native execution
 
 
@@ -119,7 +125,7 @@ def hook_mem_invalid(uc, access, address, size, value, user_data):
 
 # ------------------------------------------------------------------------ run
 
-uc = Uc(UC_ARCH_X86, UC_MODE_64)
+uc = Uc(UC_ARCH_X86, UC_MODE_32)   # GRUB hands off in 32-bit protected mode
 uc.mem_map(0, MEM_SIZE)
 
 uc.hook_add(UC_HOOK_INSN, hook_in, None, 1, 0, UC_X86_INS_IN)
@@ -135,9 +141,8 @@ mbi = build_mbi()
 uc.mem_write(MBI_ADDR, mbi)
 print(f"multiboot2 MBI: {len(mbi)} bytes @ {MBI_ADDR:#x}")
 
-uc.reg_write(UC_X86_REG_RAX, MB2_BOOT_MAGIC)
-uc.reg_write(UC_X86_REG_RBX, MBI_ADDR)
-uc.reg_write(UC_X86_REG_RSP, 0x0009_0000)  # entry stub switches to its own stack
+uc.reg_write(UC_X86_REG_EAX, MB2_BOOT_MAGIC)
+uc.reg_write(UC_X86_REG_EBX, MBI_ADDR)
 uc.reg_write(UC_X86_REG_RIP, entry)
 
 try:

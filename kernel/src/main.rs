@@ -73,7 +73,7 @@ const SUBSYSTEMS: &[ui::Subsystem] = &[
     ui::Subsystem {
         name: "mm",
         state: Online,
-        note: "memory map + bump frames",
+        note: "bitmap pmm + slab heap",
     },
     ui::Subsystem {
         name: "interrupts",
@@ -390,6 +390,15 @@ fn start_desktop_session(mbi: &boot::multiboot2::Info, vendor: &str) {
     let map = mbi.memory_map();
     let mut snapshot = [0u8; console::MIRROR_BYTES];
     let boot_log = console::mirror_snapshot(&mut snapshot);
+    let mem = mm::meminfo::Snapshot::take();
+    let facts = ui::MemFacts {
+        total_kib: mem.total_kib,
+        free_kib: mem.free_kib,
+        reserved_kib: mem.reserved_kib,
+        heap_used_kib: mem.heap_used_kib,
+        heap_arena_kib: mem.heap_arena_kib,
+        table_frames: mem.table_frames,
+    };
     let info = ui::SessionInfo {
         version: VERSION,
         arch: "x86-64",
@@ -398,6 +407,7 @@ fn start_desktop_session(mbi: &boot::multiboot2::Info, vendor: &str) {
         cmdline: mbi.cmdline().filter(|cmd| !cmd.is_empty()),
         regions: map.regions().len(),
         usable_kib: map.usable_bytes() / 1024,
+        mem: &facts,
         subsystems: SUBSYSTEMS,
         boot_log,
         log: console::log_info,

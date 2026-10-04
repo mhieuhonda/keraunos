@@ -179,6 +179,13 @@ checks = {
     "cpu vendor": "UnicornCPU" in text,
     "memory map": "usable" in text,
     "bump alloc": "bump allocator armed" in text,
+    # M2: bitmap PMM, higher-half paging, slab heap.
+    "pmm armed": "bitmap pmm armed" in text,
+    "higher-half paging": "kernel mapped in the higher half" in text,
+    "slab heap": "heap: slab caches online" in text,
+    "heap smoke": "heap smoke test" in text,
+    "meminfo": "MemTotal" in text,
+    "self-test pass": "self-test: PASS" in text and "0 leaks" in text,
     "frame smoke": "frame smoke test" in text,
     "subsystem table": "subsystem bring-up status" in text,
     "session handoff": "console handoff: vga sink detached" in text,
@@ -187,6 +194,7 @@ checks = {
     # Desktop assertions on the decoded VGA screen.
     "desktop top bar": any(l.startswith(" Keraunos ") for l in screen_lines),
     "desktop windows": "usable memory" in "\n".join(screen_lines),
+    "desktop paging row": "higher-half" in "\n".join(screen_lines),
     "desktop notification": "BOOT OK  Keraunos" in "\n".join(screen_lines),
 }
 print("checks:")

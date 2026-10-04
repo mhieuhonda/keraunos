@@ -108,6 +108,24 @@ pub struct Subsystem {
     pub note: &'static str,
 }
 
+/// Memory facts the kernel publishes from its meminfo snapshot. Plain
+/// data: the desktop does arithmetic, never measurement.
+#[derive(Debug, Clone, Copy)]
+pub struct MemFacts {
+    /// Managed RAM, KiB.
+    pub total_kib: u64,
+    /// Free frames, KiB.
+    pub free_kib: u64,
+    /// Kernel image, boot data and allocator metadata, KiB.
+    pub reserved_kib: u64,
+    /// Slab payload bytes in use, KiB.
+    pub heap_used_kib: u64,
+    /// Heap arena frames mapped so far, KiB.
+    pub heap_arena_kib: u64,
+    /// Frames invested in page tables themselves.
+    pub table_frames: u64,
+}
+
 /// Facts the kernel hands to the session. Everything shown on the desktop
 /// comes from here, so the interface cannot drift from the truth.
 pub struct SessionInfo<'a> {
@@ -118,6 +136,7 @@ pub struct SessionInfo<'a> {
     pub cmdline: Option<&'a str>,
     pub regions: usize,
     pub usable_kib: u64,
+    pub mem: &'a MemFacts,
     pub subsystems: &'a [Subsystem],
     /// Captured boot log, newline-terminated lines, newest last.
     pub boot_log: &'a [u8],

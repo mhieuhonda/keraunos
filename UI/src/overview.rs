@@ -52,7 +52,7 @@ pub fn render_memory(cv: &mut Canvas, rect: Rect, info: &SessionInfo) {
     let mut buf = [0u8; 32];
     let usable = kib_string(info.usable_kib, &mut buf);
     cv.field(x, y, usable, ST_BODY, w);
-    y += 2;
+    y += 1;
 
     let mut num = [0u8; 20];
     let mut line = [0u8; 32];
@@ -61,11 +61,38 @@ pub fn render_memory(cv: &mut Canvas, rect: Rect, info: &SessionInfo) {
     push_bytes(&mut line, &mut n, b" regions");
     cv.kv(x, y, "boot map", &line[..n], w);
     y += 1;
-    cv.kv(x, y, "frames", b"bump armed", w);
+
+    let mut n = 0;
+    push_bytes(&mut line, &mut n, u64_to_dec(info.mem.total_kib, &mut num));
+    push_bytes(&mut line, &mut n, b" KiB");
+    cv.kv(x, y, "total", &line[..n], w);
     y += 1;
+
+    let mut n = 0;
+    push_bytes(&mut line, &mut n, u64_to_dec(info.mem.free_kib, &mut num));
+    push_bytes(&mut line, &mut n, b" KiB");
+    cv.kv(x, y, "free", &line[..n], w);
+    y += 1;
+
+    let mut n = 0;
+    push_bytes(
+        &mut line,
+        &mut n,
+        u64_to_dec(info.mem.heap_used_kib, &mut num),
+    );
+    push_bytes(&mut line, &mut n, b"/");
+    push_bytes(
+        &mut line,
+        &mut n,
+        u64_to_dec(info.mem.heap_arena_kib, &mut num),
+    );
+    push_bytes(&mut line, &mut n, b" KiB");
+    cv.kv(x, y, "heap", &line[..n], w);
+    y += 1;
+
     cv.kv(x, y, "page size", b"4 KiB", w);
     y += 1;
-    cv.kv(x, y, "paging", b"identity map", w);
+    cv.kv(x, y, "paging", b"higher-half", w);
 }
 
 pub fn render_log(cv: &mut Canvas, rect: Rect, info: &SessionInfo) {
@@ -143,7 +170,7 @@ pub fn render_status(cv: &mut Canvas, rect: Rect, info: &SessionInfo) {
         y += 1;
     }
     if y < bottom {
-        cv.field(x, y, b"milestone M0 complete", ST_MUTED, w);
+        cv.field(x, y, b"milestone M2 complete", ST_MUTED, w);
         y += 1;
     }
     if y < bottom {

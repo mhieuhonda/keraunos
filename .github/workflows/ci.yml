@@ -15,10 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Rust (pinned 1.99)
-        run: |
-          curl -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.99 --profile minimal -c rustfmt,clippy
-          echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
+      - name: Install pinned toolchain (from rust-toolchain.toml)
+        run: rustup show
       - name: rustfmt
         run: cargo fmt --all -- --check
       - name: clippy
@@ -32,10 +30,8 @@ jobs:
         profile: [debug, release]
     steps:
       - uses: actions/checkout@v4
-      - name: Install Rust (pinned 1.99)
-        run: |
-          curl -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.99 --profile minimal
-          echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
+      - name: Install pinned toolchain (from rust-toolchain.toml)
+        run: rustup show
       - name: Build kernel
         run: cargo build ${{ matrix.profile == 'release' && '--release' || '' }}
       - name: Upload kernel artifact
@@ -53,10 +49,8 @@ jobs:
         target: [aarch64-unknown-none, riscv64gc-unknown-none-elf]
     steps:
       - uses: actions/checkout@v4
-      - name: Install Rust (pinned 1.99)
-        run: |
-          curl -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.99 --profile minimal
-          echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
+      - name: Install pinned toolchain (from rust-toolchain.toml)
+        run: rustup show
       - name: cargo check
         run: cargo check --target ${{ matrix.target }}
 
@@ -102,10 +96,10 @@ jobs:
         run: tools/mkiso.sh
       - name: Boot smoke test
         run: tools/qemu-boot.sh build/keraunos.iso 90
-      - name: Upload boot log on failure
+      - name: Upload boot artifacts on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: qemu-boot-log
-          path: build/keraunos.iso
+          name: qemu-boot-artifacts
+          path: build/
           retention-days: 7

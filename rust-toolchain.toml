@@ -1,6 +1,12 @@
 # Keraunos pins the Rust toolchain for reproducible kernel builds.
-# CI falls back to the latest stable release when 1.99 is unavailable on a runner.
+# rustup installs the channel, components and targets listed here on the
+# first `cargo`/`rustup` invocation inside the project.
 [toolchain]
 channel = "1.99"
+targets = [
+    "x86_64-unknown-none",
+    "aarch64-unknown-none",
+    "riscv64gc-unknown-none-elf",
+]
 components = ["rustfmt", "clippy"]
 profile = "minimal"

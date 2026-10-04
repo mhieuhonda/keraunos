@@ -1,0 +1,36 @@
+$variant: @Variant@;
+$use_gresource: @UseGResource@;
+$contrast: @Contrast@;
+
+@import 'sass-utils';
+
+@function yaru_url_handler($arg) {
+    $url: unquote($arg);
+
+    @if not $use_gresource {
+        $resource_prefix: "resource://";
+        @if str-starts-with($url, $resource_prefix) {
+            $url: str-basename($url);
+        }
+    }
+
+    @if $url != $arg {
+        @debug($arg + " -> " + $url);
+    }
+
+    @return url(quote($url));
+}
+
+@debug 'Generating GNOME Shell ' + $variant + ' theme (contrast: '+ $contrast + ')';
+
+@import "gnome-shell-sass/_@Colors@";
+@import "gnome-shell-sass/_color-overrides";
+@import "gnome-shell-sass/_drawing";
+@import "gnome-shell-sass/_common";
+@import "gnome-shell-sass/_widgets";
+@import "gnome-shell-sass/_dock";
+@import "gnome-shell-sass/_tweaks"; // Yaru custom tweaks (loaded last to override upstream)
+
+@if not variable-exists(yaru_default_colors_overrides_done) {
+    @error "Yaru color overrides not applied. Please check the _yaru-default-colors.scss file.";
+}

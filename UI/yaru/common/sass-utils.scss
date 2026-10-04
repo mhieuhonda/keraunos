@@ -1,0 +1,300 @@
+// Copyright © 2022, Canonical Ltd
+//
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library. If not, see <http://www.gnu.org/licenses/>.
+// Authors:
+//       Marco Trevisan <marco.trevisan@canonical.com>
+
+@function str-contains($str, $substring) {
+    @return str-index($str, $substring) != null;
+}
+
+@function str-starts-with($str, $substring) {
+    @return str-index($str, $substring) == 1;
+}
+
+@function str-ends-with($str, $substring) {
+    $index: str-index($str, $substring);
+    @if ($index == null) {
+        @return false;
+    }
+
+    @return ($index + str-length($substring) - 1) == str-length($str);
+}
+
+@function str-basename($str, $divider: '/') {
+    $index: str-index($str, $divider);
+
+    @while $index != null {
+        $str: str-slice($str, $index + 1);
+        $index: str-index($str, $divider);
+    }
+
+    @return $str;
+}
+
+@function str-extension($str) {
+    $extension: str-basename($str, '.');
+    @return if($extension == $str, null, $extension);
+}
+
+@function str-dirname($str, $divider: '/') {
+    $str_copy: $str;
+    $index: str-index($str, $divider);
+    $last_index: null;
+
+    @while $index != null {
+        $str: str-slice($str, $index + 1);
+        $last_index: if($last_index, $last_index, 0) + $index;
+        $index: str-index($str, $divider);
+    }
+
+    @return if($last_index, str-slice($str_copy, 1, $last_index - 1), '.');
+}
+
+@function list-length($list) {
+    @return length($list);
+}
+
+@function list-nth($list, $nth) {
+    $length: length($list);
+    @if ($length == 0 or abs($nth) > $length) {
+        @return null;
+    }
+
+    @if ($nth >= 0) {
+        $nth: $nth + 1;
+    }
+
+    @return nth($list, $nth);
+}
+
+@function list-index($list, $item) {
+    $i: 0;
+    @each $e in $list {
+        @if ($e == $item) {
+            @return $i;
+        }
+
+        $i: $i + 1;
+    }
+
+    @return null;
+}
+
+@function pow($base, $exponent, $root: 1) {
+    @if ($exponent == 0) {
+        @return 1;
+    }
+
+    @if ($base == 0) {
+        @return 0;
+    }
+
+    @if ($root != 1) {
+        @if ($exponent == $root) {
+            @return $base;
+        }
+        $base: nth-root($base, $root);
+    }
+
+    @if $exponent < 0 {
+        $base: 1 / $base;
+        $exponent: -$exponent;
+    } @else if ($exponent % 2 == 0) {
+        $half-pow: pow($base, $exponent / 2);
+        @return $half-pow * $half-pow;
+    }
+
+    $i: 1;
+    $val: $base;
+    @while ($i < $exponent) {
+        $val: $val * $base;
+        $i: $i + 1;
+    }
+
+    @return $val;
+}
+
+@function nth-root($value, $n, $max_iterations: 100) {
+    @if ($n <= 0) {
+        @error "Not supported"
+    }
+
+    @if ($n == 1 or $value == 0) {
+        @return $value;
+    }
+
+    $i: 1;
+    $pre-val: 1;
+    @while ($i < $max_iterations) {
+        $val: (1.0 / $n) * ((($n - 1) * $pre-val) + $value / pow($pre-val, $n - 1));
+
+        @if ($pre-val == $val) {
+            @return $val;
+        }
+
+        $pre-val: $val;
+        $i: $i + 1;
+    }
+
+    @error ("Failed to compute " + $n + "th root of " + $value + " in " +
+            $max_iterations + " iterations");
+}
+
+@function truncate($value, $decimals: 10) {
+    @if ($decimals < 0) {
+        @error "Not supported"
+    }
+
+    $multiplier: pow(10, $decimals);
+    @return floor($value * $multiplier) / $multiplier;
+}
+
+// Linearize a single sRGB channel (0 - 255 -> 0 - 1)
+@function srgb-channel-to-linear($value) {
+    $value: $value / 255;
+    @if $value < 0.03928 {
+        @return $value / 12.92;
+    } @else {
+        @return pow(($value + 0.055) / 1.055, 12, 5);
+    }
+}
+
+// Gamma-encode a linear value (0 - 1 -> 0 - 1)
+@function linear-to-srgb-channel($value) {
+    $value: max(0, min(1, $value));
+    @if $value <= 0.0031308 {
+        @return $value * 12.92;
+    } @else {
+        @return 1.055 * pow($value, 5, 12) - 0.055;
+    }
+}
+
+@import 'oklab';
+
+// WCAG 2.x relative luminance (linear sRGB, 0 - 1)
+@function luminance($color) {
+    $r: srgb-channel-to-linear(red($color));
+    $g: srgb-channel-to-linear(green($color));
+    $b: srgb-channel-to-linear(blue($color));
+    @return $r * 0.2126 + $g * 0.7152 + $b * 0.0722;
+}
+
+@function color-contrast($color1, $color2) {
+    $c1-luminance: luminance($color1);
+    $c2-luminance: luminance($color2);
+
+    $lighter-luminance: max($c1-luminance, $c2-luminance);
+    $darker-luminance: min($c1-luminance, $c2-luminance);
+
+    @return ($lighter-luminance + 0.05) / ($darker-luminance + 0.05);
+}
+
+@function optimize-contrast($bg, $fg, $large-text: false, $target: 4.5) {
+    @if ($large-text and $target == 4.5) {
+        $target: 3;
+    }
+
+    $fg-oklab: srgb-to-oklab($fg);
+    // Snap a,b to 0 for achromatic inputs (grays) to avoid float noise breaking grays
+    $achromatic: red($fg) == green($fg) and green($fg) == blue($fg);
+    $fg-a: if($achromatic, 0, nth($fg-oklab, 2));
+    $fg-b: if($achromatic, 0, nth($fg-oklab, 3));
+
+    // Binary search Oklab lightness between the original L and the
+    // boundary (0 or 1) to find the value closest to the original
+    // that still meets the contrast target.
+    $dark-bg: luminance($fg) > luminance($bg);
+    $lo: if($dark-bg, nth($fg-oklab, 1), 0);
+    $hi: if($dark-bg, 1, nth($fg-oklab, 1));
+
+    // Verify the boundary can actually reach the target
+    $boundary-fg: oklab-to-srgb(if($dark-bg, $hi, $lo), $fg-a, $fg-b);
+    @if (color-contrast($bg, $boundary-fg) < $target) {
+        @error "Cannot reach contrast target " + $target + " for " +
+            $fg + " on " + $bg;
+    }
+
+    @for $i from 1 through 24 {
+        $mid: ($lo + $hi) / 2;
+        $mid-fg: oklab-to-srgb($mid, $fg-a, $fg-b);
+        @if (color-contrast($bg, $mid-fg) >= $target) {
+            @if ($dark-bg) { $hi: $mid; }
+            @else { $lo: $mid; }
+            $fg: $mid-fg;
+        } @else {
+            @if ($dark-bg) { $lo: $mid; }
+            @else { $hi: $mid; }
+        }
+    }
+
+    // Relax toward original in Oklab L, preserving hue.
+    $current-L: nth(srgb-to-oklab($fg), 1);
+    $orig-L: nth($fg-oklab, 1);
+    @if ($current-L != $orig-L) {
+        $L-step: if($orig-L > $current-L, 0.001, -0.001);
+        $try-L: $current-L + $L-step;
+        $relaxing: true;
+        @while ($relaxing) {
+            @if (($L-step > 0 and $try-L > $orig-L) or ($L-step < 0 and $try-L < $orig-L)) {
+                $relaxing: false;
+            } @else {
+                $try: oklab-to-srgb($try-L, $fg-a, $fg-b);
+                @if (color-contrast($bg, $try) >= $target) {
+                    $fg: $try;
+                    $try-L: $try-L + $L-step;
+                } @else {
+                    $relaxing: false;
+                }
+            }
+        }
+    }
+
+    // For chromatic colors, nudge RGB channels toward original to
+    // close the quantization gap the Oklab L walk can't reach.
+    @if (not $achromatic) {
+        $initial-fg: oklab-to-srgb(nth($fg-oklab, 1), $fg-a, $fg-b);
+        $changed: true;
+        @while ($changed) {
+            $changed: false;
+            @if (red($fg) != red($initial-fg)) {
+                $try: change-color($fg, $red: red($fg) + if(red($initial-fg) > red($fg), 1, -1));
+                @if (color-contrast($bg, $try) >= $target) { $fg: $try; $changed: true; }
+            }
+            @if (green($fg) != green($initial-fg)) {
+                $try: change-color($fg, $green: green($fg) + if(green($initial-fg) > green($fg), 1, -1));
+                @if (color-contrast($bg, $try) >= $target) { $fg: $try; $changed: true; }
+            }
+            @if (blue($fg) != blue($initial-fg)) {
+                $try: change-color($fg, $blue: blue($fg) + if(blue($initial-fg) > blue($fg), 1, -1));
+                @if (color-contrast($bg, $try) >= $target) { $fg: $try; $changed: true; }
+            }
+        }
+    }
+
+    @return $fg;
+}
+
+@function composite($bg, $fg) {
+    @if alpha($bg) < 1 {
+        @error "Cannot composite with a non-opaque background color" $bg;
+    }
+
+    $alpha: alpha($fg);
+    @return rgb(
+      round(red($fg) * $alpha + red($bg) * (1 - $alpha)),
+      round(green($fg) * $alpha + green($bg) * (1 - $alpha)),
+      round(blue($fg) * $alpha + blue($bg) * (1 - $alpha))
+    );
+  }

@@ -1,0 +1,3 @@
+The `*/upstream` directories are just for documentation and to allow three way
+merges when updating to new versions of upstream themes, and they are not used
+for generating the final packages at all (cfr `meson.build` files).

@@ -1,0 +1,40 @@
+name: Build debian packages
+
+on:
+  push:
+    # branches: [master]
+    branches: "*"
+  pull_request:
+    branches: [master]
+
+jobs:
+  build-deb-packages:
+    name: Ubuntu Devel
+    runs-on: ubuntu-latest
+    env:
+      UBUNTU_VERSION: devel
+
+    steps:
+      - name: Checkout Yaru code
+        uses: actions/checkout@v7
+
+      - name: Build debian packages and sources
+        uses: canonical/desktop-engineering/gh-actions/common/build-debian@main
+        with:
+          docker-image: ubuntu:${{ env.UBUNTU_VERSION }}
+
+      - name: Install generated debs
+        uses: kohlerdominik/docker-run-action@v2.1.0
+        with:
+          image: ubuntu:${{ env.UBUNTU_VERSION }}
+          environment: |
+            TERM=dumb
+            DEBIAN_FRONTEND=noninteractive
+            DEBCONF_NONINTERACTIVE_SEEN=true
+          volumes: |
+            ${{ env.BUILD_OUTPUT_DIR }}:${{ env.BUILD_OUTPUT_DIR }}
+          workdir: ${{ env.BUILD_OUTPUT_DIR }}
+          shell: bash
+          run: |
+            apt update
+            apt install -y --simulate ./*.deb

@@ -1,0 +1,98 @@
+
+$accent_color: #35a854;
+$panel_bg: null;
+$panel_fg: null;
+$bg_color: null;
+$bg_color2: null;
+$bg_color3: null;
+$bg_color4: null;
+$panel_active_bg: null;
+$borders_color: null;
+$separator_color: null;
+$text_color: null;
+$fg_color: null;
+$noaccent_selected_fg_color: null;
+$dim_color: null;
+$link_color: null;
+$osd_destructive_color: null;
+$insensitive_fg_color: null;
+$entry_border: null;
+$button_bg: null;
+$corner_bar_highlighted: null;
+
+@if $variant == 'light' {
+    // Light Variant Colors
+    $bg_color: #ebebed;
+    $bg_color2: darken($bg_color, 9%);
+    $bg_color3: darken($bg_color, 22%);
+    $bg_color4: darken($bg_color, 16%);
+    $panel_bg: lighten($bg_color, 3%);
+    $panel_active_bg: $bg_color2;
+    $borders_color: darken($bg_color, 20%);
+    $separator_color: darken($bg_color, 15%);
+    $text_color: #303030;
+    $panel_fg: #303030;
+    $fg_color: #303030;
+    $noaccent_selected_fg_color: $text_color;
+    $dim_color: lighten($text_color, 20%);
+    $link_color: darken($accent_color,10%);
+    $osd_destructive_color: #F04A50;
+    $insensitive_fg_color: transparentize($fg_color, 0.45);
+    $entry_border: #cfd6e6;
+    $button_bg: $bg_color3;
+    $corner_bar_highlighted: darken($borders_color, 10%);
+} @else {
+    // Dark Variant Colors
+    $bg_color: #222226;
+    $bg_color2: lighten($bg_color, 6%);
+    $bg_color3: lighten($bg_color, 14%);
+    $bg_color4: lighten($bg_color, 9%);
+    $panel_bg: darken($bg_color, 2%);
+    $panel_active_bg: mix($bg_color3, $accent_color, 80%);
+    $borders_color: $bg_color2;
+    $separator_color: lighten($bg_color, 2%);
+    $panel_fg: #e1e1e1;
+    $text_color: #D3D3D3;
+    $fg_color: #e1e1e1;
+    $noaccent_selected_fg_color: #ffffff;
+    $dim_color: darken($text_color, 20%);
+    $link_color: lighten($accent_color,20%);
+    $osd_destructive_color: #c01c28;
+    $insensitive_fg_color: transparentize($fg_color, 0.55);
+    $entry_border: $borders_color;
+    $button_bg: $bg_color2;
+    $corner_bar_highlighted: lighten($borders_color, 10%);
+}
+
+
+// General
+$selected_fg_color: #ffffff;
+$radius: 6px;
+
+// Borders and separators
+$menus_border_color: transparentize(black, 1.0);
+$shadow_color: rgba(0, 0, 0, 0.5);
+
+$warning_color: #F27835;
+$error_color: #FC4138;
+$destructive_color: #F04A50;
+
+$tooltip_bg_color: transparentize(mix($accent_color, black, 95%), 0.05);
+$tooltip_fg_color: $selected_fg_color;
+$tooltip_border_color: #d0d0d0;
+
+$osd_fg_color: #c3c3c3;
+$osd_bg_color: #303030;
+
+$osd_button_bg: transparentize(lighten($osd_bg_color, 22%), 0.6);
+$osd_button_border: transparentize(darken($osd_bg_color, 20%), 0.6);
+
+$osd_entry_bg: transparentize(lighten($osd_bg_color, 22%), 0.6);
+$osd_entry_border: transparentize(darken($osd_bg_color, 12%), 0.6);
+
+$osd_insensitive_fg_color: mix($osd_fg_color, opacify($osd_bg_color, 1), 30%);
+
+$entry_bg: $bg_color2;
+$button_border: $entry_border;
+
+$corner_bar_unhighlighted: $borders_color;

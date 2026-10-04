@@ -1,0 +1,72 @@
+@import 'sass-utils';
+
+@function get_accent_color($accent_color, $is_dark: false) {
+    $color: null;
+    @if $accent_color == 'default' {
+        $color: #E95420;
+    } @else if $accent_color == 'bark' {
+        $color: #787859;
+    } @else if $accent_color == 'sage' {
+        $color: #657B69;
+    } @else if $accent_color == 'olive' {
+        $color: #4B8501;
+    } @else if $accent_color == 'viridian' {
+        $color: #03875B;
+    } @else if $accent_color == 'prussiangreen' {
+        $color: #308280;
+    } @else if $accent_color == 'blue' {
+        $color: #0073E5;
+    } @else if $accent_color == 'purple' {
+        $color: #7764D8;
+    } @else if $accent_color == 'magenta' {
+        $color: #B34CB3;
+    } @else if $accent_color == 'mate' {
+        $color: #87a556;
+    } @else if $accent_color == 'red' {
+        $color: #DA3450;
+    } @else if $accent_color == 'yellow' {
+        $color: #C88800;
+    } @else if $accent_color == 'wartybrown' {
+        $color: #B39169;
+    } @else {
+        @error('No known accent color defined!');
+    }
+    @debug('Using accent color ' + $accent_color + ': ' + $color);
+    @return $color;
+}
+
+$yaru_is_dark_variant: @yaru_dark_variant@;
+$jet: #181818;
+$yaru_dark_bg: lighten($jet, 8%);
+$yaru_light_bg: #FAFAFA;
+
+$yaru_bg_color: if($yaru_is_dark_variant, $yaru_dark_bg, $yaru_light_bg);
+$yaru_accent_bg_color: get_accent_color('@yaru_accent_color@', $yaru_is_dark_variant);
+$yaru_accent_color_base: $yaru_accent_bg_color;
+
+$contrast_target: if($yaru_is_dark_variant, 4.8, 4.51);
+$yaru_accent_color: optimize-contrast($yaru_bg_color,
+    $yaru_accent_bg_color, $target: $contrast_target);
+
+@debug("Accent color is " + $yaru_accent_bg_color);
+@debug("Contrast optimized accent is " + $yaru_accent_color);
+
+$accent_bg_color: $yaru_accent_bg_color;
+$accent_fg_color: white;
+$accent_color: $yaru_accent_color;
+
+$yaru_accent_bg_color: optimize-contrast($accent_fg_color,
+    $yaru_accent_bg_color, $target: $contrast_target);
+$accent_bg_color: $yaru_accent_bg_color;
+
+$accent-color-light-bg: if($yaru_is_dark_variant, optimize-contrast(
+    $yaru_light_bg, $yaru_accent_color_base, $target: $contrast_target),
+    $accent_color);
+$accent-color-dark-bg: if($yaru_is_dark_variant, $accent_color,
+    optimize-contrast($yaru_dark_bg, $yaru_accent_color_base,
+        $target: $contrast_target));
+
+$yaru_accent_color_on_accent_color: optimize-contrast($accent_color,
+    $accent_color, $target: 3.5);
+
+@import '@yaru_theme_entry_point@'

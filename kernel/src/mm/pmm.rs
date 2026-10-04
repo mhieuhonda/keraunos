@@ -282,8 +282,11 @@ impl Pmm {
 ///
 /// `bump` supplies the bitmap storage; whatever the bump has not handed
 /// out by then returns to the pool, so nothing between the kernel image
-/// and the end of RAM is lost when the bump retires.
-pub fn init(map: &MemoryMap, bump: &mut super::bump::BumpAllocator) {
+/// and the end of RAM is lost when the bump retires. `boot_info` is the
+/// multiboot2 information block span; the bootloader may place it
+/// anywhere in RAM, including inside the pool, so its pages are reserved
+/// up front.
+pub fn init(map: &MemoryMap, bump: &mut super::bump::BumpAllocator, boot_info: (u64, u64)) {
     // Span: every usable region above the 1 MiB floor.
     let mut span_base = u64::MAX;
     let mut span_end = 0u64;
@@ -370,11 +373,18 @@ pub fn init(map: &MemoryMap, bump: &mut super::bump::BumpAllocator) {
     }
 
     // Reserved: the kernel image and everything the bump has handed out so
-    // far (the bitmap itself, early page tables), plus low legacy memory.
+    // far (the bitmap itself, early page tables), the boot information
+    // block, and low legacy memory.
     let reserved_until = kernel_end()
         .max(bump.cursor())
         .max(bitmap_addr + bitmap_frames * PAGE_SIZE);
     for frame in (FLOOR..reserved_until).step_by(PAGE_SIZE as usize) {
+        if let Some(bit) = this.bit_of(frame) {
+            this.set(bit, true);
+        }
+    }
+    let info_end = boot_info.1.min(span_end).max(span_base);
+    for frame in (boot_info.0.max(span_base)..info_end).step_by(PAGE_SIZE as usize) {
         if let Some(bit) = this.bit_of(frame) {
             this.set(bit, true);
         }

@@ -93,6 +93,12 @@ impl Info {
         }
     }
 
+    /// Total size of the information block, in bytes. The PMM needs the
+    /// span to keep its hands off the block.
+    pub fn total_size(&self) -> usize {
+        self.bytes.len()
+    }
+
     /// Human-readable bootloader name (e.g. "GRUB 2.12").
     pub fn bootloader_name(&self) -> &'static str {
         for tag in self.tags() {

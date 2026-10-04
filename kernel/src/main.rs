@@ -262,6 +262,13 @@ extern "C" fn kmain(magic: u32, mbi_addr: usize) -> ! {
     // SAFETY: `mbi_addr` is the multiboot2 information pointer passed by the
     // bootloader in EBX; it is identity-mapped and 8-byte aligned per spec.
     let mbi = unsafe { boot::multiboot2::Info::from_addr(mbi_addr) };
+    let boot_info = (mbi_addr as u64, mbi_addr as u64 + mbi.total_size() as u64);
+    kinfo!(
+        "boot",
+        "information block: {} bytes at {:#x}",
+        mbi.total_size(),
+        mbi_addr
+    );
     kinfo!(
         "boot",
         "boot protocol: multiboot2 via {}",
@@ -292,7 +299,7 @@ extern "C" fn kmain(magic: u32, mbi_addr: usize) -> ! {
         (usable % (1024 * 1024)) / 1024
     );
 
-    let mut frame_alloc = match mm::bump::BumpAllocator::from_memory_map(&map) {
+    let mut frame_alloc = match mm::bump::BumpAllocator::from_memory_map(&map, boot_info.1) {
         Some(alloc) => alloc,
         None => {
             kerror!(
@@ -305,7 +312,7 @@ extern "C" fn kmain(magic: u32, mbi_addr: usize) -> ! {
     kinfo!("mm", "early bump allocator armed above the kernel image");
 
     // The bitmap PMM takes over frame management; the bump retires into it.
-    mm::pmm::init(&map, &mut frame_alloc);
+    mm::pmm::init(&map, &mut frame_alloc, boot_info);
 
     // Fresh page tables: kernel image aliased in the higher half, tables
     // switched away from the bare boot-stub map.

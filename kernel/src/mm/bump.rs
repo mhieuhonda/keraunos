@@ -28,14 +28,15 @@ pub struct BumpAllocator {
 
 impl BumpAllocator {
     /// Find the first usable region (or tail of one) that lies above the
-    /// kernel image and arm the allocator over it.
-    pub fn from_memory_map(map: &MemoryMap) -> Option<Self> {
-        let kernel_end = kernel_end();
+    /// kernel image and the boot information block, and arm the allocator
+    /// over it.
+    pub fn from_memory_map(map: &MemoryMap, above: u64) -> Option<Self> {
+        let floor = kernel_end().max(above);
         for region in map.regions() {
             if region.kind != RegionKind::Usable {
                 continue;
             }
-            let start = align_up_page(region.base.max(kernel_end));
+            let start = align_up_page(region.base.max(floor));
             let end = region.base.saturating_add(region.len);
             if start < end {
                 return Some(BumpAllocator { cursor: start, end });

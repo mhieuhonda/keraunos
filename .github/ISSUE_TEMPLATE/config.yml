@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Design & roadmap discussions
+    url: https://github.com/mhieuhonda/keraunos/discussions
+    about: Architecture debate, milestone planning, and show-and-tell live in GitHub Discussions.
+  - name: Security reports
+    url: https://github.com/mhieuhonda/keraunos/security
+    about: Never open a public issue for security problems — use the private reporting flow (see SECURITY.md).

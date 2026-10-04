@@ -1,0 +1,111 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  lint:
+    name: fmt + clippy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust (pinned 1.99)
+        run: |
+          curl -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.99 --profile minimal -c rustfmt,clippy
+          echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
+      - name: rustfmt
+        run: cargo fmt --all -- --check
+      - name: clippy
+        run: cargo clippy --target x86_64-unknown-none -- -D warnings
+
+  build:
+    name: build (${{ matrix.profile }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        profile: [debug, release]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust (pinned 1.99)
+        run: |
+          curl -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.99 --profile minimal
+          echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
+      - name: Build kernel
+        run: cargo build ${{ matrix.profile == 'release' && '--release' || '' }}
+      - name: Upload kernel artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: kernel-${{ matrix.profile }}
+          path: target/x86_64-unknown-none/${{ matrix.profile }}/keraunos-kernel
+          retention-days: 7
+
+  cross-arch:
+    name: check scaffolds (${{ matrix.target }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [aarch64-unknown-none, riscv64gc-unknown-none-elf]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust (pinned 1.99)
+        run: |
+          curl -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.99 --profile minimal
+          echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
+      - name: cargo check
+        run: cargo check --target ${{ matrix.target }}
+
+  boot-unicorn:
+    name: boot test (unicorn, ${{ matrix.profile }})
+    runs-on: ubuntu-latest
+    needs: build
+    strategy:
+      matrix:
+        profile: [debug, release]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download kernel artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: kernel-${{ matrix.profile }}
+          path: target/x86_64-unknown-none/${{ matrix.profile }}/
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install unicorn
+        run: pip install -r tools/boot-unicorn/requirements.txt
+      - name: Boot test
+        run: python tools/boot-unicorn/boot_test.py target/x86_64-unknown-none/${{ matrix.profile }}/keraunos-kernel
+
+  boot-qemu:
+    name: boot test (GRUB2 + QEMU)
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download kernel artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: kernel-release
+          path: target/x86_64-unknown-none/release/
+      - name: Install QEMU + GRUB2 tooling
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends qemu-system-x86 grub-pc-bin xorriso mtools
+      - name: Build bootable ISO
+        run: tools/mkiso.sh
+      - name: Boot smoke test
+        run: tools/qemu-boot.sh build/keraunos.iso 90
+      - name: Upload boot log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qemu-boot-log
+          path: build/keraunos.iso
+          retention-days: 7

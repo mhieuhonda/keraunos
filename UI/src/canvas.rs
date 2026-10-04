@@ -77,8 +77,19 @@ impl Canvas {
     }
 }
 
+impl Default for Canvas {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 /// Draw window chrome (border + header bar) and return the content rect.
-pub fn window(cv: &mut Canvas, rect: crate::Rect, badge: &crate::icons::Badge, title: &str) -> crate::Rect {
+pub fn window(
+    cv: &mut Canvas,
+    rect: crate::Rect,
+    badge: &crate::icons::Badge,
+    title: &str,
+) -> crate::Rect {
     use crate::theme::{BOX_BL, BOX_BR, BOX_H, BOX_TL, BOX_TR, BOX_V, ST_BORDER, ST_TITLE};
 
     let last_x = rect.x + rect.w - 1;

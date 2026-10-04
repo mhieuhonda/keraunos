@@ -12,9 +12,9 @@ env:
 jobs:
   lint:
     name: fmt + clippy
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Install pinned toolchain (from rust-toolchain.toml)
         run: rustup show
       - name: rustfmt
@@ -24,18 +24,18 @@ jobs:
 
   build:
     name: build (${{ matrix.profile }})
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         profile: [debug, release]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Install pinned toolchain (from rust-toolchain.toml)
         run: rustup show
       - name: Build kernel
         run: cargo build ${{ matrix.profile == 'release' && '--release' || '' }}
       - name: Upload kernel artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: kernel-${{ matrix.profile }}
           path: target/x86_64-unknown-none/${{ matrix.profile }}/keraunos-kernel
@@ -43,12 +43,12 @@ jobs:
 
   cross-arch:
     name: check scaffolds (${{ matrix.target }})
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         target: [aarch64-unknown-none, riscv64gc-unknown-none-elf]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Install pinned toolchain (from rust-toolchain.toml)
         run: rustup show
       - name: cargo check
@@ -56,20 +56,20 @@ jobs:
 
   boot-unicorn:
     name: boot test (unicorn, ${{ matrix.profile }})
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: build
     strategy:
       matrix:
         profile: [debug, release]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Download kernel artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: kernel-${{ matrix.profile }}
           path: target/x86_64-unknown-none/${{ matrix.profile }}/
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Install unicorn
@@ -79,12 +79,12 @@ jobs:
 
   boot-qemu:
     name: boot test (GRUB2 + QEMU)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: build
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Download kernel artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: kernel-release
           path: target/x86_64-unknown-none/release/
@@ -98,7 +98,7 @@ jobs:
         run: tools/qemu-boot.sh build/keraunos.iso 90
       - name: Upload boot artifacts on failure
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: qemu-boot-artifacts
           path: build/

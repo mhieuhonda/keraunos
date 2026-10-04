@@ -35,18 +35,25 @@ Delivered:
 **Acceptance:** a timer-driven counter thread prints on console; a
 kernel unit test suite runs under `cargo test` via a custom harness.
 
-## M2 — Memory management
+## M2 — Memory management (complete)
 
 **Goal:** real memory, real address spaces.
 
-* [ ] Bitmap PMM with zones and per-NUMA freelists
-* [ ] Higher-half kernel mapping; recursive page-table helpers
-* [ ] Kernel heap + slab caches (poisoned in debug)
-* [ ] Physical/virtual page accounting exposed via an early `/proc`
-      analogue
+Delivered:
 
-**Acceptance:** kernel allocates/frees across zones under a stress loop
-with zero leaks (verified by a boot-time self-test).
+* [x] Bitmap PMM with zones (DMA / Normal / High) and per-node free
+      lists; the bump allocator retires into it at boot
+* [x] Higher-half kernel mapping at `0xFFFF_FFFF_8000_0000`; recursive
+      page-table helpers (`map_page` / `unmap_page` / `translate`)
+* [x] Kernel heap + nine slab size classes (poisoned in debug), wired as
+      the `GlobalAlloc` — `alloc` crate types are live kernel-wide
+* [x] Physical/virtual page accounting printed at boot in
+      `/proc/meminfo` shape and mirrored on the desktop's memory window
+
+**Acceptance:** the boot-time stress self-test churns frame runs across
+all zones plus heap objects across every size class and verifies the
+free counts return exactly to baseline — zero leaks, asserted on every
+CI boot (`self-test: PASS -- 0 leaks`).
 
 ## M3 — SMP and the scheduler
 
@@ -112,7 +119,8 @@ board onto it.
 
 ## How milestones relate
 
-M1→M2→M3 are strictly sequential (each builds on the last). M4 and M5 can
-proceed in parallel once M3 lands. M6 needs substantial slices of M4
+M1→M2→M3 are strictly sequential in design (M2's page tables and heap
+landed first and M1's interrupt plumbing will hook into them); M4 and M5
+can proceed in parallel once M3 lands. M6 needs substantial slices of M4
 (fs) and M5 (sockets) but can start its ABI layer against M3. M7 is
 continuous from M2 onward — every board bring-up hardens the HAL.

@@ -62,7 +62,7 @@ want to watch the VGA console render it too.
 
 Write the ISO to a USB stick and boot it (CSM/legacy or UEFI with legacy
 support — the current boot path is BIOS/multiboot2; the UEFI path is
-milestone M2):
+milestone M7):
 
 ```sh
 dd if=build/keraunos.iso of=/dev/sdX bs=4M status=progress && sync

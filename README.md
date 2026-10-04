@@ -12,7 +12,7 @@
   <a href="https://github.com/mhieuhonda/keraunos/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/mhieuhonda/keraunos/actions/workflows/ci.yml/badge.svg"></a>
   <a href="LICENSE"><img alt="license: MIT" src="https://img.shields.io/badge/license-MIT-blue"></a>
   <a href="rust-toolchain.toml"><img alt="Rust 1.99" src="https://img.shields.io/badge/rust-1.99-orange"></a>
-  <a href="docs/ROADMAP.md"><img alt="milestone: M0 complete" src="https://img.shields.io/badge/milestone-M0%20framework-green"></a>
+  <a href="docs/ROADMAP.md"><img alt="milestone: M2 complete" src="https://img.shields.io/badge/milestone-M2%20memory-green"></a>
 </p>
 
 ---
@@ -28,11 +28,22 @@ framebuffer today and grows with the kernel.
 
 | What | Status |
 | --- | --- |
-| x86-64 boot (multiboot2 via GRUB2) | **boots** — banner, dual console (VGA + serial), memory map, early frame allocator, verified end-to-end in CI on every push |
-| Desktop session ([`UI/`](UI/README.md)) | **renders** — splash, windowed shell, boot-log mirror, notifications on the text framebuffer |
+| x86-64 boot (multiboot2 via GRUB2) | **boots** — banner, dual console (VGA + serial), memory map, verified end-to-end in CI on every push |
+| Memory management ([`kernel/src/mm/`](kernel/src/mm)) | **online** — bitmap PMM with zone freelists, higher-half paging, slab heap, `/proc/meminfo`-style accounting, zero-leak stress self-test in CI |
+| Desktop session ([`UI/`](UI/README.md)) | **renders** — splash, windowed shell, boot-log mirror, live memory facts, notifications on the text framebuffer |
 | aarch64 / riscv64 | scaffolds compile (CI type-checks both); bring-up on the roadmap |
-| Interrupts, paging, scheduler, drivers, fs, net | designed, sequenced in the [roadmap](docs/ROADMAP.md) |
+| Interrupts, scheduler, drivers, fs, net | designed, sequenced in the [roadmap](docs/ROADMAP.md) |
 | Linux-ABI compat layer (run unmodified Linux userland) | planned (M6) |
+
+## Screenshots
+
+Real frames from the CI-built ISO booting in QEMU — the text console at
+desktop handoff (meminfo table and subsystems on screen), then the
+desktop session rendering the same numbers as windows:
+
+| boot console | desktop session |
+| --- | --- |
+| ![boot console](docs/screenshots/boot-console.png) | ![desktop](docs/screenshots/desktop.png) |
 
 ## Why another OS?
 
@@ -77,8 +88,12 @@ Expected output (excerpt):
 [INFO ] boot     boot protocol: multiboot2 via UnicornGRUB 2.12-emul
 [INFO ] arch     GDT loaded (null / code64 / data)
 [INFO ] mm       boot memory map: 2 regions, 1023 MiB + 0 KiB usable
-[INFO ] mm       early bump allocator armed above the kernel image
+[INFO ] mm       bitmap pmm armed: 261888 frames, 261821 free, 31 KiB bitmap
+[INFO ] mm       paging: kernel mapped in the higher half at 0xffffffff80000000
+[INFO ] mm       heap: slab caches online, 9 classes, 8 MiB window
 ...
+[INFO ] mm       self-test: PASS -- 256 frame ops, 98 heap objects, 0 leaks
+[INFO ] mm       MemTotal:     1047552 KiB
 [INFO ] kernel   keraunos 0.1.0 framework ready -- BOOT OK
 [INFO ] ui       session: splash on text surface
 [INFO ] ui       console handoff: vga sink detached, display service owns the framebuffer
@@ -100,7 +115,8 @@ keraunos/
 │       ├── boot/      # multiboot2 information parser
 │       ├── console/   # VGA text + 16550 UART, fan-out logging, log mirror
 │       ├── display/   # display service: post-handoff framebuffer owner
-│       ├── mm/        # boot memory map + early bump allocator
+│       ├── mm/        # bitmap PMM, higher-half paging, slab heap,
+│       │              #   meminfo accounting, boot-time stress self-test
 │       ├── sched/     # scheduler scaffold (M3)
 │       ├── hal/       # hardware abstraction layer scaffold (M1)
 │       ├── drivers/   # driver model scaffold (M4)
@@ -108,9 +124,9 @@ keraunos/
 │       ├── net/       # network stack scaffold (M5)
 │       └── ipc/       # IPC scaffold (M5)
 ├── UI/                # the native desktop: theme, shell, compositor
-│                      #   (keraunos-ui crate, one file, zero deps)
+│                      #   (keraunos-ui crate, zero deps, no unsafe)
 ├── tools/             # mkiso.sh, qemu-boot.sh, boot-unicorn/ (QEMU-free boot test)
-├── docs/              # ARCHITECTURE, ROADMAP, HARDWARE, BUILDING
+├── docs/              # ARCHITECTURE, ROADMAP, HARDWARE, BUILDING, screenshots/
 └── .github/           # CI: build + cross-arch + fmt/clippy + boot tests
 ```
 
@@ -163,9 +179,14 @@ RISC-V) qua một lớp HAL mỏng; giao diện là desktop thuần Rust
 framebuffer của kernel.
 
 Trạng thái hiện tại: khung kernel đã hoàn thành — boot multiboot2, console
-kép (VGA + serial), phân tích memory map, bộ cấp phát frame sớm — cùng
-phiên làm việc desktop (splash, cửa sổ, thông báo) hiển thị trên màn hình
-và được CI xác thực boot lại ở mỗi commit. Lộ trình chi tiết:
+kép (VGA + serial), phân tích memory map — cùng toàn bộ quản lý bộ nhớ M2:
+PMM bitmap theo vùng (DMA/Normal/High) với freelist từng node NUMA, ánh xạ
+kernel ở nửa cao địa chỉ (higher half) với các hàm trợ lý bảng trang đệ quy,
+heap slab chín lớp kích thước (poison trong bản debug, làm `GlobalAlloc` cho
+cả kernel), kế toán bộ nhớ kiểu `/proc/meminfo` và bài test tự kiểm tra stress
+chạy mỗi lần boot với cam kết **không rò rỉ**. Phiên làm việc desktop (splash,
+cửa sổ, thông báo) hiển thị trực tiếp các con số bộ nhớ thật trên màn hình và
+được CI xác thực boot lại ở mỗi commit. Lộ trình chi tiết:
 [docs/ROADMAP.md](docs/ROADMAP.md). Mọi đóng góp đều được chào đón — xem
 [CONTRIBUTING.md](CONTRIBUTING.md) (tiếng Anh) và thảo luận tại
 [GitHub Discussions](https://github.com/mhieuhonda/keraunos/discussions).

@@ -39,7 +39,13 @@ kmain
    ├─ multiboot2::Info parse     bootloader name · cmdline · memory map
    ├─ gdt::init()                null/code64/data + segment reload (incl. CS)
    ├─ cpu::vendor_string()       CPUID leaf 0
-   ├─ mm::bump                   first usable region above _kernel_end
+   ├─ mm::bump                   first usable region above _kernel_end + MBI
+   ├─ mm::pmm::init              bitmap PMM, zones + per-node freelists; bump retires
+   ├─ mm::paging::init           fresh PML4, higher-half kernel map, CR3 switch
+   ├─ mm::heap::init             slab heap over the PMM; alloc crate goes live
+   ├─ smoke tests                frame + heap round trips
+   ├─ mm::selftest::run          stress loop: zero leaks or no BOOT OK
+   ├─ mm::meminfo                /proc/meminfo-shaped accounting snapshot
    ├─ print_subsystem_table()
    ├─ "keraunos <ver> framework ready -- BOOT OK"
    ├─ display::take_over()       console handoff: VGA sink → display service
@@ -61,7 +67,7 @@ emulation and GRUB2/QEMU) on every push.
 | `kernel/src/console/` | fan-out writer: VGA text, UART, log mirror; `kinfo!`/`kerror!` | online |
 | `kernel/src/display/` | display service: post-handoff framebuffer owner | online |
 | `UI/` (keraunos-ui) | native desktop: theme, shell, compositor over `Surface` | online |
-| `kernel/src/mm/` | page constants, boot bump allocator | online; PMM/paging M2 |
+| `kernel/src/mm/` | bitmap PMM, zones + per-node free lists, higher-half paging, slab heap, meminfo, boot self-test | online (M2) |
 | `kernel/src/hal/` | clock/irq/SMP/cache/DMA traits | drafting M1 |
 | `kernel/src/sched/` | tickless per-CPU run queues | M3 |
 | `kernel/src/drivers/` | PCI/NVMe/virtio/USB/GPU model | M4 |
@@ -69,20 +75,58 @@ emulation and GRUB2/QEMU) on every push.
 | `kernel/src/net/` | zero-copy stack, virtio-net first | M5 |
 | `kernel/src/ipc/` | typed channels; POSIX emulation on top | M5/M6 |
 
-## Memory model plan
+## Memory layout (current)
 
-`mm` grows in this order, each step replacing the previous frontier:
+```
+physical                         virtual (higher half, PML4[511])
+0x000000        ┌──────────      0xFFFF_FFFF_8000_0000  ┌──────────
+                │ firmware                        alias │ physmap: RAM at
+0x100000        │ kernel image                    ────► │ KERNEL_BASE+phys
+ _kernel_end ─► │ bitmap · tables · MBI                 │ (2 MiB pages)
+                │ ...                                   0xFFFF_FFFF_C000_0000
+                └──────────                             │ heap arena +
+ end of RAM ─►                                         │ scratch pages
+                                                       └──────────
+PML4[510] = PML4 (recursive self-map) — table entries of any address
+reachable by OR-ing its indexes into the recursive base.
+```
 
-1. **Boot bump allocator** (today): hands 4 KiB frames from the first
-   usable region above the kernel image — enough to build page tables.
-2. **PMM bitmap** (M2): full physical-frame accounting, zones
-   (DMA32/DMA/normal), per-NUMA-node freelists.
-3. **Higher-half mapping** (M2): kernel at `-2 GiB` via `PDPT`
-   self-reference, per-CPU `CR3` for ASID-tagged TLB control.
-4. **Kernel heap + slabs** (M2): sized-object caches, poison-on-free in
-   debug builds.
-5. **User address spaces** (M3): copy-on-write forks, demand paging,
-   `mmap` with Linux semantics ( prerequisite for the compat layer).
+The identity window (PML4[0], the boot stub's 1 GiB map) keeps the
+kernel running until M3 moves the program counter into the higher half;
+then it is torn down and `KERNEL_BASE + phys` becomes the only way to
+reach RAM.
+
+### The allocators, in boot order
+
+1. **Bump allocator** — a cursor over the first usable region above the
+   kernel image and the MBI. Exists long enough to hand out the PMM's
+   own bitmap.
+2. **Bitmap PMM** — one bit per 4 KiB frame across all usable RAM, split
+   into DMA (< 16 MiB), Normal (< 4 GiB) and High zones with fixed-depth
+   free lists per NUMA node (node 0 until the SRAT is parsed). The bump's
+   remaining span returns to the pool when it retires.
+3. **Slab heap** — the PMM's biggest customer: nine size classes from
+   32 B to 8 KiB, each a cache of equal slots threaded through a LIFO
+   free list, backed by contiguous frame runs mapped into the on-demand
+   window. Debug builds poison allocations (`0xA5`) and scrub frees
+   (`0x5A`); every free re-verifies the slot header, so double frees
+   panic instead of corrupting. Larger or over-aligned requests go
+   through an exact-fit large-span path. Wired as the kernel's
+   `GlobalAlloc`, so `Box`, `Vec` and friends work kernel-wide.
+4. **meminfo** — every layer publishes accounting (`ZoneStats`, class
+   stats, table-frame count); `mm::meminfo` gathers a snapshot and prints
+   it `/proc`-style at boot and hands the same numbers to the desktop.
+
+### The acceptance gate
+
+`mm::selftest` runs at every boot before the subsystem table: frame runs
+churned across all three zones with write/read verification inside the
+identity window, heap objects grown, shuffled and dropped across every
+size class plus the large path, and a scratch page mapped, translated
+and unmapped through the recursive helpers. Each phase compares its free
+counter against its baseline — any drift panics, the boot dies before
+`BOOT OK`, and CI catches it. The zero-leak property is thus re-proven
+on every push, not assumed.
 
 ## How the desktop runs today
 
@@ -95,8 +139,9 @@ file. The contract with the kernel is narrow on purpose:
   composed frame into the VGA framebuffer. The UI never touches
   hardware.
 * **Session facts.** `SessionInfo` carries everything the desktop may
-  show — version, architecture, CPU vendor, memory map, the subsystem
-  table and a snapshot of the boot log. Nothing on screen is invented.
+  show — version, architecture, CPU vendor, memory map, the meminfo
+  snapshot (`MemFacts`), the subsystem table and a snapshot of the boot
+  log. Nothing on screen is invented.
 * **Console handoff.** `TextDisplay::take_over()` detaches the VGA console
   sink and hides the hardware cursor; logging continues on the UART while
   the mirror ring keeps feeding the boot-log view.

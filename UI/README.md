@@ -2,7 +2,7 @@
 
 This directory holds the **verbatim codebases** of the projects that will
 become Keraunos' default desktop experience. They are imported as-is, at
-pinned upstream commits, and are **not modified here** — Keraunos will run
+pinned upstream commits, Keraunos will run
 them unmodified on top of its Linux-ABI compatibility layer (roadmap
 milestone M6, see `docs/ROADMAP.md`).
 

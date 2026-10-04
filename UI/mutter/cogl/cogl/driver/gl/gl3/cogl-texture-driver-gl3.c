@@ -1,0 +1,377 @@
+/*
+ * Cogl
+ *
+ * A Low Level GPU Graphics and Utilities API
+ *
+ * Copyright (C) 2007,2008,2009 Intel Corporation.
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use, copy,
+ * modify, merge, publish, distribute, sublicense, and/or sell copies
+ * of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+ * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
+ *
+ * Authors:
+ *  Matthew Allum  <mallum@openedhand.com>
+ *  Neil Roberts   <neil@linux.intel.com>
+ *  Robert Bragg   <robert@linux.intel.com>
+ */
+
+#include "config.h"
+
+#include "cogl/cogl-private.h"
+#include "cogl/cogl-util.h"
+#include "cogl/cogl-bitmap.h"
+#include "cogl/cogl-bitmap-private.h"
+#include "cogl/cogl-texture-private.h"
+#include "cogl/cogl-pipeline.h"
+#include "cogl/cogl-context-private.h"
+#include "cogl/driver/gl/gl3/cogl-texture-driver-gl3-private.h"
+#include "cogl/driver/gl/cogl-driver-gl-private.h"
+#include "cogl/driver/gl/cogl-pipeline-gl-private.h"
+#include "cogl/driver/gl/cogl-texture-gl-private.h"
+#include "cogl/driver/gl/cogl-bitmap-gl-private.h"
+
+#include <string.h>
+#include <stdlib.h>
+#include <math.h>
+
+#ifndef GL_TEXTURE_SWIZZLE_RGBA
+#define GL_TEXTURE_SWIZZLE_RGBA 0x8E46
+#endif
+
+struct _CoglTextureDriverGL3
+{
+  CoglTextureDriverGL parent_instance;
+};
+
+G_DEFINE_FINAL_TYPE (CoglTextureDriverGL3,
+                     cogl_texture_driver_gl3,
+                     COGL_TYPE_TEXTURE_DRIVER_GL)
+
+static GLuint
+cogl_texture_driver_gl3_gen (CoglTextureDriverGL *tex_driver,
+                             CoglContext         *ctx,
+                             GLenum               gl_target,
+                             CoglPixelFormat      internal_format)
+{
+  CoglDriver *driver = cogl_context_get_driver (ctx);
+  GLuint tex;
+
+  GE (driver, glGenTextures (1, &tex));
+
+  _cogl_bind_gl_texture_transient (ctx, gl_target, tex);
+
+  switch (gl_target)
+    {
+    case GL_TEXTURE_2D:
+      /* In case automatic mipmap generation gets disabled for this
+       * texture but a minification filter depending on mipmap
+       * interpolation is selected then we initialize the max mipmap
+       * level to 0 so OpenGL will consider the texture storage to be
+       * "complete".
+       */
+      GE (driver, glTexParameteri (gl_target, GL_TEXTURE_MAX_LEVEL, 0));
+
+      /* GL_TEXTURE_MAG_FILTER defaults to GL_LINEAR, no need to set it */
+      GE (driver, glTexParameteri (gl_target,
+                                   GL_TEXTURE_MIN_FILTER,
+                                   GL_LINEAR));
+      break;
+
+    case GL_TEXTURE_RECTANGLE_ARB:
+      /* Texture rectangles already default to GL_LINEAR so nothing
+         needs to be done */
+      break;
+
+    default:
+      g_assert_not_reached();
+    }
+
+  /* As the driver doesn't support alpha textures directly then we'll
+   * fake them by setting the swizzle parameters */
+  if (internal_format == COGL_PIXEL_FORMAT_A_8 &&
+      cogl_driver_has_feature (driver, COGL_FEATURE_ID_TEXTURE_SWIZZLE))
+    {
+      static const GLint red_swizzle[] = { GL_ZERO, GL_ZERO, GL_ZERO, GL_RED };
+
+      GE (driver, glTexParameteriv (gl_target,
+                                    GL_TEXTURE_SWIZZLE_RGBA,
+                                    red_swizzle));
+    }
+
+  return tex;
+}
+
+/* OpenGL - unlike GLES - can upload a sub region of pixel data from a larger
+ * source buffer */
+static void
+prep_gl_for_pixels_upload_full (CoglContext *ctx,
+                                int pixels_rowstride,
+                                int image_height,
+                                int pixels_src_x,
+                                int pixels_src_y,
+                                int pixels_bpp)
+{
+  CoglDriver *driver = cogl_context_get_driver (ctx);
+
+  GE (driver, glPixelStorei (GL_UNPACK_ROW_LENGTH,
+                             pixels_rowstride / pixels_bpp));
+
+  GE (driver, glPixelStorei (GL_UNPACK_SKIP_PIXELS, pixels_src_x));
+  GE (driver, glPixelStorei (GL_UNPACK_SKIP_ROWS, pixels_src_y));
+
+  _cogl_texture_gl_prep_alignment_for_pixels_upload (ctx, pixels_rowstride);
+}
+
+static gboolean
+cogl_texture_driver_gl3_upload_subregion_to_gl (CoglTextureDriverGL  *tex_driver,
+                                                CoglContext          *ctx,
+                                                CoglTexture          *texture,
+                                                int                   src_x,
+                                                int                   src_y,
+                                                int                   dst_x,
+                                                int                   dst_y,
+                                                int                   width,
+                                                int                   height,
+                                                int                   level,
+                                                CoglBitmap           *source_bmp,
+                                                GLuint                source_gl_format,
+                                                GLuint                source_gl_type,
+                                                GError              **error)
+{
+  GLenum gl_target;
+  GLuint gl_handle;
+  uint8_t *data;
+  CoglDriver *driver = cogl_context_get_driver (ctx);
+  CoglPixelFormat source_format = cogl_bitmap_get_format (source_bmp);
+  int bpp;
+  gboolean status = TRUE;
+  GError *internal_error = NULL;
+  int level_width;
+  int level_height;
+
+  g_return_val_if_fail (source_format != COGL_PIXEL_FORMAT_ANY, FALSE);
+  g_return_val_if_fail (cogl_pixel_format_get_n_planes (source_format) == 1,
+                        FALSE);
+
+  bpp = cogl_pixel_format_get_bytes_per_pixel (source_format, 0);
+  cogl_texture_get_gl_texture (texture, &gl_handle, &gl_target);
+
+  data = _cogl_bitmap_gl_bind (source_bmp, COGL_BUFFER_ACCESS_READ, 0, &internal_error);
+
+  /* NB: _cogl_bitmap_gl_bind() may return NULL when successful so we
+   * have to explicitly check the cogl error pointer to catch
+   * problems... */
+  if (internal_error)
+    {
+      g_propagate_error (error, internal_error);
+      return FALSE;
+    }
+
+  /* Setup gl alignment to match rowstride and top-left corner */
+  prep_gl_for_pixels_upload_full (ctx,
+                                  cogl_bitmap_get_rowstride (source_bmp),
+                                  0,
+                                  src_x,
+                                  src_y,
+                                  bpp);
+
+  _cogl_bind_gl_texture_transient (ctx, gl_target, gl_handle);
+
+  /* Clear any GL errors */
+  cogl_driver_gl_clear_gl_errors (COGL_DRIVER_GL (driver));
+
+  _cogl_texture_get_level_size (texture,
+                                level,
+                                &level_width,
+                                &level_height,
+                                NULL);
+
+  if (level_width == width && level_height == height)
+    {
+      /* GL gets upset if you use glTexSubImage2D to initialize the
+       * contents of a mipmap level so we make sure to use
+       * glTexImage2D if we are uploading a full mipmap level.
+       */
+      GE (driver, glTexImage2D (gl_target,
+                                level,
+                                _cogl_texture_gl_get_format (texture),
+                                width,
+                                height,
+                                0,
+                                source_gl_format,
+                                source_gl_type,
+                                data));
+
+    }
+  else
+    {
+      /* GL gets upset if you use glTexSubImage2D to initialize the
+       * contents of a mipmap level so if this is the first time
+       * we've seen a request to upload to this level we call
+       * glTexImage2D first to assert that the storage for this
+       * level exists.
+       */
+      if (cogl_texture_get_max_level_set (texture) < level)
+        {
+          GE (driver, glTexImage2D (gl_target,
+                                    level,
+                                    _cogl_texture_gl_get_format (texture),
+                                    level_width,
+                                    level_height,
+                                    0,
+                                    source_gl_format,
+                                    source_gl_type,
+                                    NULL));
+        }
+
+      GE (driver, glTexSubImage2D (gl_target,
+                                   level,
+                                   dst_x, dst_y,
+                                   width, height,
+                                   source_gl_format,
+                                   source_gl_type,
+                                   data));
+    }
+
+  if (cogl_driver_gl_catch_out_of_memory (COGL_DRIVER_GL (driver), error))
+    status = FALSE;
+
+  _cogl_bitmap_gl_unbind (source_bmp);
+
+  return status;
+}
+
+static gboolean
+cogl_texture_driver_gl3_upload_to_gl (CoglTextureDriverGL *tex_driver,
+                                      CoglContext         *ctx,
+                                      GLenum               gl_target,
+                                      GLuint               gl_handle,
+                                      CoglBitmap          *source_bmp,
+                                      GLint                internal_gl_format,
+                                      GLuint               source_gl_format,
+                                      GLuint               source_gl_type,
+                                      GError             **error)
+{
+  uint8_t *data;
+  CoglDriver *driver = cogl_context_get_driver (ctx);
+  CoglPixelFormat source_format = cogl_bitmap_get_format (source_bmp);
+  int bpp;
+  gboolean status = TRUE;
+  GError *internal_error = NULL;
+
+  g_return_val_if_fail (source_format != COGL_PIXEL_FORMAT_ANY, FALSE);
+  g_return_val_if_fail (cogl_pixel_format_get_n_planes (source_format) == 1,
+                        FALSE);
+
+  bpp = cogl_pixel_format_get_bytes_per_pixel (source_format, 0);
+
+  data = _cogl_bitmap_gl_bind (source_bmp,
+                               COGL_BUFFER_ACCESS_READ,
+                               0, /* hints */
+                               &internal_error);
+
+  /* NB: _cogl_bitmap_gl_bind() may return NULL when successful so we
+   * have to explicitly check the cogl error pointer to catch
+   * problems... */
+  if (internal_error)
+    {
+      g_propagate_error (error, internal_error);
+      return FALSE;
+    }
+
+  /* Setup gl alignment to match rowstride and top-left corner */
+  prep_gl_for_pixels_upload_full (ctx,
+                                  cogl_bitmap_get_rowstride (source_bmp),
+                                  0, 0, 0, bpp);
+
+  _cogl_bind_gl_texture_transient (ctx, gl_target, gl_handle);
+
+  /* Clear any GL errors */
+  cogl_driver_gl_clear_gl_errors (COGL_DRIVER_GL (driver));
+
+  GE (driver, glTexImage2D (gl_target, 0,
+                            internal_gl_format,
+                            cogl_bitmap_get_width (source_bmp),
+                            cogl_bitmap_get_height (source_bmp),
+                            0,
+                            source_gl_format,
+                            source_gl_type,
+                            data));
+
+  if (cogl_driver_gl_catch_out_of_memory (COGL_DRIVER_GL (driver), error))
+    status = FALSE;
+
+  _cogl_bitmap_gl_unbind (source_bmp);
+
+  return status;
+}
+
+static gboolean
+cogl_texture_driver_gl3_gl_get_tex_image (CoglTextureDriverGL *tex_driver,
+                                          CoglContext         *ctx,
+                                          GLenum               gl_target,
+                                          GLenum               dest_gl_format,
+                                          GLenum               dest_gl_type,
+                                          uint8_t             *dest)
+{
+  CoglDriver *driver = cogl_context_get_driver (ctx);
+
+  GE (driver, glGetTexImage (gl_target,
+                             0, /* level */
+                             dest_gl_format,
+                             dest_gl_type,
+                             (GLvoid *)dest));
+  return TRUE;
+}
+
+static CoglPixelFormat
+cogl_texture_driver_gl3_find_best_get_data_format (CoglTextureDriver *tex_driver,
+                                                   CoglContext       *context,
+                                                   CoglPixelFormat    format)
+{
+  CoglDriver *driver = cogl_context_get_driver (context);
+  CoglDriverGL *driver_gl = COGL_DRIVER_GL (driver);
+  CoglDriverGLClass *driver_klass = COGL_DRIVER_GL_GET_CLASS (driver_gl);
+
+  return driver_klass->pixel_format_to_gl (driver_gl,
+                                           format,
+                                           NULL, /* don't need */
+                                           NULL,
+                                           NULL);
+}
+
+static void
+cogl_texture_driver_gl3_class_init (CoglTextureDriverGL3Class *klass)
+{
+  CoglTextureDriverClass *driver_klass = COGL_TEXTURE_DRIVER_CLASS (klass);
+  CoglTextureDriverGLClass *driver_gl_klass = COGL_TEXTURE_DRIVER_GL_CLASS (klass);
+
+  driver_klass->find_best_get_data_format = cogl_texture_driver_gl3_find_best_get_data_format;
+  driver_gl_klass->gen = cogl_texture_driver_gl3_gen;
+  driver_gl_klass->upload_subregion_to_gl = cogl_texture_driver_gl3_upload_subregion_to_gl;
+  driver_gl_klass->upload_to_gl = cogl_texture_driver_gl3_upload_to_gl;
+  driver_gl_klass->gl_get_tex_image = cogl_texture_driver_gl3_gl_get_tex_image;
+}
+
+static void
+cogl_texture_driver_gl3_init (CoglTextureDriverGL3 *driver)
+{
+}

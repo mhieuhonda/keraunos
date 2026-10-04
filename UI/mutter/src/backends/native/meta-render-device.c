@@ -1,0 +1,369 @@
+/*
+ * Copyright (C) 2021 Red Hat Inc.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+#include "config.h"
+
+#include "backends/native/meta-render-device-private.h"
+
+#include "backends/meta-backend-private.h"
+#include "backends/native/meta-backend-native-types.h"
+#include "backends/native/meta-drm-buffer-dumb.h"
+#include "backends/native/meta-renderer-egl.h"
+#include "cogl/cogl-context-private.h"
+
+enum
+{
+  PROP_0,
+
+  PROP_BACKEND,
+  PROP_DEVICE_FILE,
+
+  N_PROPS
+};
+
+static GParamSpec *obj_props[N_PROPS];
+
+typedef struct _MetaRenderDevicePrivate
+{
+  MetaBackend *backend;
+
+  MetaDeviceFile *device_file;
+
+  MetaRendererEgl *renderer_egl;
+
+  gboolean is_hardware_rendering;
+} MetaRenderDevicePrivate;
+
+static void
+initable_iface_init (GInitableIface *initable_iface);
+
+G_DEFINE_ABSTRACT_TYPE_WITH_CODE (MetaRenderDevice, meta_render_device,
+                                  G_TYPE_OBJECT,
+                                  G_ADD_PRIVATE (MetaRenderDevice)
+                                  G_IMPLEMENT_INTERFACE (G_TYPE_INITABLE,
+                                                         initable_iface_init))
+
+static void
+init_egl (MetaRenderDevice *render_device)
+{
+  MetaRenderDevicePrivate *priv =
+    meta_render_device_get_instance_private (render_device);
+  g_autoptr (GError) error = NULL;
+  MetaRendererEgl *renderer_egl;
+
+  renderer_egl = meta_renderer_egl_new (render_device);
+  priv->renderer_egl = renderer_egl;
+
+  if (!cogl_renderer_connect (COGL_RENDERER (renderer_egl), &error))
+    {
+      meta_topic (META_DEBUG_RENDER, "Failed to connect renderer for %s: %s",
+                  meta_device_file_get_path (priv->device_file),
+                  error->message);
+      g_clear_object (&priv->renderer_egl);
+      return;
+    }
+}
+
+static gboolean
+meta_render_device_initable_init (GInitable     *initable,
+                                  GCancellable  *cancellable,
+                                  GError       **error)
+{
+  MetaRenderDevice *render_device = META_RENDER_DEVICE (initable);
+
+  init_egl (render_device);
+
+  return TRUE;
+}
+
+static void
+initable_iface_init (GInitableIface *initable_iface)
+{
+  initable_iface->init = meta_render_device_initable_init;
+}
+
+static void
+meta_render_device_get_property (GObject    *object,
+                                 guint       prop_id,
+                                 GValue     *value,
+                                 GParamSpec *pspec)
+{
+  MetaRenderDevice *render_device = META_RENDER_DEVICE (object);
+  MetaRenderDevicePrivate *priv =
+    meta_render_device_get_instance_private (render_device);
+
+  switch (prop_id)
+    {
+    case PROP_BACKEND:
+      g_value_set_object (value, priv->backend);
+      break;
+    case PROP_DEVICE_FILE:
+      g_value_set_pointer (value, priv->device_file);
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+      break;
+    }
+}
+
+static void
+meta_render_device_set_property (GObject      *object,
+                                 guint         prop_id,
+                                 const GValue *value,
+                                 GParamSpec   *pspec)
+{
+  MetaRenderDevice *render_device = META_RENDER_DEVICE (object);
+  MetaRenderDevicePrivate *priv =
+    meta_render_device_get_instance_private (render_device);
+
+  switch (prop_id)
+    {
+    case PROP_BACKEND:
+      priv->backend = g_value_get_object (value);
+      break;
+    case PROP_DEVICE_FILE:
+      priv->device_file = g_value_get_pointer (value);
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+      break;
+    }
+}
+
+static void
+meta_render_device_dispose (GObject *object)
+{
+  MetaRenderDevice *render_device = META_RENDER_DEVICE (object);
+  MetaRenderDevicePrivate *priv =
+    meta_render_device_get_instance_private (render_device);
+
+  g_clear_object (&priv->renderer_egl);
+
+  G_OBJECT_CLASS (meta_render_device_parent_class)->dispose (object);
+}
+
+static void
+meta_render_device_finalize (GObject *object)
+{
+  MetaRenderDevice *render_device = META_RENDER_DEVICE (object);
+  MetaRenderDevicePrivate *priv =
+    meta_render_device_get_instance_private (render_device);
+
+  g_clear_pointer (&priv->device_file, meta_device_file_release);
+
+  G_OBJECT_CLASS (meta_render_device_parent_class)->finalize (object);
+}
+
+static void
+meta_render_device_constructed (GObject *object)
+{
+  MetaRenderDevice *render_device = META_RENDER_DEVICE (object);
+  MetaRenderDevicePrivate *priv =
+    meta_render_device_get_instance_private (render_device);
+
+  if (priv->device_file)
+    meta_device_file_acquire (priv->device_file);
+
+  G_OBJECT_CLASS (meta_render_device_parent_class)->constructed (object);
+}
+
+static void
+meta_render_device_class_init (MetaRenderDeviceClass *klass)
+{
+  GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+  object_class->get_property = meta_render_device_get_property;
+  object_class->set_property = meta_render_device_set_property;
+  object_class->constructed = meta_render_device_constructed;
+  object_class->dispose = meta_render_device_dispose;
+  object_class->finalize = meta_render_device_finalize;
+
+  obj_props[PROP_BACKEND] =
+    g_param_spec_object ("backend", NULL, NULL,
+                         META_TYPE_BACKEND,
+                         G_PARAM_READWRITE |
+                         G_PARAM_CONSTRUCT_ONLY |
+                         G_PARAM_STATIC_STRINGS);
+  obj_props[PROP_DEVICE_FILE] =
+    g_param_spec_pointer ("device-file", NULL, NULL,
+                          G_PARAM_READWRITE |
+                          G_PARAM_CONSTRUCT_ONLY |
+                          G_PARAM_STATIC_STRINGS);
+  g_object_class_install_properties (object_class, N_PROPS, obj_props);
+}
+
+static void
+meta_render_device_init (MetaRenderDevice *render_device)
+{
+}
+
+MetaBackend *
+meta_render_device_get_backend (MetaRenderDevice *render_device)
+{
+  MetaRenderDevicePrivate *priv =
+    meta_render_device_get_instance_private (render_device);
+
+  return priv->backend;
+}
+
+MetaDeviceFile *
+meta_render_device_get_device_file (MetaRenderDevice *render_device)
+{
+  MetaRenderDevicePrivate *priv =
+    meta_render_device_get_instance_private (render_device);
+
+  return priv->device_file;
+}
+
+EGLDisplay
+meta_render_device_get_egl_display (MetaRenderDevice *render_device)
+{
+  MetaRenderDevicePrivate *priv =
+    meta_render_device_get_instance_private (render_device);
+
+  if (priv->renderer_egl)
+    return cogl_renderer_egl_get_edisplay (COGL_RENDERER_EGL (priv->renderer_egl));
+
+  return EGL_NO_DISPLAY;
+}
+
+MetaRendererEgl *
+meta_render_device_get_renderer_egl (MetaRenderDevice *render_device)
+{
+  MetaRenderDevicePrivate *priv =
+    meta_render_device_get_instance_private (render_device);
+
+  return priv->renderer_egl;
+}
+
+gboolean
+meta_render_device_is_hardware_accelerated (MetaRenderDevice *render_device)
+{
+  MetaRenderDevicePrivate *priv =
+    meta_render_device_get_instance_private (render_device);
+
+  return cogl_renderer_is_hardware_accelerated (COGL_RENDERER (priv->renderer_egl));
+}
+
+const char *
+meta_render_device_get_name (MetaRenderDevice *render_device)
+{
+  MetaRenderDevicePrivate *priv =
+    meta_render_device_get_instance_private (render_device);
+
+  if (priv->device_file)
+    return meta_device_file_get_path (priv->device_file);
+  else
+    return "(device-less)";
+}
+
+GArray *
+meta_render_device_query_drm_modifiers (MetaRenderDevice       *render_device,
+                                        uint32_t                drm_format,
+                                        CoglDrmModifierFilter   filter,
+                                        GError                **error)
+{
+  MetaRenderDeviceClass *klass = META_RENDER_DEVICE_GET_CLASS (render_device);
+
+  if (klass->query_drm_modifiers)
+    {
+      return klass->query_drm_modifiers (render_device,
+                                         drm_format, filter,
+                                         error);
+    }
+
+  g_set_error (error, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
+               "Render device '%s' doesn't support allocating DMA buffers",
+               meta_render_device_get_name (render_device));
+
+  return NULL;
+}
+
+MetaDrmBuffer *
+meta_render_device_allocate_dma_buf (MetaRenderDevice    *render_device,
+                                     int                  width,
+                                     int                  height,
+                                     uint32_t             format,
+                                     uint64_t            *modifiers,
+                                     int                  n_modifiers,
+                                     MetaDrmBufferFlags   flags,
+                                     GError             **error)
+{
+  MetaRenderDeviceClass *klass = META_RENDER_DEVICE_GET_CLASS (render_device);
+
+  if (klass->allocate_dma_buf)
+    {
+      return klass->allocate_dma_buf (render_device,
+                                      width, height,
+                                      format,
+                                      modifiers, n_modifiers,
+                                      flags,
+                                      error);
+    }
+
+  g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+               "Render device '%s' doesn't support allocating DMA buffers",
+               meta_render_device_get_name (render_device));
+
+  return NULL;
+}
+
+MetaDrmBuffer *
+meta_render_device_import_dma_buf (MetaRenderDevice  *render_device,
+                                   MetaDrmBuffer     *buffer,
+                                   GError           **error)
+{
+  MetaRenderDeviceClass *klass = META_RENDER_DEVICE_GET_CLASS (render_device);
+
+  if (klass->import_dma_buf)
+    return klass->import_dma_buf (render_device, buffer, error);
+
+  g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+               "Render device '%s' doesn't importing DMA buffers",
+               meta_render_device_get_name (render_device));
+
+  return NULL;
+}
+
+MetaDrmBuffer *
+meta_render_device_allocate_dumb_buf (MetaRenderDevice  *render_device,
+                                      int                width,
+                                      int                height,
+                                      uint32_t           format,
+                                      GError           **error)
+{
+  MetaRenderDevicePrivate *priv =
+    meta_render_device_get_instance_private (render_device);
+  MetaDrmBufferDumb *buffer_dumb;
+
+  if (!priv->device_file)
+    {
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
+                   "No device file to allocate from");
+      return NULL;
+    }
+
+  buffer_dumb = meta_drm_buffer_dumb_new (priv->device_file,
+                                          width, height,
+                                          format,
+                                          error);
+  if (!buffer_dumb)
+    return NULL;
+
+  return META_DRM_BUFFER (buffer_dumb);
+}

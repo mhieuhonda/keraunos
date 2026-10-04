@@ -5,6 +5,7 @@
 # Boot artifacts
 *.iso
 /iso/
+/build/
 boot.log
 
 # Editors & OS noise

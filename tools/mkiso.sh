@@ -25,6 +25,7 @@ STAGING="$(mktemp -d)"
 trap 'rm -rf "$STAGING"' EXIT
 
 mkdir -p "$STAGING/boot/grub"
+mkdir -p "$(dirname "$OUT")"
 cp "$KERNEL" "$STAGING/boot/kernel.elf"
 cp "$ROOT/tools/grub.cfg" "$STAGING/boot/grub/grub.cfg"
 

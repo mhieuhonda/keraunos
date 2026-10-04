@@ -5,6 +5,8 @@
 //! the higher half (M2) -> slab heap (M2) -> user address spaces (M3+).
 
 pub mod bump;
+#[cfg(target_arch = "x86_64")]
+pub mod paging;
 pub mod pmm;
 
 /// Canonical page/frame size on every supported architecture.

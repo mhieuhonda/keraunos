@@ -300,6 +300,10 @@ extern "C" fn kmain(magic: u32, mbi_addr: usize) -> ! {
     // The bitmap PMM takes over frame management; the bump retires into it.
     mm::pmm::init(&map, &mut frame_alloc);
 
+    // Fresh page tables: kernel image aliased in the higher half, tables
+    // switched away from the bare boot-stub map.
+    mm::paging::init();
+
     // Frame smoke test: round-trip a lone frame and a contiguous run
     // through the Normal zone; the free count must come back exactly.
     let free_before = mm::pmm::free_frames();
